@@ -2,78 +2,80 @@
 {
 	using System;
 	public class KingSurvival
-	{ 
-		private int[,] field;
+	{
+		private readonly int[,] board;
 
-		private int[] pawnRows = { 0, 0, 0, 0 };
+		private readonly int[] pawnRows = { 0, 0, 0, 0 };
 
-		private int[] pawnColumns = { 0, 2, 4, 6 };
+		private readonly int[] pawnCols = { 0, 2, 4, 6 };
 
 		private int kingRow = 7;
 
 		private int kingColumn = 3;
 
-		//s + belejim belite poleta
-		//s - belejim chernite poleta
-		private int whiteCell = '+';
+		//with + are marked the white cells
+		private readonly int whiteCell = '+';
 
-		private int blackCell = '-';
+		//with - are arked the black cells
+		private readonly int blackCell = '-';
 
-		private int[] deltaRed = { -1, +1, +1, -1 }; //UR, DR, DL, UL
+		private readonly int[] deltaRows = { -1, +1, +1, -1 }; //UR, DR, DL, UL
 
-		private int[] deltaColona = { +1, +1, -1, -1 };
+		private readonly int[] deltaCols = { +1, +1, -1, -1 };
 
 		public KingSurvival()
 		{
-			field = new int[8, 8];
-			DaiMiDyskata();
+			board = new int[8, 8];
+			FillTheBoard();
 		}
 
-		public void DaiMiDyskata()
+		public void FillTheBoard()
 		{
-
-			for (int row = 0; row < field.GetLength(0); row++)
+			for (int row = 0; row < board.GetLength(0); row++)
 			{
 
-				for (int colum = 0; colum < field.GetLength(1); colum++)
+				for (int colum = 0; colum < board.GetLength(1); colum++)
 				{
 
 					if ((row + colum) % 2 == 0)
 					{
 
-						field[row, colum] = whiteCell;
+						board[row, colum] = whiteCell;
 
 					}
 
 					else
 					{
 
-						field[row, colum] = blackCell;
+						board[row, colum] = blackCell;
 
 					}
 
 				}
 
 			}
-			field[pawnRows[0], pawnColumns[0]] = 'A';
 
-			field[pawnRows[1], pawnColumns[1]] = 'B';
+			board[pawnRows[0], pawnCols[0]] = 'A';
 
-			field[pawnRows[2], pawnColumns[2]] = 'C';
+			board[pawnRows[1], pawnCols[1]] = 'B';
 
-			field[pawnRows[3], pawnColumns[3]] = 'D';
+			board[pawnRows[2], pawnCols[2]] = 'C';
 
-			field[kingRow, kingColumn] = 'K';
+			board[pawnRows[3], pawnCols[3]] = 'D';
+
+			board[kingRow, kingColumn] = 'K';
 		}
+
 		public bool MoveKingIfPossible(string command)
 		{
 			if (command.Length != 3)
 			{
 				return false;
 			}
-			string commandMalka = command.ToLower();
+
+			string commandToLower = command.ToLower();
 			int indexOfChange = -1;
-			switch (commandMalka)
+			switch (commandToLower)
 			{
 				case "kur": { indexOfChange = 0; }
 					break;
@@ -86,24 +88,18 @@
 				default:
 					return false;
 			}
-			int kingNewRow = kingRow + deltaRed[indexOfChange];
-			int kingNewColum = kingColumn + deltaColona[indexOfChange];
-			if (proverka2(kingNewRow, kingNewColum))
+
+			int kingNewRow = kingRow + deltaRows[indexOfChange];
+			int kingNewColum = kingColumn + deltaCols[indexOfChange];
+			if (IsCellWhiteOrBlack(kingNewRow, kingNewColum))
 			{
-				field[kingRow, kingColumn] = field[kingNewRow, kingNewColum];
-				field[kingNewRow, kingNewColum] = 'K';
+				board[kingRow, kingColumn] = board[kingNewRow, kingNewColum];
+				board[kingNewRow, kingNewColum] = 'K';
 				kingRow = kingNewRow;
-
-
-
-
-
-
-
-
 				kingColumn = kingNewColum;
 				return true;
 			}
+
 			return false;
 		}
 
@@ -113,6 +109,7 @@
 			{
 				return false;
 			}
+
 			string commandToLower = command.ToLower();
 			int indexOfChange = -1;
 			switch (commandToLower)
@@ -132,6 +129,7 @@
 				default:
 					return false;
 			}
+
 			int pawnIndex = -1;
 			switch (command[0])
 			{
@@ -153,102 +151,100 @@
 					break;
 			}
 
-			int pawnNewRow = pawnRows[pawnIndex] + deltaRed[indexOfChange];
-			int pawnNewColum = pawnColumns[pawnIndex] + deltaColona[indexOfChange];
-			if (proverka2(pawnNewRow, pawnNewColum))
+			int pawnNewRow = pawnRows[pawnIndex] + deltaRows[indexOfChange];
+			int pawnNewColum = pawnCols[pawnIndex] + deltaCols[indexOfChange];
+			if (IsCellWhiteOrBlack(pawnNewRow, pawnNewColum))
 			{
-				field[pawnRows[pawnIndex], pawnColumns[pawnIndex]] = field[pawnNewRow, pawnNewColum];
-				field[pawnNewRow, pawnNewColum] = command.ToUpper()[0];
+				board[pawnRows[pawnIndex], pawnCols[pawnIndex]] = board[pawnNewRow, pawnNewColum];
+				board[pawnNewRow, pawnNewColum] = command.ToUpper()[0];
 				pawnRows[pawnIndex] = pawnNewRow;
-				pawnColumns[pawnIndex] = pawnNewColum;
+				pawnCols[pawnIndex] = pawnNewColum;
 				return true;
 			}
+
 			return false;
 		}
 
-		public bool KingWon()
+		public bool HasKingWon()
 		{
 			if (kingRow == 0) //check if king is on the first row
 			{
 				return true;
 			}
-			for (int i = 0; i < field.GetLength(0); i += 2) // check if all powns are on the last row
+
+			for (int i = 0; i < board.GetLength(0); i += 2) // check if all powns are on the last row
 			{
-				if (field[field.GetLength(1) - 1, i] == whiteCell || field[field.GetLength(1) - 1, i] == blackCell)
+				if (board[board.GetLength(1) - 1, i] == whiteCell || board[board.GetLength(1) - 1, i] == blackCell)
 				{
 					return false;
 				}
 			}
+
 			return true;
 		}
 
-		private bool proverka(int row, int colum)
+		private bool IsPositionInsideBoard(int row, int colum)
 		{
-			if (row < 0 || row > field.GetLength(0) - 1 || colum < 0 || colum > field.GetLength(1) - 1)
+			if (row < 0 || row > board.GetLength(0) - 1 || colum < 0 || colum > board.GetLength(1) - 1)
 			{
-
-
-
-
 				return false;
 			}
+
 			return true;
 		}
 
-		private bool proverka2(int row, int colum)
+		private bool IsCellWhiteOrBlack(int row, int colum)
 		{
-
-			if (proverka(row, colum))
+			if (IsPositionInsideBoard(row, colum))
 			{
-				if (field[row, colum] == whiteCell || field[row, colum] == blackCell)
+				if (board[row, colum] == whiteCell || board[row, colum] == blackCell)
 				{
 					return true;
 				}
 			}
+
 			return false;
-
-
 		}
-		public bool KingLost()
+
+		public bool HasKingLost()
 		{
-
-
-
-			if (!proverka2(kingRow + 1, kingColumn + 1) && !proverka2(kingRow + 1, kingColumn - 1) &&
-				!proverka2(kingRow - 1, kingColumn + 1) && !proverka2(kingRow - 1, kingColumn - 1))
+			if (!IsCellWhiteOrBlack(kingRow + 1, kingColumn + 1) && !IsCellWhiteOrBlack(kingRow + 1, kingColumn - 1) &&
+				!IsCellWhiteOrBlack(kingRow - 1, kingColumn + 1) && !IsCellWhiteOrBlack(kingRow - 1, kingColumn - 1))
 			{
 				return true;
 			}
+
 			return false;
 		}
 		public void PrintBoard()
 		{
-			for (int row = 0; row < field.GetLength(0); row++)
+			for (int row = 0; row < board.GetLength(0); row++)
 			{
-				for (int colum = 0; colum < field.GetLength(1); colum++)
+				for (int col = 0; col < board.GetLength(1); col++)
 				{
-					int cell = field[row, colum];
+					int cell = board[row, col];
 					char toPrint = (char)cell;
 					Console.Write(toPrint + " ");
 				}
+
 				Console.WriteLine();
 			}
 		}
-		static void Main(string[] args)
+		public static void Main()
 		{
 			KingSurvival game = new KingSurvival();
-			int hodoveNaCarq = 0;
+			int kingMovesCount = 0;
 			bool isKingsTurn = true;
-			while (true) //dokato igrata ne svyrshi - vyrti cikyla
+			while (true) //while the game ends
 			{
-				if (game.KingWon())
+				if (game.HasKingWon())
 				{
-					Console.WriteLine("King won in {0} turns", hodoveNaCarq);
+					Console.WriteLine("King won in {0} turns", kingMovesCount);
 					break;
 				}
-				else if (game.KingLost())
+				else if (game.HasKingLost())
 				{
-					Console.WriteLine("King lost in {0} turns", hodoveNaCarq);
+					Console.WriteLine("King lost in {0} turns", kingMovesCount);
 					break;
 				}
 				else
@@ -268,8 +264,9 @@
 								Console.WriteLine("Illegal move!");
 							}
 						}
+
 						isKingsTurn = false;
-						hodoveNaCarq++;
+						kingMovesCount++;
 					}
 					else
 					{
@@ -284,6 +281,7 @@
 								Console.WriteLine("Illegal move!");
 							}
 						}
+
 						isKingsTurn = true;
 					}
 				}
