@@ -33,26 +33,17 @@
 		{
 			for (int row = 0; row < board.GetLength(0); row++)
 			{
-
 				for (int colum = 0; colum < board.GetLength(1); colum++)
 				{
-
 					if ((row + colum) % 2 == 0)
 					{
-
 						board[row, colum] = whiteCell;
-
 					}
-
 					else
 					{
-
 						board[row, colum] = blackCell;
-
 					}
-
 				}
-
 			}
 
 			board[pawnRows[0], pawnCols[0]] = 'A';
