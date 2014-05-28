@@ -6,7 +6,7 @@ using System.Text;
 namespace KingSurvival
 {
     class KingSurvival      // TRIAL POST sisi1
-    {
+    { //trial elena
             private int[,] dyska;
 
     private int[] pawnRows = { 0, 0, 0, 0 };
