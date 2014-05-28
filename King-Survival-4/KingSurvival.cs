@@ -5,7 +5,7 @@ using System.Text;
 
 namespace KingSurvival
 {
-    class KingSurvival      // TRIAL POST sisi
+    class KingSurvival      // TRIAL POST sisi1
     {
             private int[,] dyska;
 
