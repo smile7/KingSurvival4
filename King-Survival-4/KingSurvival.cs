@@ -2,40 +2,74 @@
 {
 	using System;
 
+    /// <summary>
+    /// The main class of the game
+    /// </summary>
 	public class KingSurvival
 	{
+        /// <summary>
+        /// Field for the main board
+        /// </summary>
 		private readonly int[,] board;
 
+        /// <summary>
+        /// Field for the rows of the pawns
+        /// </summary>
 		private readonly int[] pawnRows = { 0, 0, 0, 0 };
 
+        /// <summary>
+        /// Field for the cols of the pawns
+        /// </summary>
 		private readonly int[] pawnCols = { 0, 2, 4, 6 };
 
-		////with + are marked the white cells
+		/// <summary>
+		/// Filed for the white cells (marked with +)
+		/// </summary>
 		private readonly int whiteCell = '+';
 
-		////with - are arked the black cells
+		/// <summary>
+		/// Field for the black cells (marked with -)
+		/// </summary>
 		private readonly int blackCell = '-';
 
+        /// <summary>
+        /// The positions stored for the movement on the rows (UR, DR, DL, UL)
+        /// </summary>
 		private readonly int[] deltaRows = { -1, +1, +1, -1 }; ////UR, DR, DL, UL
 
+        /// <summary>
+        /// The positions stored for the movement on the cols (UR, DR, DL, UL)
+        /// </summary>
 		private readonly int[] deltaCols = { +1, +1, -1, -1 };
 
+        /// <summary>
+        /// Field for the initial place of the king on the rows
+        /// </summary>
 		private int kingRow = 7;
 
-		private int kingColumn = 3;
+        /// <summary>
+        /// Field for the initial place of the king on the cols
+        /// </summary>
+		private int kingCol = 3;
 
+        /// <summary>
+        /// The constructor for the class
+        /// </summary>
 		public KingSurvival()
 		{
 			this.board = new int[8, 8];
 			this.FillTheBoard();
 		}
 
+        /// <summary>
+        /// The main method where the game starts
+        /// </summary>
 		public static void Main()
 		{
 			KingSurvival game = new KingSurvival();
 			int kingMovesCount = 0;
 			bool isKingsTurn = true;
-			while (true) ////while the game ends
+			while (true)
 			{
 				if (game.HasKingWon())
 				{
@@ -88,19 +122,22 @@
 			}
 		}
 
+        /// <summary>
+        /// Fills the main board with +, - and A,B,C,D,K
+        /// </summary>
 		public void FillTheBoard()
 		{
 			for (int row = 0; row < this.board.GetLength(0); row++)
 			{
-				for (int colum = 0; colum < this.board.GetLength(1); colum++)
+				for (int col = 0; col < this.board.GetLength(1); col++)
 				{
-					if ((row + colum) % 2 == 0)
+					if ((row + col) % 2 == 0)
 					{
-						this.board[row, colum] = this.whiteCell;
+						this.board[row, col] = this.whiteCell;
 					}
 					else
 					{
-						this.board[row, colum] = this.blackCell;
+						this.board[row, col] = this.blackCell;
 					}
 				}
 			}
@@ -113,9 +150,14 @@
 
             this.board[this.pawnRows[3], this.pawnCols[3]] = 'D';
 
-            this.board[this.kingRow, this.kingColumn] = 'K';
+            this.board[this.kingRow, this.kingCol] = 'K';
 		}
 
+        /// <summary>
+        /// Checks what is the command given and moves the king to a new cell if possible
+        /// </summary>
+        /// <param name="command">Input command type string</param>
+        /// <returns>Returns true or false depending on whether the cell is white/black</returns>
 		public bool MoveKingIfPossible(string command)
 		{
 			if (command.Length != 3)
@@ -156,19 +198,24 @@
 			}
 
             int kingNewRow = this.kingRow + this.deltaRows[indexOfChange];
-            int kingNewColum = this.kingColumn + this.deltaCols[indexOfChange];
-            if (this.IsCellWhiteOrBlack(kingNewRow, kingNewColum))
+            int kingNewCol = this.kingCol + this.deltaCols[indexOfChange];
+            if (this.IsCellWhiteOrBlack(kingNewRow, kingNewCol))
 			{
-                this.board[this.kingRow, this.kingColumn] = this.board[kingNewRow, kingNewColum];
-                this.board[kingNewRow, kingNewColum] = 'K';
+                this.board[this.kingRow, this.kingCol] = this.board[kingNewRow, kingNewCol];
+                this.board[kingNewRow, kingNewCol] = 'K';
                 this.kingRow = kingNewRow;
-                this.kingColumn = kingNewColum;
+                this.kingCol = kingNewCol;
 				return true;
 			}
 
 			return false;
 		}
 
+        /// <summary>
+        /// Checks what is the command given and moves the pawn to a new cell if possible
+        /// </summary>
+        /// <param name="command">Input command type string</param>
+        /// <returns>Returns true or false depending on whether the cell is white/black</returns>
 		public bool MovePawnIfPossible(string command)
 		{
 			if (command.Length != 3)
@@ -249,14 +296,18 @@
 			return false;
 		}
 
+        /// <summary>
+        /// Checks if the king is on the first row and if all pawns are on the last row
+        /// </summary>
+        /// <returns>Returns true or false</returns>
 		public bool HasKingWon()
 		{
-            if (this.kingRow == 0) ////check if king is on the first row
+            if (this.kingRow == 0)
 			{
 				return true;
 			}
 
-			for (int i = 0; i < this.board.GetLength(0); i += 2) //// check if all powns are on the last row
+			for (int i = 0; i < this.board.GetLength(0); i += 2)
 			{
 				if (this.board[this.board.GetLength(1) - 1, i] == this.whiteCell || this.board[this.board.GetLength(1) - 1, i] == this.blackCell)
 				{
@@ -267,10 +318,14 @@
 			return true;
 		}
 
+        /// <summary>
+        /// Checks if the king has no adjacent cells to move to
+        /// </summary>
+        /// <returns>Returns true or false</returns>
 		public bool HasKingLost()
 		{
-            if (!this.IsCellWhiteOrBlack(this.kingRow + 1, this.kingColumn + 1) && !this.IsCellWhiteOrBlack(this.kingRow + 1, this.kingColumn - 1) &&
-                !this.IsCellWhiteOrBlack(this.kingRow - 1, this.kingColumn + 1) && !this.IsCellWhiteOrBlack(this.kingRow - 1, this.kingColumn - 1))
+            if (!this.IsCellWhiteOrBlack(this.kingRow + 1, this.kingCol + 1) && !this.IsCellWhiteOrBlack(this.kingRow + 1, this.kingCol - 1) &&
+                !this.IsCellWhiteOrBlack(this.kingRow - 1, this.kingCol + 1) && !this.IsCellWhiteOrBlack(this.kingRow - 1, this.kingCol - 1))
 			{
 				return true;
 			}
@@ -278,6 +333,9 @@
 			return false;
 		}
 
+        /// <summary>
+        /// Prints the main board
+        /// </summary>
 		public void PrintBoard()
 		{
 			for (int row = 0; row < this.board.GetLength(0); row++)
@@ -293,9 +351,15 @@
 			}
 		}
 
-		private bool IsPositionInsideBoard(int row, int colum)
+        /// <summary>
+        /// Checks if the cell is inside the board or not
+        /// </summary>
+        /// <param name="row">Input row type number</param>
+        /// <param name="col">Input col type number</param>
+        /// <returns>Returns true or false</returns>
+		private bool IsPositionInsideBoard(int row, int col)
 		{
-			if (row < 0 || row > this.board.GetLength(0) - 1 || colum < 0 || colum > this.board.GetLength(1) - 1)
+			if (row < 0 || row > this.board.GetLength(0) - 1 || col < 0 || col > this.board.GetLength(1) - 1)
 			{
 				return false;
 			}
@@ -303,11 +367,17 @@
 			return true;
 		}
 
-		private bool IsCellWhiteOrBlack(int row, int colum)
+        /// <summary>
+        /// Checks if the current cell is inside the board and if it is white or black
+        /// </summary>
+        /// <param name="row">Input row type number</param>
+        /// <param name="col">Input col type number</param>
+        /// <returns>Returns true or false</returns>
+		private bool IsCellWhiteOrBlack(int row, int col)
 		{
-			if (this.IsPositionInsideBoard(row, colum))
+			if (this.IsPositionInsideBoard(row, col))
 			{
-				if (this.board[row, colum] == this.whiteCell || this.board[row, colum] == this.blackCell)
+				if (this.board[row, col] == this.whiteCell || this.board[row, col] == this.blackCell)
 				{
 					return true;
 				}
