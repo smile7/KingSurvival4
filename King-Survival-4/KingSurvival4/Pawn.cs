@@ -8,6 +8,6 @@ namespace KingSurvival4
 {
     public class Pawn : Figure
     {
-        public Pawn(char symbol) : base(symbol) { }
+        public Pawn() : base() { }
     }
 }
