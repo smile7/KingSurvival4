@@ -11,5 +11,10 @@ namespace KingSurvival4
         public King() : base()
         {
         }
+
+        public override void Move()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
