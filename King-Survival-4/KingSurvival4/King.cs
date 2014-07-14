@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace KingSurvival4
 {
-    class Program
+    public class King : Figure
     {
-        static void Main(string[] args)
+        public King(char symbol) : base(symbol)
         {
         }
     }
