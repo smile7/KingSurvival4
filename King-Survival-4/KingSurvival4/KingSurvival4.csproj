@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Board.cs" />
     <Compile Include="Decorator.cs" />
+    <Compile Include="DownwardMover.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Figure.cs" />
     <Compile Include="FigureGetter.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticCell.cs" />
+    <Compile Include="UpwardMover.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
