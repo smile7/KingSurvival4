@@ -4,12 +4,9 @@
     public class Pawn : Figure
     {
       
-        public Pawn(Position initialPosition) 
-            : base(initialPosition) 
+        public Pawn(Position initialPosition, char name) 
+            : base(initialPosition, name) 
         {
-            this.Position = initialPosition;
         }
-
-        
     }
 }

@@ -4,10 +4,9 @@
 
     public class StaticCell : Figure
     {
-        public StaticCell(Position initialPosition)
-            : base(initialPosition)
+        public StaticCell(Position initialPosition, char name)
+            : base(initialPosition, name)
         {
-            this.Position = initialPosition;
         }
     }
 }
