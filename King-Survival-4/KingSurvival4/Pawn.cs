@@ -10,9 +10,6 @@ namespace KingSurvival4
     {
         public Pawn() : base() { }
 
-        public override void Move()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
