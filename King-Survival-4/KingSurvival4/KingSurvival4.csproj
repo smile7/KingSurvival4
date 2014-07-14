@@ -48,6 +48,7 @@
     <Compile Include="FigureGetter.cs" />
     <Compile Include="King.cs" />
     <Compile Include="Pawn.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
