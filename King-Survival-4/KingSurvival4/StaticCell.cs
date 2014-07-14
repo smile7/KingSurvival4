@@ -5,7 +5,7 @@
     public class StaticCell : Figure
     {
         public StaticCell(Position initialPosition, char name)
-            : base(initialPosition, name)
+            : base(initialPosition, name, 'S')
         {
         }
     }

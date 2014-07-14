@@ -11,10 +11,14 @@ namespace KingSurvival4
         public Position Position { get; set; }
 
         public char Name { get; set; }
-        public Figure(Position initialPosition, char name)
+
+        public char Symbol { get; set; }
+
+        public Figure(Position initialPosition, char initialName, char initialSymbol)
         {
             this.Position = initialPosition;
-            this.Name = name;
+            this.Name = initialName;
+            this.Symbol = initialSymbol;
         }
     }
 }

@@ -8,18 +8,18 @@ namespace KingSurvival4
 {
     public static class FigureGetter
     {
-        public static Figure GetFigure(char symbol, Position position)
+        public static Figure GetFigure(Position position, char name, char symbol)
         {
             switch (symbol)
             {
                 case 'K':
                     return new King(position);
                 case 'P':
-                    return new Pawn(position);
+                    return new Pawn(position, name);
                 case 'S':
-                    return new StaticCell(position);
+                    return new StaticCell(position, name);
                 default:
-                    return new Figure(position);
+                    return new Figure(position, name, symbol);
             }
         }
     }
