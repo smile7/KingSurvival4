@@ -5,10 +5,10 @@
     /// </summary>
     internal abstract class Decorator : Figure
     {
-        protected Decorator(Figure figureItem)
-        {
-            this.FigureItem = figureItem;
-        }
+        //protected Decorator(Figure figureItem)
+        //{
+        //    this.FigureItem = figureItem;
+        //}
 
         public Figure FigureItem { get; set; }
 

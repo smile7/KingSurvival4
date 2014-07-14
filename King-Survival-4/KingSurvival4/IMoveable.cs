@@ -2,6 +2,6 @@
 {
     internal interface IMoveable
     {
-        void Move();
+        void Move(Figure figure, Direction direction);
     }
 }

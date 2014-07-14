@@ -8,5 +8,9 @@
         {
         }
 
+        public override void Move()
+        {
+            this.Mover.Move(this, new Direction()); // TO DO: not correct direction
+        }
     }
 }
