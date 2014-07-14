@@ -3,9 +3,9 @@
     using System;
     public class Pawn : Figure
     {
-        public Position Position { get; set; }
+      
         public Pawn(Position initialPosition) 
-            : base() 
+            : base(initialPosition) 
         {
             this.Position = initialPosition;
         }

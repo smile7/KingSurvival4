@@ -3,9 +3,8 @@
     using System;
     public class King : Figure
     {
-        public Position Position { get; set; }
         public King(Position initialPosition)
-            : base()
+            : base(initialPosition)
         {
             this.Position = initialPosition;
         }
