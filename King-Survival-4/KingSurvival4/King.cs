@@ -12,9 +12,6 @@ namespace KingSurvival4
         {
         }
 
-        public override void Move()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
