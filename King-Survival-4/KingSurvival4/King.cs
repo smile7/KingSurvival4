@@ -3,8 +3,8 @@
     using System;
     public class King : Figure
     {
-        public King(Position initialPosition)
-            : base(initialPosition, 'K', 'K')
+        public King(Position initialPosition, IMoveable mover)
+            : base(initialPosition, 'K', 'K', mover)
         {
         }
 

@@ -4,8 +4,8 @@
 
     public class StaticCell : Figure
     {
-        public StaticCell(Position initialPosition, char name)
-            : base(initialPosition, name, 'S')
+        public StaticCell(Position initialPosition, char name, IMoveable mover)
+            : base(initialPosition, name, 'S', mover)
         {
         }
     }
