@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Board.cs" />
+    <Compile Include="Decorator.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="Figure.cs" />
     <Compile Include="King.cs" />
     <Compile Include="Pawn.cs" />
