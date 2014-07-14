@@ -1,9 +1,13 @@
 ﻿namespace KingSurvival4
 {
     using System;
-    public class Pawn : Figure
+
+    public class StaticCell : Figure
     {
-        public Pawn() : base() { }
+        public StaticCell()
+            : base()
+        {
+        }
 
         public override void Move()
         {
