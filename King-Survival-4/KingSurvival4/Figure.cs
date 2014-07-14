@@ -12,6 +12,5 @@ namespace KingSurvival4
         {
         }
 
-        public abstract void Move();
     }
 }
