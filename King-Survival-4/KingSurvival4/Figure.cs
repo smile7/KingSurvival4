@@ -11,5 +11,7 @@ namespace KingSurvival4
         public Figure()
         {
         }
+
+        public abstract void Move();
     }
 }
