@@ -8,7 +8,7 @@ namespace KingSurvival4
 {
     public class King : Figure
     {
-        public King(char symbol) : base(symbol)
+        public King() : base()
         {
         }
     }

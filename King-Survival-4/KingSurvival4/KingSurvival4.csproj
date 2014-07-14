@@ -45,6 +45,7 @@
     <Compile Include="Decorator.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Figure.cs" />
+    <Compile Include="FigureGetter.cs" />
     <Compile Include="King.cs" />
     <Compile Include="Pawn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -5,16 +5,17 @@
     /// </summary>
     internal abstract class Decorator : Figure
     {
-        protected Decorator(Figure libraryItem)
+        protected Decorator(Figure figureItem)
         {
-            this.LibraryItem = libraryItem;
+            this.FigureItem = figureItem;
         }
 
-        protected Figure LibraryItem { get; set; }
+        public Figure FigureItem { get; set; }
 
-        public override void Display()
+        public override void Move()
         {
-            //skdujhf
+            //TO DO
         }
+
     }
 }

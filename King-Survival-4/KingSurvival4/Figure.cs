@@ -8,13 +8,8 @@ namespace KingSurvival4
 {
     public class Figure
     {
-        private char symbol;
-
-        public Figure(char symbol)
+        public Figure()
         {
-            this.Symbol = symbol;
         }
-
-        public char Symbol { get; set; }
     }
 }
