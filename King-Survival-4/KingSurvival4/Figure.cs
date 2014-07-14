@@ -11,5 +11,6 @@ namespace KingSurvival4
         public Figure()
         {
         }
+
     }
 }

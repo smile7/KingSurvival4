@@ -5,9 +5,6 @@
     {
         public Pawn() : base() { }
 
-        public override void Move()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
