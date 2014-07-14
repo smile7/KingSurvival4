@@ -46,10 +46,12 @@
     <Compile Include="Engine.cs" />
     <Compile Include="Figure.cs" />
     <Compile Include="FigureGetter.cs" />
+    <Compile Include="IMoveable.cs" />
     <Compile Include="King.cs" />
     <Compile Include="Pawn.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StaticCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
