@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Board.cs" />
     <Compile Include="Decorator.cs" />
+    <Compile Include="Direction.cs" />
     <Compile Include="DownwardMover.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Figure.cs" />
