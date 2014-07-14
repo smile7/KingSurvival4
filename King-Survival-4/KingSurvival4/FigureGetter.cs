@@ -15,6 +15,8 @@ namespace KingSurvival4
                     return new King();
                 case 'P':
                     return new Pawn();
+                case 'S':
+                    return new StaticCell();
                 default:
                     return new Figure();
             }
