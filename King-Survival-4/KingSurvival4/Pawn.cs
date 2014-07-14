@@ -3,7 +3,12 @@
     using System;
     public class Pawn : Figure
     {
-        public Pawn() : base() { }
+        public Position Position { get; set; }
+        public Pawn(Position initialPosition) 
+            : base() 
+        {
+            this.Position = initialPosition;
+        }
 
         
     }

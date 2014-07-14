@@ -8,9 +8,10 @@ namespace KingSurvival4
 {
     public class Figure
     {
-        public Figure()
+        public Position Position { get; set; }
+        public Figure(Position initialPosition)
         {
+            this.Position = initialPosition;
         }
-
     }
 }
