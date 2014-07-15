@@ -32,7 +32,12 @@
                 }
             }
 
-
+            FigureGetter.GetFigure(new Position(0, 0), 'A', 'P', null);
+            FigureGetter.GetFigure(new Position(0, 2), 'B', 'P', null);
+            FigureGetter.GetFigure(new Position(0, 4), 'C', 'P', null);
+            FigureGetter.GetFigure(new Position(0, 6), 'D', 'P', null);
+            FigureGetter.GetFigure(new Position(7, 3), 'K', 'K', null);
+            
         }
     }
 }
