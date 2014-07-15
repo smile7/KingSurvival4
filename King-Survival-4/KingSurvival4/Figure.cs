@@ -26,5 +26,10 @@ namespace KingSurvival4
         }
 
         public abstract void Move();
+
+        public override string ToString()
+        {
+            return this.Name.ToString();
+        }
     }
 }
