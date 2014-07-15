@@ -46,6 +46,7 @@
     <Compile Include="Decorator.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="FigureParser.cs" />
+    <Compile Include="HorizontalParser.cs" />
     <Compile Include="MovePawn.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Figure.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticCell.cs" />
     <Compile Include="MoveKing.cs" />
+    <Compile Include="VerticalParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
