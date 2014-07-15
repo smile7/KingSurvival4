@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KingSurvival4
+﻿namespace KingSurvival4
 {
-    public class Command
+    public class Command : ICommand
     {
+        public Command(string initialInput)
+        {
+            this.Input = initialInput;
+        }
         public string Input { get; set; }
     }
 }

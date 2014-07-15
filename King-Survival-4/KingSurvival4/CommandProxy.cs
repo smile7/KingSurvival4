@@ -8,6 +8,7 @@ namespace KingSurvival4
 {
     internal class CommandProxy :ICommand
     {
+        private Command realCommand;
         //TO DO: check for valid command input (KUL or ABC)
     }
 }
