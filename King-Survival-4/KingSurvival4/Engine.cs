@@ -38,11 +38,11 @@
            var fourthPawn =   FigureGetter.GetFigure(new Position(0, 6), 'D', 'P', new MovePawn());
            var king = FigureGetter.GetFigure(new Position(7, 3), 'K', 'K', new MoveKing());
 
-           Board.Field[firstPawn.Position.X, firstPawn.Position.Y] = firstPawn.Symbol.ToString();
-           Board.Field[secondPawn.Position.X, secondPawn.Position.Y] = secondPawn.Symbol.ToString();
-           Board.Field[thirdPawn.Position.X, thirdPawn.Position.Y] = thirdPawn.Symbol.ToString();
-           Board.Field[fourthPawn.Position.X, fourthPawn.Position.Y] = fourthPawn.Symbol.ToString();
-           Board.Field[king.Position.X, king.Position.Y] = king.Symbol.ToString();
+           Board.Field[firstPawn.Position.X, firstPawn.Position.Y] = firstPawn.Name.ToString();
+           Board.Field[secondPawn.Position.X, secondPawn.Position.Y] = secondPawn.Name.ToString();
+           Board.Field[thirdPawn.Position.X, thirdPawn.Position.Y] = thirdPawn.Name.ToString();
+           Board.Field[fourthPawn.Position.X, fourthPawn.Position.Y] = fourthPawn.Name.ToString();
+           Board.Field[king.Position.X, king.Position.Y] = king.Name.ToString();
             
         }
     }
