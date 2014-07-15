@@ -2,7 +2,6 @@
 {
     internal class FigureParser : Parser
     {
-
         public override void Letter()
         {
             throw new System.NotImplementedException();

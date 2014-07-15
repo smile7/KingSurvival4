@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KingSurvival4
+﻿namespace KingSurvival4
 {
-    internal class VerticalParser:Parser
+    internal class VerticalParser : Parser
     {
         public override void Letter()
         {
