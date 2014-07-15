@@ -44,10 +44,12 @@
     <Compile Include="AbstractMediator.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="CommandProxy.cs" />
     <Compile Include="Decorator.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="FigureParser.cs" />
     <Compile Include="HorizontalParser.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="KingSurvival4Demo.cs" />
     <Compile Include="Mediator.cs" />
     <Compile Include="MovePawn.cs" />
