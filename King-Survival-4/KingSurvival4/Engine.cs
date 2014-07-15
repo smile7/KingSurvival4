@@ -4,15 +4,15 @@
     {
         public Engine()
         {
-
         }
+
         public void Start()
         {
             var board = Board.Instance;
             fillBoard();
         }
 
-        public void fillBoard()
+        private void fillBoard()
         {
             const string WhiteCell = "+";
             const string BlackCell = "-";
@@ -32,11 +32,17 @@
                 }
             }
 
-            FigureGetter.GetFigure(new Position(0, 0), 'A', 'P', null);
-            FigureGetter.GetFigure(new Position(0, 2), 'B', 'P', null);
-            FigureGetter.GetFigure(new Position(0, 4), 'C', 'P', null);
-            FigureGetter.GetFigure(new Position(0, 6), 'D', 'P', null);
-            FigureGetter.GetFigure(new Position(7, 3), 'K', 'K', null);
+           var firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', 'P', new MovePawn());
+           var secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', 'P', new MovePawn());
+           var thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', 'P', new MovePawn());
+           var fourthPawn =   FigureGetter.GetFigure(new Position(0, 6), 'D', 'P', new MovePawn());
+           var king = FigureGetter.GetFigure(new Position(7, 3), 'K', 'K', new MoveKing());
+
+           Board.Field[firstPawn.Position.X, firstPawn.Position.Y] = firstPawn.Symbol.ToString();
+           Board.Field[secondPawn.Position.X, secondPawn.Position.Y] = secondPawn.Symbol.ToString();
+           Board.Field[thirdPawn.Position.X, thirdPawn.Position.Y] = thirdPawn.Symbol.ToString();
+           Board.Field[fourthPawn.Position.X, fourthPawn.Position.Y] = fourthPawn.Symbol.ToString();
+           Board.Field[king.Position.X, king.Position.Y] = king.Symbol.ToString();
             
         }
     }
