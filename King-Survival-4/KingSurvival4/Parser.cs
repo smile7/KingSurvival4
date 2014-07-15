@@ -6,5 +6,9 @@
         {
 
         }
+
+        public abstract void FirstLetter();
+        public abstract void SecondLetter();
+        public abstract void ThirdLetter();
     }
 }

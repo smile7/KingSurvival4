@@ -45,6 +45,7 @@
     <Compile Include="Command.cs" />
     <Compile Include="Decorator.cs" />
     <Compile Include="Direction.cs" />
+    <Compile Include="FigureParser.cs" />
     <Compile Include="MovePawn.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Figure.cs" />
