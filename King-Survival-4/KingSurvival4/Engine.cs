@@ -9,7 +9,7 @@
         public void Start()
         {
             var board = Board.Instance;
-
+            fillBoard();
         }
 
         public void fillBoard()
@@ -17,9 +17,9 @@
             const string WhiteCell = "+";
             const string BlackCell = "-";
 
-            for (int row = 0; row < Board.Field.GetLength(0); row++)
+            for (int row = 0; row < 8; row++)
             {
-                for (int col = 0; col < Board.Field.GetLength(1); col++)
+                for (int col = 0; col < 8; col++)
                 {
                     if ((row + col) % 2 == 0)
                     {

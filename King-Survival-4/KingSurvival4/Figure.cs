@@ -25,7 +25,7 @@ namespace KingSurvival4
             this.Mover = initialMover;
         }
 
-        public abstract void Move();
+        public virtual void Move() { }
 
         public override string ToString()
         {

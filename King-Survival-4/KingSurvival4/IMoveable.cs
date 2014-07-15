@@ -1,6 +1,6 @@
 ﻿namespace KingSurvival4
 {
-    internal interface IMoveable
+    public interface IMoveable
     {
         void Move(Figure figure, Direction direction);
     }

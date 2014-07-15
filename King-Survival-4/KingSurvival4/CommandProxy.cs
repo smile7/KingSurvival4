@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace KingSurvival4
 {
-    internal class CommandProxy :ICommand
+    internal class CommandProxy : ICommand
     {
         private Command realCommand;
         private string input;
-        private const string[] COMMANDS = {"KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
+        //private const string[] COMMANDS = {"KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
+        //not working with const
 
+        private string[] COMMANDS = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
+        
         public string Input
         {
             get
@@ -22,7 +25,7 @@ namespace KingSurvival4
             {
                 if (IsValid(value.ToUpper()))
                 {
-                    realCommand = new Command(value.ToUpper());
+                    setInput(value.ToUpper()); 
                 }
                 else
                 {
@@ -39,6 +42,11 @@ namespace KingSurvival4
             }
 
             return false;
+        }
+
+        public void setInput(string input)
+        {
+            realCommand = new Command(input);
         }
     }
 }

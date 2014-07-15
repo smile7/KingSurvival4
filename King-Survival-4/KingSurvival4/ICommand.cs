@@ -8,6 +8,8 @@ namespace KingSurvival4
 {
     internal interface ICommand
     {
-        string Input;
+        
+
+        void setInput(string input);
     }
 }
