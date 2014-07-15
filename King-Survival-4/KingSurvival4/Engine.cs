@@ -1,5 +1,6 @@
 ﻿namespace KingSurvival4
 {
+    using System;
     public class Engine
     {
         public Engine()
@@ -9,10 +10,11 @@
         public void Start()
         {
             var board = Board.Instance;
-            fillBoard();
+            FillBoard();
+            RenderBoard();
         }
 
-        private void fillBoard()
+        private void FillBoard()
         {
             const string WhiteCell = "+";
             const string BlackCell = "-";
@@ -44,6 +46,21 @@
            Board.Field[fourthPawn.Position.X, fourthPawn.Position.Y] = fourthPawn.Name.ToString();
            Board.Field[king.Position.X, king.Position.Y] = king.Name.ToString();
             
+        }
+
+        private void RenderBoard()
+        {
+            Console.WriteLine();
+
+            for (int row = 0; row < Board.Field.GetLength(0); row++)
+            {
+                for (int col = 0; col < Board.Field.GetLength(1); col++)
+                {
+                    Console.Write(Board.Field[row, col] + " ");
+                }
+
+                Console.WriteLine();
+            }
         }
     }
 }
