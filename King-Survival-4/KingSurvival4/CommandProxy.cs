@@ -9,6 +9,32 @@ namespace KingSurvival4
     internal class CommandProxy :ICommand
     {
         private Command realCommand;
-        //TO DO: check for valid command input (KUL or ABC)
+        private string input;
+        private const string[] COMMANDS = {"KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
+
+        public string Input
+        {
+            get
+            {
+                return this.input;
+            }
+            set
+            {
+                if (IsValid(value.ToUpper()))
+                {
+                    this.input = value;
+                }
+            }
+        }
+
+        private bool IsValid(string currentInput)
+        {
+            if (COMMANDS.Contains(currentInput))
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
