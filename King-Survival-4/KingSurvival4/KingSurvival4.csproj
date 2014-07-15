@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractMediator.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="Decorator.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="FigureParser.cs" />
     <Compile Include="HorizontalParser.cs" />
     <Compile Include="KingSurvival4Demo.cs" />
+    <Compile Include="Mediator.cs" />
     <Compile Include="MovePawn.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Figure.cs" />
