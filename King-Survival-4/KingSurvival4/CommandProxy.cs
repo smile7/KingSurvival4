@@ -10,6 +10,7 @@ namespace KingSurvival4
     {
         private Command realCommand;
         private string input;
+
         //private const string[] COMMANDS = {"KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
         //not working with const
 
