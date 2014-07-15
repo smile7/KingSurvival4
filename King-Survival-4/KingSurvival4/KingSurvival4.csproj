@@ -47,6 +47,7 @@
     <Compile Include="Direction.cs" />
     <Compile Include="FigureParser.cs" />
     <Compile Include="HorizontalParser.cs" />
+    <Compile Include="KingSurvival4Demo.cs" />
     <Compile Include="MovePawn.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Figure.cs" />
