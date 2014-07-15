@@ -2,7 +2,11 @@
 {
     public class Engine
     {
-        public static void Main()
+        public Engine()
+        {
+
+        }
+        public void Start()
         {
             var board = Board.Instance;
         }

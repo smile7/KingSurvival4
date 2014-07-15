@@ -8,7 +8,10 @@ namespace KingSurvival4
 {
     public class KingSurvival4Demo
     {
-        Engine engine = new Engine();
-        
+        public static void Main()
+        {
+            Engine engine = new Engine();
+            engine.Start();
+        }
     }
 }
