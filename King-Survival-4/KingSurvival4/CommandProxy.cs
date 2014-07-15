@@ -22,7 +22,7 @@ namespace KingSurvival4
             {
                 if (IsValid(value.ToUpper()))
                 {
-                    this.input = value;
+                    realCommand = new Command(value.ToUpper());
                 }
                 else
                 {

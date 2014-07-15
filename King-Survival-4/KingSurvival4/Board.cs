@@ -8,7 +8,7 @@
 
         private const int NumberOfCols = 8;
 
-        public string[,] field;
+        public static string[,] field;
 
         private static object syncLock = new object();
 
@@ -17,7 +17,7 @@
             field = new string[NumberOfRows, NumberOfCols];
         }
 
-        public string[,] Field { get; private set; }
+        public static string[,] Field { get; private set; }
 
         public static Board Instance
         {
