@@ -24,6 +24,10 @@ namespace KingSurvival4
                 {
                     this.input = value;
                 }
+                else
+                {
+                    Console.WriteLine("Illegal move!");
+                }
             }
         }
 
