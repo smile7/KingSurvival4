@@ -2,13 +2,13 @@
 {
     public sealed class Board
     {
-        private static volatile Board instance;
+        public static string[,] field;
 
         private const int NumberOfRows = 8;
 
         private const int NumberOfCols = 8;
 
-        public static string[,] field;
+        private static volatile Board instance;
 
         private static object syncLock = new object();
 

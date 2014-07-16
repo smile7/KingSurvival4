@@ -5,28 +5,31 @@
         private Parser parser;
         private ProspectMemory memory = new ProspectMemory();
 
-        public string FigureLetter { get; set; }
-        private string DirectionLetters { get; set; }
         public Command(string initialInput)
         {
             this.Input = initialInput;
             this.FigureLetter = initialInput.Substring(0, 1);
             this.DirectionLetters = initialInput.Substring(1);
         }
+
+        public string FigureLetter { get; set; }
+
+        private string DirectionLetters { get; set; }
+
         public string Input { get; set; }
 
         public int[] DetermineDirection()
         {
-            memory.Memento = this.SaveMemento();
+            this.memory.Memento = this.SaveMemento();
 
             this.parser = new Parser(this.DirectionLetters);
-            var direction = parser.GetDirection();
+            var direction = this.parser.GetDirection();
             return direction;
         }
 
         public int[] DetermineOppositeDirection()
         {
-            this.RestoreMemento(memory.Memento); // this works without memento!!!!!!!!!!!!! try to fix it
+            this.RestoreMemento(this.memory.Memento); // this works without memento!!!!!!!!!!!!! try to fix it
             switch (this.DirectionLetters)
             {
                 case "UL":
@@ -42,11 +45,11 @@
                     this.DirectionLetters = "UL";
                     break;
             }
+
             this.parser = new Parser(this.DirectionLetters);
-            var direction = parser.GetDirection();
+            var direction = this.parser.GetDirection();
             return direction;
         }
-
 
         public Memento SaveMemento()
         {

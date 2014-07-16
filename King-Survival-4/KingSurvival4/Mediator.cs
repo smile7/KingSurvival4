@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KingSurvival4
+﻿namespace KingSurvival4
 {
+    using System.Collections.Generic;
+
     internal class Mediator : AbstractMediator
     {
-        List<Figure> listOfFigures = new List<Figure>();
+        private List<Figure> listOfFigures = new List<Figure>();
 
-       
         public override void AddFigure(Figure figure)
         {
             this.listOfFigures.Add(figure);

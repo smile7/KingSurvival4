@@ -1,13 +1,15 @@
-﻿using System;
-namespace KingSurvival4
+﻿namespace KingSurvival4
 {
+    using System;
+
     internal class Parser
     {
-        public string Command { get; set; }
         public Parser(string command)
         {
             this.Command = command;
         }
+
+        public string Command { get; set; }
 
         public int[] GetDirection()
         {

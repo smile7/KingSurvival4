@@ -1,6 +1,7 @@
 ﻿namespace KingSurvival4
 {
     using System;
+
     internal class MoveKing : MoveFigure
     {
         public override void Move(Figure figure, int[] directions)
