@@ -8,7 +8,7 @@ namespace KingSurvival4
 {
     internal class CommandProxy : ICommand
     {
-        private Command realCommand;
+        public Command realCommand;
         private string input;
 
         private Parser parser;
@@ -36,7 +36,7 @@ namespace KingSurvival4
                 }
                 else
                 {
-                    Console.WriteLine("Illegal move!");
+                    throw new ArgumentOutOfRangeException("Illegal move");
                 }
             }
         }

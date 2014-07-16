@@ -5,7 +5,7 @@
         private Parser parser;
         private ProspectMemory memory = new ProspectMemory();
 
-        private string FigureLetter { get; set; }
+        public string FigureLetter { get; set; }
         private string DirectionLetters { get; set; }
         public Command(string initialInput)
         {

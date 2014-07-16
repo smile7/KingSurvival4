@@ -15,13 +15,13 @@ namespace KingSurvival4
             switch (directionStr)
             {
                 case "UL":
-                    return new int[] { -1, 1 };
-                case "UR":
-                    return new int[] { 1, 1 };
-                case "DL":
                     return new int[] { -1, -1 };
-                case "DR":
+                case "UR":
+                    return new int[] { -1, 1 };
+                case "DL":
                     return new int[] { 1, -1 };
+                case "DR":
+                    return new int[] { 1, 1 };
                 default:
                     return new int[] { 0, 0 };
             }
