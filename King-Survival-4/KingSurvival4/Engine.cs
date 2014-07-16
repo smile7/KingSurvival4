@@ -38,6 +38,11 @@
                         {
                             command.Input = Console.ReadLine();
                             int[] initial = command.DetermineDirection();
+                            string kingSymbol = command.realCommand.FigureLetter;
+                            if (kingSymbol != "K")
+                            {
+                                throw new ArgumentOutOfRangeException();
+                            }
                             if (IsMoveValid(king, initial))
                             {
                                 MoveKing changeKingsPosition = new MoveKing();
@@ -78,8 +83,7 @@
                                 case "B": chosenPawn = secondPawn; break;
                                 case "C": chosenPawn = thirdPawn; break;
                                 case "D": chosenPawn = fourthPawn; break;
-                                default:
-                                    break;
+                                default: throw new ArgumentOutOfRangeException();
                             }
 
                             if (IsMoveValid(chosenPawn, initial))
@@ -115,7 +119,7 @@
                 throw new IndexOutOfRangeException();
             }
 
-            if (Board.field[newX, newY]!="+")
+            if (Board.field[newX, newY] != "+")
             {
                 throw new InvalidOperationException();
             }
