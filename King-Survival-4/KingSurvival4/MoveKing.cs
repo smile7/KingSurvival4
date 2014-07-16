@@ -3,7 +3,7 @@
     using System;
     internal class MoveKing : MoveFigure
     {
-        public override void Move(Figure figure, Direction direction)
+        public override void Move(Figure figure)
         {
             throw new NotImplementedException();
         }

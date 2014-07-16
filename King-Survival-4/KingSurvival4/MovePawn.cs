@@ -2,7 +2,7 @@
 {
     internal class MovePawn : MoveFigure
     {
-        public override void Move(Figure figure, Direction direction)
+        public override void Move(Figure figure)
         {
             throw new System.NotImplementedException();
         }
