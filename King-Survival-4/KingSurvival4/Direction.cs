@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace KingSurvival4
 {
-    public enum  Direction
+    public class  Direction
     {
-        Left = 'L',
-        Right = 'R'
+        public int[] Directions { get; set; }
     }
 }

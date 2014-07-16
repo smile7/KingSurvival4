@@ -3,9 +3,12 @@
     using System;
     public class King : Figure
     {
-        public King(Position initialPosition, IMoveable mover)
+        public bool OnTurn { get; set; }
+
+        public King(Position initialPosition, IMoveable mover, bool onTurn = true)
             : base(initialPosition, 'K', 'K', mover)
         {
+            this.OnTurn = onTurn;
         }
 
         public override void Move()

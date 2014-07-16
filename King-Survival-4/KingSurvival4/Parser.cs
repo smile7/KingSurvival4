@@ -2,7 +2,7 @@
 {
     internal abstract class Parser
     {
-        public char FirugeLetter { get; protected set; }
+        public char FigureLetter { get; protected set; }
 
         public char VerticalLetter { get; protected set; }
 

@@ -3,15 +3,16 @@
     using System;
     internal class FigureParser : Parser
     {
-        public override void Letter()
+        public override char Letter()
         {
-            switch (this.FirugeLetter)
-            {
-                case 'A':
-                    var movingPawn = new MovePawn();
-                    //movingPawn.Move(Pawn A, )
-                    break;
-            }
+            //switch (this.FigureLetter)
+            //{
+            //    case 'A':
+            //        var movingPawn = new MovePawn();
+            //        //movingPawn.Move(Pawn A, )
+            //        break;
+            //}
+            return 'a';
         }
     }
 }
