@@ -1,6 +1,6 @@
 ﻿namespace KingSurvival4
 {
-    public class MovePawn : IMoveable
+    public class MovePawn : MoveFigure
     {
         public void Move(Figure figure, Direction direction)
         {

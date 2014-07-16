@@ -39,11 +39,11 @@
                 }
             }
 
-           var firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', 'P', new MovePawn());
-           var secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', 'P', new MovePawn());
-           var thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', 'P', new MovePawn());
-           var fourthPawn =   FigureGetter.GetFigure(new Position(0, 6), 'D', 'P', new MovePawn());
-           var king = FigureGetter.GetFigure(new Position(7, 3), 'K', 'K', new MoveKing());
+           var firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', 'P');
+           var secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', 'P');
+           var thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', 'P');
+           var fourthPawn =   FigureGetter.GetFigure(new Position(0, 6), 'D', 'P');
+           var king = FigureGetter.GetFigure(new Position(7, 3), 'K', 'K');
 
            Board.Field[firstPawn.Position.X, firstPawn.Position.Y] = firstPawn.Name.ToString();
            Board.Field[secondPawn.Position.X, secondPawn.Position.Y] = secondPawn.Name.ToString();

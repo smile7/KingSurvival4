@@ -5,15 +5,15 @@
     {
         public bool OnTurn { get; set; }
 
-        public King(Position initialPosition, IMoveable mover, bool onTurn = true)
-            : base(initialPosition, 'K', 'K', mover)
+        public King(Position initialPosition, bool onTurn = true)
+            : base(initialPosition, 'K', 'K')
         {
             this.OnTurn = onTurn;
         }
 
         public override void Move()
         {
-            this.Mover.Move(this, new Direction()); // TO DO: not correct direction
+            // TO DO
         }
     }
 }

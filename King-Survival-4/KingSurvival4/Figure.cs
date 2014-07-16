@@ -14,15 +14,11 @@ namespace KingSurvival4
 
         public char Symbol { get; set; }
 
-
-        protected readonly IMoveable Mover;
-
-        public Figure(Position initialPosition, char initialName, char initialSymbol, IMoveable initialMover)
+        public Figure(Position initialPosition, char initialName, char initialSymbol)
         {
             this.Position = initialPosition;
             this.Name = initialName;
             this.Symbol = initialSymbol;
-            this.Mover = initialMover;
         }
 
         public virtual void Move() { }

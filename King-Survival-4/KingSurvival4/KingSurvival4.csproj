@@ -52,6 +52,7 @@
     <Compile Include="ICommand.cs" />
     <Compile Include="KingSurvival4Demo.cs" />
     <Compile Include="Mediator.cs" />
+    <Compile Include="MoveFigure.cs" />
     <Compile Include="MovePawn.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Figure.cs" />
@@ -62,7 +63,6 @@
     <Compile Include="Pawn.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StaticCell.cs" />
     <Compile Include="MoveKing.cs" />
     <Compile Include="VerticalParser.cs" />
   </ItemGroup>
