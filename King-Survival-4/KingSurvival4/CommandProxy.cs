@@ -49,5 +49,16 @@ namespace KingSurvival4
         {
             realCommand = new Command(input);
         }
+
+
+        public void ExecuteCommand()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UndoCommand()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

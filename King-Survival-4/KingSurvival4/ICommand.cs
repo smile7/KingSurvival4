@@ -9,5 +9,9 @@ namespace KingSurvival4
     internal interface ICommand
     {
         void setInput(string input);
+
+        void ExecuteCommand();
+
+        void UndoCommand();
     }
 }

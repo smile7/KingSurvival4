@@ -12,5 +12,15 @@
         {
             this.Input = input;
         }
+
+        public void ExecuteCommand()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UndoCommand()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

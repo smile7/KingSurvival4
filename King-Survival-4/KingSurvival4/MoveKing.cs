@@ -1,9 +1,9 @@
 ﻿namespace KingSurvival4
 {
     using System;
-    public class MoveKing : MoveFigure
+    internal class MoveKing : MoveFigure
     {
-        public void Move(Figure figure, Direction direction)
+        public override void Move(Figure figure, Direction direction)
         {
             throw new NotImplementedException();
         }
