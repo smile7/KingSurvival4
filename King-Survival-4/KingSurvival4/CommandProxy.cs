@@ -11,6 +11,11 @@ namespace KingSurvival4
         private Command realCommand;
         private string input;
 
+        private Parser parser;
+
+        private string FigureLetter { get; set; }
+        private string DirectionLetters { get; set; }
+
         //private const string[] COMMANDS = {"KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
         //not working with const
 
@@ -50,15 +55,14 @@ namespace KingSurvival4
             realCommand = new Command(input);
         }
 
-
-        public void ExecuteCommand()
+        public int[] DetermineDirection()
         {
-            throw new NotImplementedException();
+            return this.realCommand.DetermineDirection();
         }
 
-        public void UndoCommand()
+        public int[] DetermineOppositeDirection()
         {
-            throw new NotImplementedException();
+            return this.realCommand.DetermineOppositeDirection();
         }
     }
 }

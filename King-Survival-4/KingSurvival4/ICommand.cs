@@ -10,8 +10,8 @@ namespace KingSurvival4
     {
         void setInput(string input);
 
-        void ExecuteCommand();
+        int[] DetermineDirection();
 
-        void UndoCommand();
+        int[] DetermineOppositeDirection();
     }
 }

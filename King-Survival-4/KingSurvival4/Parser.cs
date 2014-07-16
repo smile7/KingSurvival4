@@ -3,15 +3,15 @@ namespace KingSurvival4
 {
     internal class Parser
     {
-        public Command Command { get; set; }
-        public Parser(Command command)
+        public string Command { get; set; }
+        public Parser(string command)
         {
             this.Command = command;
         }
 
-        private int[] GetDirection()
+        public int[] GetDirection()
         {
-            string directionStr = this.Command.Input.Substring(1);
+            string directionStr = this.Command.Substring(1);
             switch (directionStr)
             {
                 case "UL":

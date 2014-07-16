@@ -45,7 +45,6 @@
     <Compile Include="Board.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CommandProxy.cs" />
-    <Compile Include="Decorator.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="KingSurvival4Demo.cs" />
     <Compile Include="Mediator.cs" />
@@ -64,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
