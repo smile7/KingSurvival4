@@ -23,6 +23,7 @@ namespace KingSurvival4
                 if (IsValid(value.ToUpper()))
                 {
                     this.input = value;
+
                 }
                 else
                 {
