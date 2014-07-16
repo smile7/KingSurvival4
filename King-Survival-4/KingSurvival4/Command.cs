@@ -7,5 +7,10 @@
             this.Input = initialInput;
         }
         public string Input { get; set; }
+
+        public void setInput(string input)
+        {
+            this.Input = input;
+        }
     }
 }

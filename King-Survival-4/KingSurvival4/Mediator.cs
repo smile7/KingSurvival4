@@ -9,6 +9,8 @@ namespace KingSurvival4
     internal class Mediator : AbstractMediator
     {
         List<Figure> listOfFigures = new List<Figure>();
+
+       
         public override void AddFigure(Figure figure)
         {
             this.listOfFigures.Add(figure);

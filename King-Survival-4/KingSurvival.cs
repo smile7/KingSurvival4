@@ -83,7 +83,7 @@
                 }
                 else
                 {
-                    Console.WriteLine();
+                    Console.Clear();
                     game.PrintBoard();
                     if (isKingsTurn)
                     {
@@ -338,8 +338,14 @@
         /// </summary>
         public void PrintBoard()
         {
+            Console.WriteLine("   KING SURVIVAL GAME");
+            Console.WriteLine("    0 1 2 3 4 5 6 7");
+            Console.WriteLine("   -----------------");
+            int startRow = 3;
             for (int row = 0; row < this.board.GetLength(0); row++)
             {
+                Console.SetCursorPosition(0, startRow + row);
+                Console.Write(row + " | ");
                 for (int col = 0; col < this.board.GetLength(1); col++)
                 {
                     int cell = this.board[row, col];
@@ -347,8 +353,9 @@
                     Console.Write(toPrint + " ");
                 }
 
-                Console.WriteLine();
+                Console.WriteLine("|");
             }
+            Console.WriteLine("   -----------------");
         }
 
         /// <summary>
