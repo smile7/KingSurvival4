@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace KingSurvival4
 {
-    internal interface ICommand
+    internal class ProspectMemory
     {
-
-        int[] DetermineDirection();
-
-        int[] DetermineOppositeDirection();
+        public Memento Memento { get; set; }
     }
 }

@@ -3,6 +3,7 @@
     public class Command : ICommand
     {
         private Parser parser;
+        private ProspectMemory memory = new ProspectMemory();
 
         private string FigureLetter { get; set; }
         private string DirectionLetters { get; set; }
@@ -14,12 +15,10 @@
         }
         public string Input { get; set; }
 
-        public void setInput(string input)
-        {
-            this.Input = input;
-        }
         public int[] DetermineDirection()
         {
+            memory.Memento = this.SaveMemento();
+
             this.parser = new Parser(this.DirectionLetters);
             var direction = parser.GetDirection();
             return direction;
@@ -27,6 +26,7 @@
 
         public int[] DetermineOppositeDirection()
         {
+            this.RestoreMemento(memory.Memento); // this works without memento!!!!!!!!!!!!! try to fix it
             switch (this.DirectionLetters)
             {
                 case "UL":
@@ -45,6 +45,17 @@
             this.parser = new Parser(this.DirectionLetters);
             var direction = parser.GetDirection();
             return direction;
+        }
+
+
+        public Memento SaveMemento()
+        {
+            return new Memento(this.DirectionLetters);
+        }
+
+        public void RestoreMemento(Memento memento)
+        {
+            this.DirectionLetters = memento.DirectionString;
         }
     }
 }

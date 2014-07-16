@@ -6,6 +6,11 @@
     {
         public static Dictionary<string, Figure> dictionary = new Dictionary<string, Figure>();
 
+        Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', 'P');
+        Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', 'P');
+        Figure thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', 'P');
+        Figure fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', 'P');
+        Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', 'K');
         public Engine()
         {
         }
@@ -13,8 +18,21 @@
         public void Start()
         {
             var board = Board.Instance;
-            FillBoard();
-            RenderBoard();
+            while (true)
+            {
+                FillBoard();
+                RenderBoard();
+                //Command command = new Command(Console.ReadLine());
+                //var input = new CommandProxy();
+                //command.DetermineDirection();
+                ////input.DetermineDirection();
+                var command = new CommandProxy();
+                command.Input = Console.ReadLine();
+                var initial = command.DetermineDirection();
+                command.Input = Console.ReadLine();
+                var second = command.DetermineDirection();
+                var opposite = command.DetermineOppositeDirection();
+            }
         }
 
         private void FillBoard()
@@ -39,11 +57,6 @@
                 }
             }
 
-           var firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', 'P');
-           var secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', 'P');
-           var thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', 'P');
-           var fourthPawn =   FigureGetter.GetFigure(new Position(0, 6), 'D', 'P');
-           var king = FigureGetter.GetFigure(new Position(7, 3), 'K', 'K');
 
            Board.Field[firstPawn.Position.X, firstPawn.Position.Y] = firstPawn.Name.ToString();
            Board.Field[secondPawn.Position.X, secondPawn.Position.Y] = secondPawn.Name.ToString();

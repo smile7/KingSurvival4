@@ -31,7 +31,8 @@ namespace KingSurvival4
             {
                 if (IsValid(value.ToUpper()))
                 {
-                    setInput(value.ToUpper()); 
+                    realCommand = new Command(value.ToUpper());
+
                 }
                 else
                 {
@@ -48,11 +49,6 @@ namespace KingSurvival4
             }
 
             return false;
-        }
-
-        public void setInput(string input)
-        {
-            realCommand = new Command(input);
         }
 
         public int[] DetermineDirection()

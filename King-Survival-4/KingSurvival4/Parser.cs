@@ -11,7 +11,7 @@ namespace KingSurvival4
 
         public int[] GetDirection()
         {
-            string directionStr = this.Command.Substring(1);
+            string directionStr = this.Command;
             switch (directionStr)
             {
                 case "UL":
