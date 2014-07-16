@@ -3,9 +3,9 @@
     using System;
     internal class VerticalParser : Parser
     {
-        public override void Letter()
+        public override char Letter()
         {
-            throw new NotImplementedException();
+            return this.VerticalLetter;
         }
     }
 }

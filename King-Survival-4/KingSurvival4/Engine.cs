@@ -1,8 +1,11 @@
 ﻿namespace KingSurvival4
 {
     using System;
+    using System.Collections.Generic;
     public class Engine
     {
+        public static Dictionary<string, Figure> dictionary = new Dictionary<string, Figure>();
+
         public Engine()
         {
         }
@@ -23,6 +26,8 @@
             {
                 for (int col = 0; col < Board.Field.GetLength(1); col++)
                 {
+                    //dictionary.Add((row + ' ' + col).ToString(), 
+
                     if ((row + col) % 2 == 0)
                     {
                         Board.Field[row, col] = WhiteCell;

@@ -5,7 +5,13 @@
     {
         public override void Letter()
         {
-            throw new NotImplementedException();
+            switch (this.FirugeLetter)
+            {
+                case 'A':
+                    var movingPawn = new MovePawn();
+                    //movingPawn.Move(Pawn A, )
+                    break;
+            }
         }
     }
 }
