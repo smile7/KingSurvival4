@@ -15,6 +15,11 @@
         {
             get
             {
+                if (this.realCommand == null)
+                {
+                    throw new ArgumentNullException("You haven't set value to the input!");
+                }
+
                 return this.realCommand.Input;
             }
 
