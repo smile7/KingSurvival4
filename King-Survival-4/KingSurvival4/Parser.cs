@@ -1,7 +1,5 @@
 ﻿namespace KingSurvival4
 {
-    using System;
-
     internal class Parser
     {
         public Parser(string command)
