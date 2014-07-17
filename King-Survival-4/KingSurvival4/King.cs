@@ -12,9 +12,5 @@
 
         public bool OnTurn { get; set; }
 
-        public override void Move()
-        {
-            // TO DO
-        }
     }
 }

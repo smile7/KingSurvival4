@@ -8,10 +8,5 @@
             : base(initialPosition, name, 'P') 
         {
         }
-
-        public override void Move()
-        {
-            // TO DO
-        }
     }
 }

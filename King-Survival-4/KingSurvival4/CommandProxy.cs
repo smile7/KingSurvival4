@@ -6,7 +6,6 @@
     internal class CommandProxy : ICommand
     {
         public Command realCommand;
-        private string input;
 
         private string FigureLetter { get; set; }
 
@@ -16,7 +15,7 @@
         {
             get
             {
-                return this.input;
+                return this.realCommand.Input;
             }
 
             set
