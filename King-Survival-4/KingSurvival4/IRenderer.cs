@@ -8,7 +8,7 @@ namespace KingSurvival4
 {
     public interface IRenderer
     {
-        void Render();
+        void Render(string[,] board);
         void Clear();
     }
 }

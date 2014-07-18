@@ -29,10 +29,5 @@
         {
             Console.Clear();
         }
-
-        public void Render()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
