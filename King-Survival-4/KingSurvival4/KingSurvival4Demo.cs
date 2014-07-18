@@ -4,7 +4,7 @@
     {
         public static void Main()
         {
-            Engine engine = new Engine();
+            KingSurvivalConsoleEngine engine = new KingSurvivalConsoleEngine();
             engine.Start();
         }
     }

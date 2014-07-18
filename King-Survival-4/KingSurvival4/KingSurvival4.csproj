@@ -48,12 +48,12 @@
     <Compile Include="ICommand.cs" />
     <Compile Include="IReader.cs" />
     <Compile Include="IRenderer.cs" />
-    <Compile Include="KingSurvival.cs" />
+    <Compile Include="KingSurvivalEngine.cs" />
     <Compile Include="KingSurvival4Demo.cs" />
     <Compile Include="Memento.cs" />
     <Compile Include="MoveFigure.cs" />
     <Compile Include="MovePawn.cs" />
-    <Compile Include="Engine.cs" />
+    <Compile Include="KingSurvivalConsoleEngine.cs" />
     <Compile Include="Figure.cs" />
     <Compile Include="FigureGetter.cs" />
     <Compile Include="IMoveable.cs" />
