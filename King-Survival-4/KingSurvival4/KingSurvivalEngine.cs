@@ -1,5 +1,6 @@
 ﻿namespace KingSurvival4
 {
+    using System;
     public class KingSurvivalEngine
     {
         protected IRenderer Renderer {get; private set;}
@@ -40,15 +41,15 @@
                     {
                         this.Renderer.WriteMessage("King's turn: ");
                         var command = new CommandProxy();
-                       // try
-                       // {
+                        try
+                        {
                             command.Input = this.Reader.Read();
                             int[] initial = command.DetermineDirection();
                             string kingSymbol = command.realCommand.FigureLetter;
 
                             if (kingSymbol != "K")
                             {
-                                //throw new ArgumentOutOfRangeException();
+                                throw new ArgumentOutOfRangeException();
                             }
 
                             if (this.IsMoveValid(this.king, initial))
@@ -59,19 +60,19 @@
 
                             kingsTurn = false;
                         }
-                        //catch (ArgumentOutOfRangeException)
-                        //{
-                        //    this.Renderer.WriteMessage("Illegal move. Please try again.");
-                        //}
-                        //catch (IndexOutOfRangeException)
-                        //{
-                        //    this.Renderer.WriteMessage("Your move is outside the board. Please try again.");
-                        //}
-                        //catch (InvalidOperationException)
-                        //{
-                        //    this.Renderer.WriteMessage("You can't step over a Pawn. Please enter new command.");
-                        //}
-                    //}
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            this.Renderer.WriteMessage("Illegal move. Please try again.");
+                        }
+                        catch (IndexOutOfRangeException)
+                        {
+                            this.Renderer.WriteMessage("Your move is outside the board. Please try again.");
+                        }
+                        catch (InvalidOperationException)
+                        {
+                            this.Renderer.WriteMessage("You can't step over a Pawn. Please enter new command.");
+                        }
+                    }
                     while (kingsTurn);
                 }
                 else
@@ -81,8 +82,8 @@
                         this.Renderer.WriteMessage("Pawn's turn: ");
                         var command = new CommandProxy();
 
-                        //try
-                        //{
+                        try
+                        {
                             command.Input = this.Reader.Read();
                             int[] initial = command.DetermineDirection();
                             Figure chosenPawn = this.firstPawn;
@@ -101,8 +102,8 @@
                                 case "D":
                                     chosenPawn = this.fourthPawn;
                                     break;
-                                //default:
-                                    //throw new ArgumentOutOfRangeException();
+                                default:
+                                    throw new ArgumentOutOfRangeException();
                             }
 
                             if (this.IsMoveValid(chosenPawn, initial))
@@ -113,19 +114,19 @@
 
                             kingsTurn = true;
                         }
-                        //catch (ArgumentOutOfRangeException)
-                        //{
-                        //    this.Renderer.WriteMessage("Illegal move. Please try again.");
-                        //}
-                        //catch (IndexOutOfRangeException)
-                        //{
-                        //    this.Renderer.WriteMessage("Your move is outside the board. Please try again.");
-                        //}
-                        //catch (InvalidOperationException)
-                        //{
-                        //    this.Renderer.WriteMessage("You can't step over another figure. Please enter new command.");
-                        //}
-                    //}
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            this.Renderer.WriteMessage("Illegal move. Please try again.");
+                        }
+                        catch (IndexOutOfRangeException)
+                        {
+                            this.Renderer.WriteMessage("Your move is outside the board. Please try again.");
+                        }
+                        catch (InvalidOperationException)
+                        {
+                            this.Renderer.WriteMessage("You can't step over another figure. Please enter new command.");
+                        }
+                    }
                     while (!kingsTurn);
                 }
             }
@@ -138,12 +139,12 @@
 
             if (newX >= MaxColumnIndex || newX < MinColumnIndex || newY >= MaxRowIndex || newY < MinRowIndex)
             {
-                //throw new IndexOutOfRangeException();
+                throw new IndexOutOfRangeException();
             }
 
             if (Board.field[newX, newY] != "+")
             {
-                //throw new InvalidOperationException();
+                throw new InvalidOperationException();
             }
 
             return true;
