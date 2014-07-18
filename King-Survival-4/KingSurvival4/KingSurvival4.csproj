@@ -46,6 +46,9 @@
     <Compile Include="CommandProxy.cs" />
     <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="ICommand.cs" />
+    <Compile Include="IReader.cs" />
+    <Compile Include="IRenderer.cs" />
+    <Compile Include="KingSurvival.cs" />
     <Compile Include="KingSurvival4Demo.cs" />
     <Compile Include="Memento.cs" />
     <Compile Include="MoveFigure.cs" />
