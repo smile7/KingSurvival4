@@ -5,6 +5,8 @@
 
     public class Engine
     {
+        private ConsoleRenderer renderer;
+
         public const int MinRowIndex = 0;
         public const int MaxRowIndex = 8;
         public const int MinColumnIndex = 0;
@@ -18,6 +20,7 @@
 
         public Engine()
         {
+            this.renderer = new ConsoleRenderer();
         }
 
         public void Start()
@@ -29,9 +32,9 @@
                 // TODO check Kings win -> cw end message break;
                 //Check kings lost -> cw end message break;
 
-                Console.Clear();
+                this.renderer.Clear();
                 this.FillBoard();
-                this.RenderBoard();
+                this.renderer.Render(Board.Field);
                 if (kingsTurn)
                 {
                     do
@@ -169,26 +172,26 @@
             Board.Field[this.king.Position.X, this.king.Position.Y] = this.king.Name.ToString();
         }
 
-        private void RenderBoard()
-        {
-            Console.WriteLine("   KING SURVIVAL GAME");
-            Console.WriteLine("    0 1 2 3 4 5 6 7");
-            Console.WriteLine("   -----------------");
-            int startRow = 3;
+        //private void RenderBoard()
+        //{
+        //    Console.WriteLine("   KING SURVIVAL GAME");
+        //    Console.WriteLine("    0 1 2 3 4 5 6 7");
+        //    Console.WriteLine("   -----------------");
+        //    int startRow = 3;
 
-            for (int row = 0; row < Board.Field.GetLength(0); row++)
-            {
-                Console.SetCursorPosition(0, startRow + row);
-                Console.Write(row + " | ");
-                for (int col = 0; col < Board.Field.GetLength(1); col++)
-                {
-                    Console.Write(Board.Field[row, col] + " ");
-                }
+        //    for (int row = 0; row < Board.Field.GetLength(0); row++)
+        //    {
+        //        Console.SetCursorPosition(0, startRow + row);
+        //        Console.Write(row + " | ");
+        //        for (int col = 0; col < Board.Field.GetLength(1); col++)
+        //        {
+        //            Console.Write(Board.Field[row, col] + " ");
+        //        }
 
-                Console.WriteLine("|");
-            }
+        //        Console.WriteLine("|");
+        //    }
 
-            Console.WriteLine("   -----------------");
-        }
+        //    Console.WriteLine("   -----------------");
+        //}
     }
 }
