@@ -44,6 +44,7 @@
     <Compile Include="Board.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CommandProxy.cs" />
+    <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="KingSurvival4Demo.cs" />
     <Compile Include="Memento.cs" />
