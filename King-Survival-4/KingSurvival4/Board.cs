@@ -44,7 +44,7 @@
             }
         }
 
-        public void Notify(Figure figure, int[] directions)
+        public void Notify(Figure figure, Direction directions)
         {
 
         }

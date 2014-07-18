@@ -3,7 +3,7 @@
   <Class Name="KingSurvival4.Board" Collapsed="true">
     <Position X="8.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAAAACAAAAAgAAABAAAAQQAAAAAAAgAA=</HashCode>
+      <HashCode>AACAAAAAAAAAAAAACAAAAAgAAABAAABQQAAAAAAAgAA=</HashCode>
       <FileName>Board.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -137,6 +137,13 @@
       <FileName>ProspectMemory.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Struct Name="KingSurvival4.Direction" Collapsed="true">
+    <Position X="10.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Direction.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
   <Interface Name="KingSurvival4.ICommand" Collapsed="true">
     <Position X="11" Y="2.75" Width="1.5" />
     <TypeIdentifier>
