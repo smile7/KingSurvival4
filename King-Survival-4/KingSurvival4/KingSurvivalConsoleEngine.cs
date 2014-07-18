@@ -28,18 +28,18 @@
                 // TODO check Kings win -> cw end message break;
                 //Check kings lost -> cw end message break;
 
-                this.Renderer.Clear();
                 this.FillBoard();
-                this.Renderer.Render(Board.Field);
+                this.PrintBoard(Board.Field);
+
                 if (kingsTurn)
                 {
                     do
                     {
-                        this.Renderer.WriteMessage("King's turn: ");
+                        this.PostMessage("King's turn: ");
                         var command = new CommandProxy();
                         try
                         {
-                            command.Input = this.Reader.Read();
+                            command.Input = this.GetCommand();
                             Direction initial = command.DetermineDirection();
                             string kingSymbol = command.realCommand.FigureLetter;
 
@@ -58,15 +58,15 @@
                         }
                         catch (ArgumentOutOfRangeException)
                         {
-                            this.Renderer.WriteMessage("Illegal move. Please try again.");
+                            this.PostMessage("Illegal move. Please try again.");
                         }
                         catch (IndexOutOfRangeException)
                         {
-                            this.Renderer.WriteMessage("Your move is outside the board. Please try again.");
+                            this.PostMessage("Your move is outside the board. Please try again.");
                         }
                         catch (InvalidOperationException)
                         {
-                            this.Renderer.WriteMessage("You can't step over a Pawn. Please enter new command.");
+                            this.PostMessage("You can't step over a Pawn. Please enter new command.");
                         }
                     }
                     while (kingsTurn);
@@ -75,7 +75,7 @@
                 {
                     do
                     {
-                        this.Renderer.WriteMessage("Pawn's turn: ");
+                        this.PostMessage("Pawn's turn: ");
                         var command = new CommandProxy();
 
                         try
@@ -112,15 +112,15 @@
                         }
                         catch (ArgumentOutOfRangeException)
                         {
-                            this.Renderer.WriteMessage("Illegal move. Please try again.");
+                            this.PostMessage("Illegal move. Please try again.");
                         }
                         catch (IndexOutOfRangeException)
                         {
-                            this.Renderer.WriteMessage("Your move is outside the board. Please try again.");
+                            this.PostMessage("Your move is outside the board. Please try again.");
                         }
                         catch (InvalidOperationException)
                         {
-                            this.Renderer.WriteMessage("You can't step over another figure. Please enter new command.");
+                            this.PostMessage("You can't step over another figure. Please enter new command.");
                         }
                     }
                     while (!kingsTurn);
