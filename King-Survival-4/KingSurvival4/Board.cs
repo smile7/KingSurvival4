@@ -2,7 +2,8 @@
 {
     public sealed class Board
     {
-        public static string[,] field;
+        private const string WhiteCell = "+";
+        private const string BlackCell = "-";
 
         private const int NumberOfRows = 8;
 
@@ -12,17 +13,11 @@
 
         private static object syncLock = new object();
 
-        private Board() 
+        public static string[,] Field { get; private set; }
+        private Board()
         {
-            field = new string[NumberOfRows, NumberOfCols];
-        }
-
-        public static string[,] Field 
-        { 
-            get 
-            { 
-                return field;
-            } 
+            Field = new string[NumberOfRows, NumberOfCols];
+            this.FillBoard();
         }
 
         public static Board Instance
@@ -44,9 +39,27 @@
             }
         }
 
-        public void Notify(Figure figure, Direction directions)
+        private void FillBoard()
         {
+            for (int row = 0; row < Field.GetLength(0); row++)
+            {
+                for (int col = 0; col < Field.GetLength(1); col++)
+                {
+                    if ((row + col) % 2 == 0)
+                    {
+                        Field[row, col] = WhiteCell;
+                    }
+                    else
+                    {
+                        Field[row, col] = BlackCell;
+                    }
+                }
+            }
+        }
 
+        public void Notify(Figure figure)
+        {
+            Field[figure.Position.X, figure.Position.Y] = figure.Name.ToString();
         }
     }
 }

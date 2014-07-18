@@ -14,21 +14,29 @@
         protected Figure thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', 'P');
         protected Figure fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', 'P');
         protected Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', 'K');
+
+        Board board;
         public KingSurvivalConsoleEngine(ConsoleReader reader, ConsoleRenderer renderer)
             : base(reader, renderer)
         {
+            board = Board.Instance;
         }
 
         public override void Start()
         {
-            var board = Board.Instance;
             bool kingsTurn = true;
             while (true)
             {
                 // TODO check Kings win -> cw end message break;
                 //Check kings lost -> cw end message break;
 
-                this.FillBoard();
+                //this.FillBoard();
+                board.Notify(this.firstPawn);
+                board.Notify(this.secondPawn);
+                board.Notify(this.thirdPawn);
+                board.Notify(this.fourthPawn);
+                board.Notify(this.king);
+
                 this.PrintBoard(Board.Field);
 
                 if (kingsTurn)
@@ -138,7 +146,7 @@
                 throw new IndexOutOfRangeException();
             }
 
-            if (Board.field[newX, newY] != "+")
+            if (Board.Field[newX, newY] != "+")
             {
                 throw new InvalidOperationException();
             }
@@ -146,31 +154,37 @@
             return true;
         }
 
-        private void FillBoard()
-        {
-            const string WhiteCell = "+";
-            const string BlackCell = "-";
+        //private void FillBoard()
+        //{
+        //    const string WhiteCell = "+";
+        //    const string BlackCell = "-";
 
-            for (int row = 0; row < Board.Field.GetLength(0); row++)
-            {
-                for (int col = 0; col < Board.Field.GetLength(1); col++)
-                {
-                    if ((row + col) % 2 == 0)
-                    {
-                        Board.Field[row, col] = WhiteCell;
-                    }
-                    else
-                    {
-                        Board.Field[row, col] = BlackCell;
-                    }
-                }
-            }
+        //    for (int row = 0; row < Board.Field.GetLength(0); row++)
+        //    {
+        //        for (int col = 0; col < Board.Field.GetLength(1); col++)
+        //        {
+        //            if ((row + col) % 2 == 0)
+        //            {
+        //                Board.Field[row, col] = WhiteCell;
+        //            }
+        //            else
+        //            {
+        //                Board.Field[row, col] = BlackCell;
+        //            }
+        //        }
+        //    }
 
-            Board.Field[this.firstPawn.Position.X, this.firstPawn.Position.Y] = this.firstPawn.Name.ToString();
-            Board.Field[this.secondPawn.Position.X, this.secondPawn.Position.Y] = this.secondPawn.Name.ToString();
-            Board.Field[this.thirdPawn.Position.X, this.thirdPawn.Position.Y] = this.thirdPawn.Name.ToString();
-            Board.Field[this.fourthPawn.Position.X, this.fourthPawn.Position.Y] = this.fourthPawn.Name.ToString();
-            Board.Field[this.king.Position.X, this.king.Position.Y] = this.king.Name.ToString();
-        }
+        //    board.Notify(this.firstPawn);
+        //    board.Notify(this.secondPawn);
+        //    board.Notify(this.thirdPawn);
+        //    board.Notify(this.fourthPawn);
+        //    board.Notify(this.king);
+
+        //    //Board.Field[this.firstPawn.Position.X, this.firstPawn.Position.Y] = this.firstPawn.Name.ToString();
+        //    //Board.Field[this.secondPawn.Position.X, this.secondPawn.Position.Y] = this.secondPawn.Name.ToString();
+        //    //Board.Field[this.thirdPawn.Position.X, this.thirdPawn.Position.Y] = this.thirdPawn.Name.ToString();
+        //    //Board.Field[this.fourthPawn.Position.X, this.fourthPawn.Position.Y] = this.fourthPawn.Name.ToString();
+        //    //Board.Field[this.king.Position.X, this.king.Position.Y] = this.king.Name.ToString();
+        //}
     }
 }
