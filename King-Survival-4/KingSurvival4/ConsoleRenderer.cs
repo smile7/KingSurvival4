@@ -3,6 +3,11 @@
     using System;
     public class ConsoleRenderer : IRenderer
     {
+        public void WriteMessage(string message)
+        {
+            Console.WriteLine(message);
+        }
+
         public void Render(string[,] board)
         {
             Console.WriteLine("   KING SURVIVAL GAME");
