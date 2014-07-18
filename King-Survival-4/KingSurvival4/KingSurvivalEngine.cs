@@ -44,7 +44,7 @@
                         try
                         {
                             command.Input = this.Reader.Read();
-                            int[] initial = command.DetermineDirection();
+                            Direction initial = command.DetermineDirection();
                             string kingSymbol = command.realCommand.FigureLetter;
 
                             if (kingSymbol != "K")
@@ -85,7 +85,7 @@
                         try
                         {
                             command.Input = this.Reader.Read();
-                            int[] initial = command.DetermineDirection();
+                            Direction initial = command.DetermineDirection();
                             Figure chosenPawn = this.firstPawn;
                             string pawnSymbol = command.realCommand.FigureLetter;
                             switch (pawnSymbol)
@@ -132,10 +132,10 @@
             }
         }
 
-        private bool IsMoveValid(Figure figure, int[] direction)
+        private bool IsMoveValid(Figure figure, Direction direction)
         {
-            int newX = figure.Position.X + direction[0];
-            int newY = figure.Position.Y + direction[1];
+            int newX = figure.Position.X + direction.X;
+            int newY = figure.Position.Y + direction.Y;
 
             if (newX >= MaxColumnIndex || newX < MinColumnIndex || newY >= MaxRowIndex || newY < MinRowIndex)
             {

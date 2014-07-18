@@ -43,5 +43,10 @@
                 return instance;
             }
         }
+
+        public void Notify(Figure figure, int[] directions)
+        {
+
+        }
     }
 }

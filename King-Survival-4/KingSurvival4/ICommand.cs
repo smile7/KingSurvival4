@@ -2,8 +2,8 @@
 {
     internal interface ICommand
     {
-        int[] DetermineDirection();
+        Direction DetermineDirection();
 
-        int[] DetermineOppositeDirection();
+        Direction DetermineOppositeDirection();
     }
 }

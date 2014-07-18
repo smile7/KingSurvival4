@@ -9,21 +9,21 @@
 
         public string Command { get; set; }
 
-        public int[] GetDirection()
+        public Direction GetDirection()
         {
             string directionStr = this.Command;
             switch (directionStr)
             {
                 case "UL":
-                    return new int[] { -1, -1 };
+                    return new Direction ( -1, -1 );
                 case "UR":
-                    return new int[] { -1, 1 };
+                    return new Direction ( -1, 1 );
                 case "DL":
-                    return new int[] { 1, -1 };
+                    return new Direction ( 1, -1 );
                 case "DR":
-                    return new int[] { 1, 1 };
+                    return new Direction ( 1, 1 ); 
                 default:
-                    return new int[] { 0, 0 };
+                    return new Direction ( 0, 0 ); 
             }
         }
     }

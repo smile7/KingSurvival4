@@ -38,12 +38,12 @@
 
         private string[] COMMANDS = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
 
-        public int[] DetermineDirection()
+        public Direction DetermineDirection()
         {
             return this.realCommand.DetermineDirection();
         }
 
-        public int[] DetermineOppositeDirection()
+        public Direction DetermineOppositeDirection()
         {
             return this.realCommand.DetermineOppositeDirection();
         }

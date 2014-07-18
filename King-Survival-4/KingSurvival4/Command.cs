@@ -18,7 +18,7 @@
 
         public string Input { get; set; }
 
-        public int[] DetermineDirection()
+        public Direction DetermineDirection()
         {
             this.memory.Memento = this.SaveMemento();
 
@@ -27,7 +27,7 @@
             return direction;
         }
 
-        public int[] DetermineOppositeDirection()
+        public Direction DetermineOppositeDirection()
         {
             this.RestoreMemento(this.memory.Memento); // this works without memento!!!!!!!!!!!!! try to fix it
             switch (this.DirectionLetters)

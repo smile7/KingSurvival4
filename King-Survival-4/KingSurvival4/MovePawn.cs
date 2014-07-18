@@ -2,10 +2,10 @@
 {
     internal class MovePawn : MoveFigure
     {
-        public override void Move(Figure figure, int[] directions)
+        public override void Move(Figure figure, Direction directions)
         {
-            figure.Position.X += directions[0];
-            figure.Position.Y += directions[1];
+            figure.Position.X += directions.X;
+            figure.Position.Y += directions.Y;
         }
     }
 }
