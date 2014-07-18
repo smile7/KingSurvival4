@@ -10,5 +10,8 @@
             this.Reader = reader;
             this.Renderer = renderer;
         }
+
+        public void Start()
+        { }
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace KingSurvival4
 {
     using System;
-    public class ConsoleRenderer
+    public class ConsoleRenderer : IRenderer
     {
         public void Render(string[,] board)
         {
@@ -28,6 +28,11 @@
         public void Clear()
         {
             Console.Clear();
+        }
+
+        public void Render()
+        {
+            throw new NotImplementedException();
         }
     }
 }

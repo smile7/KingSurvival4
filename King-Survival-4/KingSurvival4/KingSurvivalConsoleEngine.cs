@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class KingSurvivalConsoleEngine
+    public class KingSurvivalConsoleEngine : KingSurvivalEngine
     {
         private ConsoleRenderer renderer;
 
@@ -18,7 +18,8 @@
         protected Figure fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', 'P');
         protected Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', 'K');
 
-        public KingSurvivalConsoleEngine()
+        public KingSurvivalConsoleEngine(ConsoleReader reader, ConsoleRenderer renderer)
+            : base(reader, renderer)
         {
             this.renderer = new ConsoleRenderer();
         }
