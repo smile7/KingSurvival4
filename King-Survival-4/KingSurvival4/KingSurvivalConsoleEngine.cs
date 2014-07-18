@@ -21,7 +21,6 @@
         public KingSurvivalConsoleEngine(ConsoleReader reader, ConsoleRenderer renderer)
             : base(reader, renderer)
         {
-            this.renderer = new ConsoleRenderer();
         }
 
         public void Start()
