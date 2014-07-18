@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractMediator.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CommandProxy.cs" />
