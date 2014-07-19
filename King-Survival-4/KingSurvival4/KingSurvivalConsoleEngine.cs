@@ -3,6 +3,9 @@
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// FACADE for Facade pattern and Concrete implementation of Bridge pattern
+    /// </summary>
     public class KingSurvivalConsoleEngine : KingSurvivalEngine
     {
         public const int MinRowIndex = 0;

@@ -1,6 +1,10 @@
 ﻿namespace KingSurvival4
 {
     using System.Collections.Generic;
+
+    /// <summary>
+    /// Abstract implementator for Bridge pattern
+    /// </summary>
     public abstract class KingSurvivalEngine
     {
         protected IRenderer Renderer { get; private set; }

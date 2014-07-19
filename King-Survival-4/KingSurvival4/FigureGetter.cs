@@ -1,5 +1,8 @@
 ﻿namespace KingSurvival4
 {
+    /// <summary>
+    /// Simple Factory pattern - Figure 'Creator'
+    /// </summary>
     public static class FigureGetter
     {
         public static Figure GetFigure(Position position, char name, char symbol)

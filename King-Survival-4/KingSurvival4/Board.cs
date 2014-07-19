@@ -1,5 +1,8 @@
 ﻿namespace KingSurvival4
 {
+    /// <summary>
+    /// Singleton pattern and Concrete observer class for Observer pattern
+    /// </summary>
     public sealed class Board
     {
         private const string WhiteCell = "+";
