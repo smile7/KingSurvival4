@@ -46,7 +46,7 @@
                     board.Notify(figure);
                 }
 
-                this.PrintBoard(Board.Field);
+                this.RenderBoard(Board.Field);
 
                 if (kingsTurn)
                 {

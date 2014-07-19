@@ -29,7 +29,7 @@
             this.Renderer.WriteMessage(message);
         }
 
-        protected void PrintBoard(string[,] board)
+        protected void RenderBoard(string[,] board)
         {
             this.Renderer.Clear();
             this.Renderer.Render(board);

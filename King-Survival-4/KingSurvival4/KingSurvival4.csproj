@@ -49,9 +49,9 @@
     <Compile Include="Decorator.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="Figure.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="IReader.cs" />
-    <Compile Include="IRenderer.cs" />
+    <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Interfaces\IReader.cs" />
+    <Compile Include="Interfaces\IRenderer.cs" />
     <Compile Include="KingSurvivalEngine.cs" />
     <Compile Include="KingSurvival4Demo.cs" />
     <Compile Include="Memento.cs" />
