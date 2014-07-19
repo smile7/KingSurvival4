@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace KingSurvival4
 {
-    public interface IFigure
+    public interface IReader
     {
-        string ToString();
+        string Read();
     }
 }

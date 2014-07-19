@@ -5,7 +5,6 @@
     public class King : Figure
     {
         public King(Position initialPosition, bool onTurn = true)
-            //: base(initialPosition, 'K', 'K')
         {
             this.OnTurn = onTurn;
             this.Position = initialPosition;

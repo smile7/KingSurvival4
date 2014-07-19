@@ -38,7 +38,6 @@
                 // TODO check Kings win -> cw end message break;
                 //Check kings lost -> cw end message break;
 
-                //this.FillBoard();
                 foreach (var figure in this.Figures)
                 {
                     board.Notify(figure);
@@ -160,38 +159,5 @@
 
             return true;
         }
-
-        //private void FillBoard()
-        //{
-        //    const string WhiteCell = "+";
-        //    const string BlackCell = "-";
-
-        //    for (int row = 0; row < Board.Field.GetLength(0); row++)
-        //    {
-        //        for (int col = 0; col < Board.Field.GetLength(1); col++)
-        //        {
-        //            if ((row + col) % 2 == 0)
-        //            {
-        //                Board.Field[row, col] = WhiteCell;
-        //            }
-        //            else
-        //            {
-        //                Board.Field[row, col] = BlackCell;
-        //            }
-        //        }
-        //    }
-
-        //    board.Notify(this.firstPawn);
-        //    board.Notify(this.secondPawn);
-        //    board.Notify(this.thirdPawn);
-        //    board.Notify(this.fourthPawn);
-        //    board.Notify(this.king);
-
-        //    //Board.Field[this.firstPawn.Position.X, this.firstPawn.Position.Y] = this.firstPawn.Name.ToString();
-        //    //Board.Field[this.secondPawn.Position.X, this.secondPawn.Position.Y] = this.secondPawn.Name.ToString();
-        //    //Board.Field[this.thirdPawn.Position.X, this.thirdPawn.Position.Y] = this.thirdPawn.Name.ToString();
-        //    //Board.Field[this.fourthPawn.Position.X, this.fourthPawn.Position.Y] = this.fourthPawn.Name.ToString();
-        //    //Board.Field[this.king.Position.X, this.king.Position.Y] = this.king.Name.ToString();
-        //}
     }
 }

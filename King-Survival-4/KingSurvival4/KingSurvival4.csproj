@@ -48,26 +48,21 @@
     <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="Decorator.cs" />
     <Compile Include="Direction.cs" />
+    <Compile Include="Figure.cs" />
     <Compile Include="ICommand.cs" />
-    <Compile Include="IFigure.cs" />
     <Compile Include="IReader.cs" />
     <Compile Include="IRenderer.cs" />
     <Compile Include="KingSurvivalEngine.cs" />
     <Compile Include="KingSurvival4Demo.cs" />
     <Compile Include="Memento.cs" />
     <Compile Include="MoveableFigure.cs" />
-    <Compile Include="MoveFigure.cs" />
-    <Compile Include="MovePawn.cs" />
     <Compile Include="KingSurvivalConsoleEngine.cs" />
-    <Compile Include="Figure.cs" />
     <Compile Include="FigureGetter.cs" />
-    <Compile Include="IMoveable.cs" />
     <Compile Include="King.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Pawn.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MoveKing.cs" />
     <Compile Include="ProspectMemory.cs" />
   </ItemGroup>
   <ItemGroup>

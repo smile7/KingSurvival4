@@ -1,5 +1,8 @@
 ﻿namespace KingSurvival4
 {
+    /// <summary>
+    /// The 'ConcreteDecorator' class
+    /// </summary>
     public class MoveableFigure : Decorator
     {
         public MoveableFigure(Figure figure)

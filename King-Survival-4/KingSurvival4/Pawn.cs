@@ -5,7 +5,6 @@
     public class Pawn : Figure
     {
         public Pawn(Position initialPosition, char name) 
-            //: base(initialPosition, name, 'P')
         {
             this.Position = initialPosition;
             this.Name = name;

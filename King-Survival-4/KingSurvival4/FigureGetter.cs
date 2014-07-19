@@ -8,8 +8,6 @@
             {
                 case 'K':
                     return new King(position);
-                //case 'P':
-                //    return new Pawn(position, name);
                 default:
                     return new Pawn(position, name);
             }
