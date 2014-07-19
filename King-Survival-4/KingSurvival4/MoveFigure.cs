@@ -2,6 +2,6 @@
 {
     internal abstract class MoveFigure
     {
-        public abstract void Move(Figure figure, Direction directions);
+       // public abstract void Move(Figure figure, Direction directions);
     }
 }

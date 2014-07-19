@@ -22,6 +22,7 @@
             : base(reader, renderer)
         {
             board = Board.Instance;
+            this.Figures = new List<Figure>();
             this.Figures.Add(firstPawn);
             this.Figures.Add(secondPawn);
             this.Figures.Add(thirdPawn);
@@ -64,8 +65,8 @@
 
                             if (this.IsMoveValid(this.king, initial))
                             {
-                                MoveKing changeKingsPosition = new MoveKing();
-                                changeKingsPosition.Move(this.king, initial);
+                                MoveableFigure changeKingsPosition = new MoveableFigure(this.king);
+                                changeKingsPosition.MoveFigure(initial);
                             }
 
                             kingsTurn = false;
@@ -118,8 +119,8 @@
 
                             if (this.IsMoveValid(chosenPawn, initial))
                             {
-                                MovePawn changePawnsPOsition = new MovePawn();
-                                changePawnsPOsition.Move(chosenPawn, initial);
+                                MoveableFigure changePawnsPOsition = new MoveableFigure(chosenPawn);
+                                changePawnsPOsition.MoveFigure(initial);
                             }
 
                             kingsTurn = true;

@@ -8,10 +8,10 @@
             {
                 case 'K':
                     return new King(position);
-                case 'P':
-                    return new Pawn(position, name);
+                //case 'P':
+                //    return new Pawn(position, name);
                 default:
-                    return new Figure(position, name, symbol);
+                    return new Pawn(position, name);
             }
         }
     }

@@ -1,13 +1,13 @@
 ﻿namespace KingSurvival4
 {
-    public class Figure
+    public abstract class Figure : IFigure
     {
-        public Figure(Position initialPosition, char initialName, char initialSymbol)
-        {
-            this.Position = initialPosition;
-            this.Name = initialName;
-            this.Symbol = initialSymbol;
-        }
+        //public Figure(Position initialPosition, char initialName, char initialSymbol)
+        //{
+        //    this.Position = initialPosition;
+        //    this.Name = initialName;
+        //    this.Symbol = initialSymbol;
+        //}
 
         public Position Position { get; set; }
 
@@ -15,9 +15,9 @@
 
         public char Symbol { get; set; }
 
-        public virtual void Move() 
-        { 
-        }
+        //public virtual void Move()
+        //{
+        //}
 
         public override string ToString()
         {

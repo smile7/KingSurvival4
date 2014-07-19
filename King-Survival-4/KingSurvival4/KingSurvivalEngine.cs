@@ -11,7 +11,6 @@
         {
             this.Reader = reader;
             this.Renderer = renderer;
-            this.Figures = new List<Figure>();
         }
 
         public abstract void Start();
