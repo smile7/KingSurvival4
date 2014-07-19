@@ -1,14 +1,17 @@
 ﻿namespace KingSurvival4
 {
+    using System.Collections.Generic;
     public abstract class KingSurvivalEngine
     {
         protected IRenderer Renderer { get; private set; }
         protected IReader Reader { get; private set; }
+        protected IList<Figure> Figures { get; set; }
 
         public KingSurvivalEngine(IReader reader, IRenderer renderer)
         {
             this.Reader = reader;
             this.Renderer = renderer;
+            this.Figures = new List<Figure>();
         }
 
         public abstract void Start();

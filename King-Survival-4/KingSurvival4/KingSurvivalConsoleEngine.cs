@@ -1,6 +1,7 @@
 ﻿namespace KingSurvival4
 {
     using System;
+    using System.Collections.Generic;
 
     public class KingSurvivalConsoleEngine : KingSurvivalEngine
     {
@@ -8,6 +9,7 @@
         public const int MaxRowIndex = 8;
         public const int MinColumnIndex = 0;
         public const int MaxColumnIndex = 8;
+
 
         protected Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', 'P');
         protected Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', 'P');
@@ -20,6 +22,11 @@
             : base(reader, renderer)
         {
             board = Board.Instance;
+            this.Figures.Add(firstPawn);
+            this.Figures.Add(secondPawn);
+            this.Figures.Add(thirdPawn);
+            this.Figures.Add(fourthPawn);
+            this.Figures.Add(king);
         }
 
         public override void Start()
@@ -31,11 +38,10 @@
                 //Check kings lost -> cw end message break;
 
                 //this.FillBoard();
-                board.Notify(this.firstPawn);
-                board.Notify(this.secondPawn);
-                board.Notify(this.thirdPawn);
-                board.Notify(this.fourthPawn);
-                board.Notify(this.king);
+                foreach (var figure in this.Figures)
+                {
+                    board.Notify(figure);
+                }
 
                 this.PrintBoard(Board.Field);
 
