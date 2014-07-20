@@ -324,8 +324,10 @@
         /// <returns>Returns true or false</returns>
         public bool HasKingLost()
         {
-            if (!this.IsCellWhiteOrBlack(this.kingRow + 1, this.kingCol + 1) && !this.IsCellWhiteOrBlack(this.kingRow + 1, this.kingCol - 1) &&
-                !this.IsCellWhiteOrBlack(this.kingRow - 1, this.kingCol + 1) && !this.IsCellWhiteOrBlack(this.kingRow - 1, this.kingCol - 1))
+            if (!this.IsCellWhiteOrBlack(this.kingRow + 1, this.kingCol + 1) 
+                && !this.IsCellWhiteOrBlack(this.kingRow + 1, this.kingCol - 1) 
+                && !this.IsCellWhiteOrBlack(this.kingRow - 1, this.kingCol + 1) 
+                && !this.IsCellWhiteOrBlack(this.kingRow - 1, this.kingCol - 1))
             {
                 return true;
             }

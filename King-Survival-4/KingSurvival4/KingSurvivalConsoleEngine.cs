@@ -36,6 +36,9 @@
         public override void Start()
         {
             bool kingsTurn = true;
+
+            ProspectMemory oldPosition = new ProspectMemory();
+
             while (true)
             {
                 // TODO check Kings win -> cw end message break;
@@ -67,8 +70,13 @@
 
                             if (this.IsMoveValid(this.king, initial))
                             {
+                                var clonedKing = this.king.Clone() as Figure;
+                                oldPosition.Memento = clonedKing.SaveMemento();
+                                
                                 MoveableFigure changeKingsPosition = new MoveableFigure(this.king);
                                 changeKingsPosition.MoveFigure(initial);
+
+                                board.Notify(this.king, oldPosition.Memento.Position);
                             }
 
                             kingsTurn = false;
@@ -121,8 +129,13 @@
 
                             if (this.IsMoveValid(chosenPawn, initial))
                             {
+                                var clonedPawn = chosenPawn.Clone() as Figure;
+                                oldPosition.Memento = clonedPawn.SaveMemento();
+
                                 MoveableFigure changePawnsPOsition = new MoveableFigure(chosenPawn);
                                 changePawnsPOsition.MoveFigure(initial);
+
+                                board.Notify(chosenPawn, oldPosition.Memento.Position);
                             }
 
                             kingsTurn = true;
@@ -161,6 +174,37 @@
             }
 
             return true;
+        }
+
+        public bool HasKingWon()
+        {
+            if (this.king.Position.Y == 0)
+            {
+                return true;
+            }
+
+            for (int i = 0; i < Board.Field.GetLength(0); i += 2)
+            {
+                if (Board.Field[Board.Field.GetLength(1) - 1, i] == "+" || Board.Field[Board.Field.GetLength(1) - 1, i] == "-")
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool HasKingLost()
+        {
+            if (!this.IsCellWhiteOrBlack(this.king.Position.X + 1, this.king.Position.Y + 1)
+                && !this.IsCellWhiteOrBlack(this.king.Position.X + 1, this.king.Position.Y - 1)
+                && !this.IsCellWhiteOrBlack(this.king.Position.X - 1, this.king.Position.Y + 1)
+                && !this.IsCellWhiteOrBlack(this.king.Position.X - 1, this.king.Position.Y - 1))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

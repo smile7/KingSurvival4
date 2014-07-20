@@ -2,7 +2,8 @@
 {
     using System;
 
-    public class King : Figure
+    public class King : Figure, ICloneable
+
     {
         public King(Position initialPosition, bool onTurn = true)
         {
@@ -13,6 +14,13 @@
         }
 
         public bool OnTurn { get; set; }
+
+        public override object Clone()
+        {
+            King newKing = (King)this.MemberwiseClone();
+            newKing.Position = (Position)this.Position.Clone();
+            return newKing;
+        }
 
     }
 }

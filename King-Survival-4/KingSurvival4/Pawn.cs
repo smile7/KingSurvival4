@@ -10,5 +10,12 @@
             this.Name = name;
             this.Symbol = 'P';
         }
+
+        public override object Clone()
+        {
+            Pawn newKing = (Pawn)this.MemberwiseClone();
+            newKing.Position = (Position)this.Position.Clone();
+            return newKing;
+        }
     }
 }

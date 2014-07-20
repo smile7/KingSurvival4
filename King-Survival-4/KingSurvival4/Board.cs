@@ -64,5 +64,11 @@
         {
             Field[figure.Position.X, figure.Position.Y] = figure.Name.ToString();
         }
+
+        public void Notify(Figure figure, Position oldPosition)
+        {
+            Field[figure.Position.X, figure.Position.Y] = figure.Name.ToString();
+            Field[oldPosition.X, oldPosition.Y] = "+";
+        }
     }
 }

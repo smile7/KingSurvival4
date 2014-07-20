@@ -20,8 +20,6 @@
 
         public Direction DetermineDirection()
         {
-            this.memory.Memento = this.SaveMemento();
-
             this.parser = new Parser(this.DirectionLetters);
             var direction = this.parser.GetDirection();
             return direction;
@@ -29,7 +27,6 @@
 
         public Direction DetermineOppositeDirection()
         {
-            this.RestoreMemento(this.memory.Memento); // this works without memento!!!!!!!!!!!!! try to fix it
             switch (this.DirectionLetters)
             {
                 case "UL":
@@ -49,16 +46,6 @@
             this.parser = new Parser(this.DirectionLetters);
             var direction = this.parser.GetDirection();
             return direction;
-        }
-
-        public Memento SaveMemento()
-        {
-            return new Memento(this.DirectionLetters);
-        }
-
-        public void RestoreMemento(Memento memento)
-        {
-            this.DirectionLetters = memento.DirectionString;
         }
     }
 }

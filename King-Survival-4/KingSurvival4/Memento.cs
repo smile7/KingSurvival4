@@ -2,11 +2,17 @@
 {
     public class Memento
     {
-        public Memento(string direstionString)
+        public Memento(Position position, char name, char symbol)
         {
-            this.DirectionString = direstionString;
+            this.Position = position;
+            this.Name = name;
+            this.Symbol = symbol;
         }
 
-        public string DirectionString { get; set; }
+        public Position Position { get; set; }
+
+        public char Name { get; set; }
+
+        public char Symbol { get; set; }
     }
 }

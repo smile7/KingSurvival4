@@ -15,5 +15,10 @@
             this.Figure.Position.X += directions.X;
             this.Figure.Position.Y += directions.Y;
         }
+
+        public override object Clone()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
