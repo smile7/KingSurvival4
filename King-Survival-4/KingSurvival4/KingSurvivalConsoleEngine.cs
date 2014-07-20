@@ -41,9 +41,6 @@
 
             while (true)
             {
-                // TODO check Kings win -> cw end message break;
-                //Check kings lost -> cw end message break;
-
                 foreach (var figure in this.Figures)
                 {
                     board.Notify(figure);
@@ -51,6 +48,8 @@
 
                 this.RenderBoard(Board.Field);
 
+                bool hasWon = false;
+                bool hasLost = false;
                 if (kingsTurn)
                 {
                     do
@@ -72,7 +71,7 @@
                             {
                                 var clonedKing = this.king.Clone() as Figure;
                                 oldPosition.Memento = clonedKing.SaveMemento();
-                                
+
                                 MoveableFigure changeKingsPosition = new MoveableFigure(this.king);
                                 changeKingsPosition.MoveFigure(initial);
 
@@ -80,6 +79,13 @@
                             }
 
                             kingsTurn = false;
+
+                            hasWon = HasKingWon();
+                            if (hasWon)
+                            {
+                                Console.WriteLine("King won in {0} turns");
+                                break;
+                            }
                         }
                         catch (ArgumentOutOfRangeException)
                         {
@@ -95,6 +101,11 @@
                         }
                     }
                     while (kingsTurn);
+
+                    if (hasWon)
+                    {
+                        break;
+                    }
                 }
                 else
                 {
@@ -139,6 +150,14 @@
                             }
 
                             kingsTurn = true;
+
+
+                            hasLost = HasKingLost();
+                            if (hasLost)
+                            {
+                                Console.WriteLine("King lost in {0} turns");
+                                break;
+                            }
                         }
                         catch (ArgumentOutOfRangeException)
                         {
@@ -154,6 +173,11 @@
                         }
                     }
                     while (!kingsTurn);
+
+                    if (hasLost)
+                    {
+                        break;
+                    }
                 }
             }
         }
@@ -178,14 +202,14 @@
 
         public bool HasKingWon()
         {
-            if (this.king.Position.Y == 0)
+            if (this.king.Position.X == 0)
             {
                 return true;
             }
 
             for (int i = 0; i < Board.Field.GetLength(0); i += 2)
             {
-                if (Board.Field[Board.Field.GetLength(1) - 1, i] == "+" || Board.Field[Board.Field.GetLength(1) - 1, i] == "-")
+                if (Board.Field[Board.Field.GetLength(1) - 1, i] == Board.WhiteCell || Board.Field[Board.Field.GetLength(1) - 1, i] == Board.BlackCell)
                 {
                     return false;
                 }
@@ -196,15 +220,39 @@
 
         public bool HasKingLost()
         {
-            if (!this.IsCellWhiteOrBlack(this.king.Position.X + 1, this.king.Position.Y + 1)
-                && !this.IsCellWhiteOrBlack(this.king.Position.X + 1, this.king.Position.Y - 1)
-                && !this.IsCellWhiteOrBlack(this.king.Position.X - 1, this.king.Position.Y + 1)
-                && !this.IsCellWhiteOrBlack(this.king.Position.X - 1, this.king.Position.Y - 1))
+            var downRight = this.IsCellWhiteOrBlack(this.king.Position.X + 1, this.king.Position.Y + 1);
+            var downLeft = this.IsCellWhiteOrBlack(this.king.Position.X + 1, this.king.Position.Y - 1);
+            var upRight = this.IsCellWhiteOrBlack(this.king.Position.X - 1, this.king.Position.Y + 1);
+            var upLeft = this.IsCellWhiteOrBlack(this.king.Position.X - 1, this.king.Position.Y - 1);
+            if (!downRight && !downLeft && !upRight && !upLeft)
             {
                 return true;
             }
 
             return false;
+        }
+
+        private bool IsCellWhiteOrBlack(int row, int col)
+        {
+            if (this.IsPositionInsideBoard(row, col))
+            {
+                if (Board.Field[row, col] == Board.WhiteCell || Board.Field[row, col] == Board.BlackCell)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool IsPositionInsideBoard(int row, int col)
+        {
+            if (row < 0 || row > Board.Field.GetLength(0) - 1 || col < 0 || col > Board.Field.GetLength(1) - 1)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

@@ -5,8 +5,8 @@
     /// </summary>
     public sealed class Board
     {
-        private const string WhiteCell = "+";
-        private const string BlackCell = "-";
+        public const string WhiteCell = "+";
+        public const string BlackCell = "-";
 
         private const int NumberOfRows = 8;
 
