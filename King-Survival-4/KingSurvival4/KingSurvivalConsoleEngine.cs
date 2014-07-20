@@ -36,6 +36,7 @@
         public override void Start()
         {
             bool kingsTurn = true;
+            int countTurns = 0;
 
             ProspectMemory oldPosition = new ProspectMemory();
 
@@ -48,12 +49,14 @@
 
                 this.RenderBoard(Board.Field);
 
+
                 bool hasWon = false;
                 bool hasLost = false;
                 if (kingsTurn)
                 {
                     do
                     {
+                        countTurns++;
                         this.PostMessage("King's turn: ");
                         var command = new CommandProxy();
                         try
@@ -83,7 +86,7 @@
                             hasWon = HasKingWon();
                             if (hasWon)
                             {
-                                Console.WriteLine("King won in {0} turns");
+                                Console.WriteLine("King won in {0} turns", countTurns);
                                 break;
                             }
                         }
@@ -155,7 +158,7 @@
                             hasLost = HasKingLost();
                             if (hasLost)
                             {
-                                Console.WriteLine("King lost in {0} turns");
+                                Console.WriteLine("King lost in {0} turns" + countTurns);
                                 break;
                             }
                         }
