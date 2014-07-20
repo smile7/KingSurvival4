@@ -56,7 +56,7 @@
                 {
                     do
                     {
-                        countTurns++;
+
                         this.PostMessage("King's turn: ");
                         var command = new CommandProxy();
                         try
@@ -72,6 +72,7 @@
 
                             if (this.IsMoveValid(this.king, initial))
                             {
+                                countTurns++;
                                 var clonedKing = this.king.Clone() as Figure;
                                 oldPosition.Memento = clonedKing.SaveMemento();
 
