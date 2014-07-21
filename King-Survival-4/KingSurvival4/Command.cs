@@ -1,9 +1,14 @@
 ﻿namespace KingSurvival4
 {
+    using System;
+    using System.Linq;
     public class Command : ICommand
     {
         private Parser parser;
         private ProspectMemory memory = new ProspectMemory();
+        private string input;
+
+        private string[] COMMANDS = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
 
         public Command(string initialInput)
         {
@@ -16,7 +21,24 @@
 
         private string DirectionLetters { get; set; }
 
-        public string Input { get; set; }
+        public string Input
+        {
+            get
+            {
+                return this.input;
+            }
+            set
+            {
+                if (this.IsValid(value.ToUpper()))
+                {
+                    this.input = value.ToUpper();
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("Illegal move");
+                }
+            }
+        }
 
         public Direction DetermineDirection()
         {
@@ -25,6 +47,15 @@
             return direction;
         }
 
+        private bool IsValid(string currentInput)
+        {
+            if (this.COMMANDS.Contains(currentInput))
+            {
+                return true;
+            }
+
+            return false;
+        }
         public Direction DetermineOppositeDirection()
         {
             switch (this.DirectionLetters)

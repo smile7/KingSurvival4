@@ -58,12 +58,11 @@
                     {
 
                         this.PostMessage("King's turn: ");
-                        var command = new CommandProxy();
                         try
                         {
-                            command.Input = this.GetCommand();
+                            var command = new Command(this.GetCommand().ToUpper());
                             Direction initial = command.DetermineDirection();
-                            string kingSymbol = command.realCommand.FigureLetter;
+                            string kingSymbol = command.FigureLetter;
 
                             if (kingSymbol != "K")
                             {
@@ -116,14 +115,13 @@
                     do
                     {
                         this.PostMessage("Pawn's turn: ");
-                        var command = new CommandProxy();
 
                         try
                         {
-                            command.Input = this.Reader.Read();
+                            var command = new Command(this.GetCommand().ToUpper());
                             Direction initial = command.DetermineDirection();
                             Figure chosenPawn = this.firstPawn;
-                            string pawnSymbol = command.realCommand.FigureLetter;
+                            string pawnSymbol = command.FigureLetter;
                             switch (pawnSymbol)
                             {
                                 case "A":
@@ -159,7 +157,7 @@
                             hasLost = HasKingLost();
                             if (hasLost)
                             {
-                                Console.WriteLine("King lost in {0} turns" + countTurns);
+                                Console.WriteLine("King lost in {0} turns", countTurns);
                                 break;
                             }
                         }
