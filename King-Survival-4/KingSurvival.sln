@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestsKingSurvival", "..\UnitTestsKingSurvival\UnitTestsKingSurvival.csproj", "{5C7EB1F8-814E-40F0-ACCF-2726AA7D3A23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestingConsole", "..\UnitTestsKingSurvival\UnitTestingConsole.csproj", "{5C7EB1F8-814E-40F0-ACCF-2726AA7D3A23}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingSurvival.Base", "KingSurvival.Base\KingSurvival.Base.csproj", "{43AABB14-2173-4D98-AE92-7A21D626A481}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingSurvival.Console", "KingSurvival.Console\KingSurvival.Console.csproj", "{F3003736-A5F8-4575-A09D-BB891A693E15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{CBD61D48-47FC-4567-8042-791171D60004}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestingBase", "UnitTesting\UnitTestingBase.csproj", "{CBD61D48-47FC-4567-8042-791171D60004}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
