@@ -13,8 +13,7 @@ namespace UnitTestsKingSurvival
         {
             using (StringReader input = new StringReader("kul\nadl\nadr\nkur\nadl\nkur\nbdr\nkul\nbdl\nkur\ncdl\nkur\nddr\nkur\n\n"))
             {
-                //using (StreamReader input = new StreamReader(@"..\..\..\test2.txt"))
-                //{
+                
                 Console.SetIn(input);
                 using (StringWriter output = new StringWriter())
                 {
