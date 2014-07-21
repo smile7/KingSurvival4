@@ -20,5 +20,13 @@ namespace UnitTesting
             Assert.AreEqual(memento.Symbol, figureMemento.Symbol);
 
         }
+
+        [TestMethod]
+        public void FigureCloneMethodTester()
+        {
+            King originalFigure = new King(new Position(3,4));
+            var cloned = originalFigure.Clone();
+            Assert.AreNotEqual(originalFigure, cloned);
+        }
     }
 }

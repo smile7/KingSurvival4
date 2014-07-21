@@ -13,12 +13,5 @@
         }
 
 
-        public override object Clone()
-        {
-            King newKing = (King)this.MemberwiseClone();
-            newKing.Position = (Position)this.Position.Clone();
-            return newKing;
-        }
-
     }
 }

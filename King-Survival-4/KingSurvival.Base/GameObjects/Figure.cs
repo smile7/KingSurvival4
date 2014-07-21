@@ -23,6 +23,11 @@ namespace KingSurvival4
             return new Memento(this.Position, this.Name, this.Symbol);
         }
 
-        public abstract object Clone();
+        public object Clone()
+        {
+            Figure newFigure = (Figure)this.MemberwiseClone();
+            newFigure.Position = (Position)this.Position.Clone();
+            return newFigure;
+        }
     }
 }
