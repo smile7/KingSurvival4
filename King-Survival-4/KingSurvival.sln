@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingSurvival.Common", "King
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingSurvival.Base", "KingSurvival.Base\KingSurvival.Base.csproj", "{43AABB14-2173-4D98-AE92-7A21D626A481}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingSurvival.Console", "KingSurvival.Console\KingSurvival.Console.csproj", "{F3003736-A5F8-4575-A09D-BB891A693E15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,18 @@ Global
 		{43AABB14-2173-4D98-AE92-7A21D626A481}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{43AABB14-2173-4D98-AE92-7A21D626A481}.Release|Win32.ActiveCfg = Release|Any CPU
 		{43AABB14-2173-4D98-AE92-7A21D626A481}.Release|x86.ActiveCfg = Release|Any CPU
+		{F3003736-A5F8-4575-A09D-BB891A693E15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3003736-A5F8-4575-A09D-BB891A693E15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3003736-A5F8-4575-A09D-BB891A693E15}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F3003736-A5F8-4575-A09D-BB891A693E15}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F3003736-A5F8-4575-A09D-BB891A693E15}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{F3003736-A5F8-4575-A09D-BB891A693E15}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F3003736-A5F8-4575-A09D-BB891A693E15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3003736-A5F8-4575-A09D-BB891A693E15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3003736-A5F8-4575-A09D-BB891A693E15}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F3003736-A5F8-4575-A09D-BB891A693E15}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F3003736-A5F8-4575-A09D-BB891A693E15}.Release|Win32.ActiveCfg = Release|Any CPU
+		{F3003736-A5F8-4575-A09D-BB891A693E15}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
