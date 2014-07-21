@@ -1,8 +1,8 @@
 ﻿namespace UnitTesting
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using KingSurvival4;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class FigureTests
@@ -19,13 +19,12 @@
             Assert.AreEqual(memento.Position.Y, figureMemento.Position.Y);
             Assert.AreEqual(memento.Name, figureMemento.Name);
             Assert.AreEqual(memento.Symbol, figureMemento.Symbol);
-
         }
 
         [TestMethod]
         public void FigureCloneMethodTester()
         {
-            King originalFigure = new King(new Position(3,4));
+            King originalFigure = new King(new Position(3, 4));
             var cloned = originalFigure.Clone();
             Assert.AreNotEqual(originalFigure, cloned);
         }

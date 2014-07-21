@@ -1,14 +1,14 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using KingSurvival4;
-
-namespace UnitTesting
+﻿namespace UnitTesting
 {
+    using System;
+    using KingSurvival4;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class CommandTests
     {
         [TestMethod]
-        [ExpectedException(typeof (ArgumentOutOfRangeException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void CommandInvalidInputTester()
         {
             var command = new Command("alabala");

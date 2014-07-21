@@ -1,8 +1,8 @@
 ﻿namespace UnitTesting
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using KingSurvival4;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class BoardTests
@@ -12,7 +12,8 @@
         {
             Board board = Board.Instance;
 
-            string[,] matrix = { 
+            string[,] matrix = 
+            { 
                                { "+", "-", "+", "-", "+", "-", "+", "-" }, 
                                { "-", "+", "-", "+", "-", "+", "-", "+" }, 
                                { "+", "-", "+", "-", "+", "-", "+", "-" }, 
@@ -21,7 +22,7 @@
                                { "-", "+", "-", "+", "-", "+", "-", "+" }, 
                                { "+", "-", "+", "-", "+", "-", "+", "-" }, 
                                { "-", "+", "-", "+", "-", "+", "-", "+" } 
-                               };
+            };
 
             bool areEqual = true;
             for (int i = 0; i < matrix.GetLength(0); i++)
@@ -54,7 +55,8 @@
             board.Notify(new Pawn(new Position(0, 6), 'D'));
             board.Notify(new King(new Position(7, 3)));
 
-            string[,] matrix = { 
+            string[,] matrix = 
+            { 
                                { "A", "-", "B", "-", "C", "-", "D", "-" }, 
                                { "-", "+", "-", "+", "-", "+", "-", "+" }, 
                                { "+", "-", "+", "-", "+", "-", "+", "-" }, 
@@ -63,7 +65,7 @@
                                { "-", "+", "-", "+", "-", "+", "-", "+" }, 
                                { "+", "-", "+", "-", "+", "-", "+", "-" }, 
                                { "-", "+", "-", "K", "-", "+", "-", "+" } 
-                               };
+            };
 
             bool areEqual = true;
             for (int i = 0; i < matrix.GetLength(0); i++)
@@ -96,7 +98,8 @@
             board.Notify(new Pawn(new Position(0, 6), 'D'));
             board.Notify(new King(new Position(6, 2)), new Position(7, 3));
 
-            string[,] matrix = { 
+            string[,] matrix = 
+            { 
                                { "A", "-", "B", "-", "C", "-", "D", "-" }, 
                                { "-", "+", "-", "+", "-", "+", "-", "+" }, 
                                { "+", "-", "+", "-", "+", "-", "+", "-" }, 
@@ -105,7 +108,7 @@
                                { "-", "+", "-", "+", "-", "+", "-", "+" }, 
                                { "+", "-", "K", "-", "+", "-", "+", "-" }, 
                                { "-", "+", "-", "+", "-", "+", "-", "+" } 
-                               };
+            };
 
             bool areEqual = true;
             for (int i = 0; i < matrix.GetLength(0); i++)
