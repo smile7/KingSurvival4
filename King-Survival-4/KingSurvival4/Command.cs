@@ -50,7 +50,7 @@
 
         private bool IsValid(string currentInput)
         {
-            if (this.COMMANDS.Contains(currentInput))
+            if (this.Commands.Contains(currentInput))
             {
                 return true;
             }
