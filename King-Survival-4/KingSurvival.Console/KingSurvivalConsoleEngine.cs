@@ -13,24 +13,24 @@
         public const int MinColumnIndex = 0;
         public const int MaxColumnIndex = 8;
 
+        private Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', 'P');
+        private Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', 'P');
+        private Figure thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', 'P');
+        private Figure fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', 'P');
+        private Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', 'K');
 
-        protected Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', 'P');
-        protected Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', 'P');
-        protected Figure thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', 'P');
-        protected Figure fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', 'P');
-        protected Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', 'K');
+        private Board board;
 
-        Board board;
         public KingSurvivalConsoleEngine(ConsoleReader reader, ConsoleRenderer renderer)
             : base(reader, renderer)
         {
-            board = Board.Instance;
+            this.board = Board.Instance;
             this.Figures = new List<Figure>();
-            this.Figures.Add(firstPawn);
-            this.Figures.Add(secondPawn);
-            this.Figures.Add(thirdPawn);
-            this.Figures.Add(fourthPawn);
-            this.Figures.Add(king);
+            this.Figures.Add(this.firstPawn);
+            this.Figures.Add(this.secondPawn);
+            this.Figures.Add(this.thirdPawn);
+            this.Figures.Add(this.fourthPawn);
+            this.Figures.Add(this.king);
         }
 
         public override void Start()
@@ -38,7 +38,8 @@
             bool kingsTurn = true;
             int countTurns = 0;
 
-            string[,] matrix = { 
+            string[,] matrix = 
+            { 
                                { "+", "-", "+", "-", "+", "-", "+", "-" }, 
                                { "-", "+", "-", "+", "-", "+", "-", "+" }, 
                                { "+", "-", "+", "-", "+", "-", "+", "-" }, 
@@ -46,7 +47,7 @@
                                { "+", "-", "+", "-", "+", "-", "+", "-" }, 
                                { "-", "+", "-", "+", "-", "+", "-", "+" }, 
                                { "+", "-", "+", "-", "+", "-", "+", "-" }, 
-                               { "-", "+", "-", "+", "-", "+", "-", "+" } 
+                               { "-", "+", "-", "+", "-", "+", "-", "+" }
                                };
 
             Console.WriteLine(matrix);
@@ -59,11 +60,10 @@
             {
                 foreach (var figure in this.Figures)
                 {
-                    board.Notify(figure);
+                    this.board.Notify(figure);
                 }
 
                 this.RenderBoard(Board.Field);
-
 
                 bool hasWon = false;
                 bool hasLost = false;
@@ -71,7 +71,6 @@
                 {
                     do
                     {
-
                         this.PostMessage("King's turn: ");
                         try
                         {
@@ -93,12 +92,12 @@
                                 MoveableFigure changeKingsPosition = new MoveableFigure(this.king);
                                 changeKingsPosition.MoveFigure(initial);
 
-                                board.Notify(this.king, oldPosition.Memento.Position);
+                                this.board.Notify(this.king, oldPosition.Memento.Position);
                             }
 
                             kingsTurn = false;
 
-                            hasWon = HasKingWon();
+                            hasWon = this.HasKingWon();
                             if (hasWon)
                             {
                                 Console.WriteLine("King won in {0} turns", countTurns);
@@ -163,13 +162,13 @@
                                 MoveableFigure changePawnsPOsition = new MoveableFigure(chosenPawn);
                                 changePawnsPOsition.MoveFigure(initial);
 
-                                board.Notify(chosenPawn, oldPosition.Memento.Position);
+                                this.board.Notify(chosenPawn, oldPosition.Memento.Position);
                             }
 
                             kingsTurn = true;
 
+                            hasLost = this.HasKingLost();
 
-                            hasLost = HasKingLost();
                             if (hasLost)
                             {
                                 Console.WriteLine("King lost in {0} turns", countTurns);
@@ -199,19 +198,6 @@
             }
         }
 
-        private bool IsMoveValid(Figure figure, Position direction)
-        {
-            int newX = figure.Position.X + direction.X;
-            int newY = figure.Position.Y + direction.Y;
-
-            if(IsPositionInsideBoard(newX, newY))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         public bool HasKingWon()
         {
             if (this.king.Position.X == 0)
@@ -238,6 +224,19 @@
             var upLeft = this.IsCellWhiteOrBlack(this.king.Position.X - 1, this.king.Position.Y - 1);
 
             if (!downRight && !downLeft && !upRight && !upLeft)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool IsMoveValid(Figure figure, Position direction)
+        {
+            int newX = figure.Position.X + direction.X;
+            int newY = figure.Position.Y + direction.Y;
+
+            if (this.IsPositionInsideBoard(newX, newY))
             {
                 return true;
             }

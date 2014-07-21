@@ -1,6 +1,7 @@
 ﻿namespace KingSurvival4
 {
     using System;
+
     public class ConsoleRenderer : IRenderer
     {
         public void WriteMessage(string message)
