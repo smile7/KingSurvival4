@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Board.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="ConsoleMessages.cs" />
     <Compile Include="ConsoleReader.cs" />
     <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="Decorator.cs" />
