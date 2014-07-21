@@ -7,7 +7,7 @@
     /// </summary>
     public abstract class KingSurvivalEngine
     {
-        protected IRenderer Renderer { get; private set; }
+        protected IRenderer Renderer { get; private set; } //TO DO: check if null when set
         protected IReader Reader { get; private set; }
         protected IList<Figure> Figures { get; set; }
 
@@ -18,6 +18,8 @@
         }
 
         public abstract void Start();
+
+        public abstract void EndGame();
 
         protected string GetCommand()
         {
