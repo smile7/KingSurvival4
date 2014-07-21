@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace KingSurvival4
 {
-    public struct Direction
-    {
-        public int X;
-        public int Y;
-        public Direction(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
-    }
+    //public struct Direction
+    //{
+    //    public int X;
+    //    public int Y;
+    //    public Direction(int x, int y)
+    //    {
+    //        X = x;
+    //        Y = y;
+    //    }
+    //}
 }

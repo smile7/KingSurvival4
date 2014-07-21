@@ -41,7 +41,7 @@
             }
         }
 
-        public Direction DetermineDirection()
+        public Position DetermineDirection()
         {
             this.parser = new Parser(this.DirectionLetters);
             var direction = this.parser.GetDirection();

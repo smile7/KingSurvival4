@@ -38,6 +38,21 @@
             bool kingsTurn = true;
             int countTurns = 0;
 
+            string[,] matrix = { 
+                               { "+", "-", "+", "-", "+", "-", "+", "-" }, 
+                               { "-", "+", "-", "+", "-", "+", "-", "+" }, 
+                               { "+", "-", "+", "-", "+", "-", "+", "-" }, 
+                               { "-", "+", "-", "+", "-", "+", "-", "+" }, 
+                               { "+", "-", "+", "-", "+", "-", "+", "-" }, 
+                               { "-", "+", "-", "+", "-", "+", "-", "+" }, 
+                               { "+", "-", "+", "-", "+", "-", "+", "-" }, 
+                               { "-", "+", "-", "+", "-", "+", "-", "+" } 
+                               };
+
+            Console.WriteLine(matrix);
+            Console.WriteLine(Board.Field);
+            Console.WriteLine(matrix == Board.Field);
+
             ProspectMemory oldPosition = new ProspectMemory();
 
             while (true)
@@ -61,7 +76,7 @@
                         try
                         {
                             var command = new Command(this.GetCommand().ToUpper());
-                            Direction initial = command.DetermineDirection();
+                            Position initial = command.DetermineDirection();
                             string kingSymbol = command.FigureLetter;
 
                             if (kingSymbol != "K")
@@ -119,7 +134,7 @@
                         try
                         {
                             var command = new Command(this.GetCommand().ToUpper());
-                            Direction initial = command.DetermineDirection();
+                            Position initial = command.DetermineDirection();
                             Figure chosenPawn = this.firstPawn;
                             string pawnSymbol = command.FigureLetter;
                             switch (pawnSymbol)
@@ -184,7 +199,7 @@
             }
         }
 
-        private bool IsMoveValid(Figure figure, Direction direction)
+        private bool IsMoveValid(Figure figure, Position direction)
         {
             int newX = figure.Position.X + direction.X;
             int newY = figure.Position.Y + direction.Y;

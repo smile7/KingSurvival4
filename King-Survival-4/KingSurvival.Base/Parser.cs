@@ -13,21 +13,21 @@
 
         public string Command { get; set; }
 
-        public Direction GetDirection()
+        public Position GetDirection()
         {
             string directionStr = this.Command;
             switch (directionStr)
             {
                 case UpLeft:
-                    return new Direction ( -1, -1 );
+                    return new Position ( -1, -1 );
                 case UpRight:
-                    return new Direction ( -1, 1 );
+                    return new Position(-1, 1);
                 case DownLeft:
-                    return new Direction ( 1, -1 );
+                    return new Position(1, -1);
                 case DownRight:
-                    return new Direction ( 1, 1 ); 
+                    return new Position(1, 1); 
                 default:
-                    return new Direction ( 0, 0 ); 
+                    return new Position(0, 0); 
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using KingSurvival4;
 
 namespace UnitTestsKingSurvival
 {
@@ -11,8 +12,8 @@ namespace UnitTestsKingSurvival
         //[TestMethod]
         //public void KingWinsIn7TurnsPlusTestingllegalTurns()
         //{
-        //    //using (StringReader input1 = new StringReader("dhfrtjj\nadr\nkdr\nkul\nadl\nadr\nkur\n\bdl\nadl\nkur\nbdr\nkul\nbdl\nkur\ncdl\nkur\nddr\nkur\n\n"))
-        //    //{
+        //    using (StringReader input1 = new StringReader("dhfrtjj\nadr\nkdr\nkul\nadl\nadr\nkur\n\bdl\nadl\nkur\nbdr\nkul\nbdl\nkur\ncdl\nkur\nddr\nkur\n\n"))
+        //    {
         //    using (StreamReader input1 = new StreamReader(@"..\..\..\test1.txt"))
         //    {
         //        Console.SetIn(input1);
