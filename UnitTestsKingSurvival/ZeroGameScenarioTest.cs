@@ -6,14 +6,13 @@ using KingSurvival4;
 namespace UnitTestsKingSurvival
 {
     [TestClass]
-    public class UnitTest1
+    public class ZeroGameScenarioTest
     {
         [TestMethod]
         public void KingWinsIn7Turns()
         {
             using (StringReader input = new StringReader("kul\nadl\nadr\nkur\nadl\nkur\nbdr\nkul\nbdl\nkur\ncdl\nkur\nddr\nkur\n\n"))
             {
-                
                 Console.SetIn(input);
                 using (StringWriter output = new StringWriter())
                 {
@@ -27,7 +26,6 @@ namespace UnitTestsKingSurvival
                     Assert.AreEqual("King won in 7 turns", toCompare, "When playing based on the zero test scenario, King didn't win.");
                 }
             }
-
         }
     }
 }
