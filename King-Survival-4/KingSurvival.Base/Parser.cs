@@ -2,6 +2,10 @@
 {
     internal class Parser
     {
+        private const string UpLeft = "UL";
+        private const string DownLeft = "DL";
+        private const string UpRight = "UR";
+        private const string DownRight = "DR";
         public Parser(string command)
         {
             this.Command = command;
@@ -14,13 +18,13 @@
             string directionStr = this.Command;
             switch (directionStr)
             {
-                case "UL":
+                case UpLeft:
                     return new Direction ( -1, -1 );
-                case "UR":
+                case UpRight:
                     return new Direction ( -1, 1 );
-                case "DL":
+                case DownLeft:
                     return new Direction ( 1, -1 );
-                case "DR":
+                case DownRight:
                     return new Direction ( 1, 1 ); 
                 default:
                     return new Direction ( 0, 0 ); 
