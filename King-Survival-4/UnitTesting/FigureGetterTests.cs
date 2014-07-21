@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using KingSurvival4;
-
-namespace UnitTesting
+﻿namespace UnitTesting
 {
+    using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using KingSurvival4;
+
     [TestClass]
     public class FigureGetterTests
     {

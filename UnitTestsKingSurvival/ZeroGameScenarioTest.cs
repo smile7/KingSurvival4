@@ -1,10 +1,10 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using KingSurvival4;
-
-namespace UnitTestsKingSurvival
+﻿namespace UnitTestsKingSurvival
 {
+    using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.IO;
+    using KingSurvival4;
+
     [TestClass]
     public class ZeroGameScenarioTest
     {
