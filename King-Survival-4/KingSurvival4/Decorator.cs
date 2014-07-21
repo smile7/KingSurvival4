@@ -7,6 +7,7 @@
     {
         public Figure Figure { get; set; }
         public Decorator(Figure figure)
+            :base(figure.Position, figure.Name, figure.Symbol)
         {
             this.Figure = figure;
         }

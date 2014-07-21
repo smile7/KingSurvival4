@@ -6,6 +6,12 @@ namespace KingSurvival4
     /// </summary>
     public abstract class Figure
     {
+        public Figure(Position position, char name, char symbol)
+        {
+            this.Position = position;
+            this.Name = name;
+            this.Symbol = symbol;
+        }
         public Position Position { get; set; }
 
         public char Name { get; set; }
@@ -15,10 +21,6 @@ namespace KingSurvival4
         public Memento SaveMemento()
         {
             return new Memento(this.Position, this.Name, this.Symbol);
-        }
-        public override string ToString()
-        {
-            return this.Name.ToString();
         }
 
         public abstract object Clone();

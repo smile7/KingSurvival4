@@ -189,17 +189,12 @@
             int newX = figure.Position.X + direction.X;
             int newY = figure.Position.Y + direction.Y;
 
-            if (newX >= MaxColumnIndex || newX < MinColumnIndex || newY >= MaxRowIndex || newY < MinRowIndex)
+            if(IsPositionInsideBoard(newX, newY))
             {
-                throw new IndexOutOfRangeException();
+                return true;
             }
 
-            if (Board.Field[newX, newY] != "+")
-            {
-                throw new InvalidOperationException();
-            }
-
-            return true;
+            return false;
         }
 
         public bool HasKingWon()
@@ -226,6 +221,7 @@
             var downLeft = this.IsCellWhiteOrBlack(this.king.Position.X + 1, this.king.Position.Y - 1);
             var upRight = this.IsCellWhiteOrBlack(this.king.Position.X - 1, this.king.Position.Y + 1);
             var upLeft = this.IsCellWhiteOrBlack(this.king.Position.X - 1, this.king.Position.Y - 1);
+
             if (!downRight && !downLeft && !upRight && !upLeft)
             {
                 return true;
@@ -249,9 +245,9 @@
 
         private bool IsPositionInsideBoard(int row, int col)
         {
-            if (row < 0 || row > Board.Field.GetLength(0) - 1 || col < 0 || col > Board.Field.GetLength(1) - 1)
+            if (col >= MaxColumnIndex || col < MinColumnIndex || row >= MaxRowIndex || row < MinRowIndex)
             {
-                return false;
+                throw new IndexOutOfRangeException();
             }
 
             return true;

@@ -5,15 +5,13 @@
     public class King : Figure, ICloneable
 
     {
-        public King(Position initialPosition, bool onTurn = true)
+        private const char KingName = 'K';
+        private const char KingSymbol = 'K';
+        public King(Position initialPosition)
+            : base(initialPosition, KingName, KingSymbol)
         {
-            this.OnTurn = onTurn;
-            this.Position = initialPosition;
-            this.Name = 'K';
-            this.Symbol = 'K';
         }
 
-        public bool OnTurn { get; set; }
 
         public override object Clone()
         {
