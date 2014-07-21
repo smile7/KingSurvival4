@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="BoardTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FigureTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KingSurvival.Base\KingSurvival.Base.csproj">
