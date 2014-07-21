@@ -15,7 +15,8 @@
 
         public Position GetDirection()
         {
-            string directionStr = this.Command;
+            string directionStr = this.Command.ToUpper();
+
             switch (directionStr)
             {
                 case UpLeft:

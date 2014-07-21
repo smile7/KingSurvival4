@@ -55,6 +55,7 @@
     <Compile Include="FigureTests.cs" />
     <Compile Include="MoveableFigureTests.cs" />
     <Compile Include="FigureGetterTests.cs" />
+    <Compile Include="CommandTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KingSurvival.Base\KingSurvival.Base.csproj">
