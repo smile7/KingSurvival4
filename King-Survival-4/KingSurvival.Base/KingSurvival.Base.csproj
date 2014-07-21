@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{43AABB14-2173-4D98-AE92-7A21D626A481}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KingSurvival.Base</RootNamespace>
     <AssemblyName>KingSurvival.Base</AssemblyName>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -41,17 +44,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Board.cs" />
+    <Compile Include="GameObjects\Board.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="Decorator.cs" />
     <Compile Include="Direction.cs" />
-    <Compile Include="Figure.cs" />
+    <Compile Include="GameObjects\Figure.cs" />
     <Compile Include="FigureGetter.cs" />
-    <Compile Include="King.cs" />
+    <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Interfaces\IReader.cs" />
+    <Compile Include="Interfaces\IRenderer.cs" />
+    <Compile Include="GameObjects\King.cs" />
+    <Compile Include="KingSurvivalEngine.cs" />
     <Compile Include="Memento.cs" />
-    <Compile Include="MoveableFigure.cs" />
+    <Compile Include="GameObjects\MoveableFigure.cs" />
     <Compile Include="Parser.cs" />
-    <Compile Include="Pawn.cs" />
+    <Compile Include="GameObjects\Pawn.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProspectMemory.cs" />

@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using KingSurvival4;
 using System.IO;
 
 namespace UnitTestsKingSurvival

@@ -42,13 +42,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleMessages.cs" />
-    <Compile Include="ConsoleReader.cs" />
-    <Compile Include="ConsoleRenderer.cs" />
+    <Compile Include="InputOutputEngines\ConsoleReader.cs" />
+    <Compile Include="InputOutputEngines\ConsoleRenderer.cs" />
+    <Compile Include="KingSurvival4Demo.cs" />
     <Compile Include="KingSurvivalConsoleEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KingSurvival.Base\KingSurvival.Base.csproj">
+      <Project>{43aabb14-2173-4d98-ae92-7a21d626a481}</Project>
+      <Name>KingSurvival.Base</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
