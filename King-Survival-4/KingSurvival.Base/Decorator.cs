@@ -5,11 +5,12 @@
     /// </summary>
     public abstract class Decorator : Figure
     {
-        public Figure Figure { get; set; }
         public Decorator(Figure figure)
-            :base(figure.Position, figure.Name, figure.Symbol)
+            : base(figure.Position, figure.Name, figure.Symbol)
         {
             this.Figure = figure;
         }
+
+        public Figure Figure { get; set; }
     }
 }

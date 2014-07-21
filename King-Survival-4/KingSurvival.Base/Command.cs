@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+
     public class Command : ICommand
     {
         private Parser parser;
@@ -20,7 +21,7 @@
 
         public string FigureLetter { get; set; }
 
-        private string DirectionLetters { get; set; }
+        public string DirectionLetters { get; set; }
 
         public string Input
         {
@@ -28,6 +29,7 @@
             {
                 return this.input;
             }
+
             set
             {
                 if (this.IsValid(value.ToUpper()))

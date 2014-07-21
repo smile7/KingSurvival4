@@ -15,6 +15,5 @@
             this.Figure.Position.X += directions.X;
             this.Figure.Position.Y += directions.Y;
         }
-
     }
 }

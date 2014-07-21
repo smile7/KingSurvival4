@@ -7,19 +7,19 @@
     /// </summary>
     public abstract class KingSurvivalEngine
     {
-        protected IRenderer Renderer { get; private set; } //TO DO: check if null when set
-        protected IReader Reader { get; private set; }
-        protected IList<Figure> Figures { get; set; }
-
         public KingSurvivalEngine(IReader reader, IRenderer renderer)
         {
             this.Reader = reader;
             this.Renderer = renderer;
         }
 
-        public abstract void Start();
+        protected IRenderer Renderer { get; private set; } //TO DO: check if null when set
 
-       // public abstract void EndGame();
+        protected IReader Reader { get; private set; }
+
+        protected IList<Figure> Figures { get; set; }
+
+        public abstract void Start();
 
         protected string GetCommand()
         {

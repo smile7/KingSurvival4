@@ -1,7 +1,8 @@
-﻿using System;
-namespace KingSurvival4
+﻿namespace KingSurvival4
 {
-    public class Position:ICloneable
+    using System;
+
+    public class Position : ICloneable
     {
         public Position(int x, int y)
         {

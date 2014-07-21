@@ -5,7 +5,14 @@
     /// </summary>
     public sealed class Board
     {
+        private Board()
+        {
+            Field = new string[NumberOfRows, NumberOfCols];
+            this.FillBoard();
+        }
+
         public const string WhiteCell = "+";
+
         public const string BlackCell = "-";
 
         private const int NumberOfRows = 8;
@@ -17,11 +24,6 @@
         private static object syncLock = new object();
 
         public static string[,] Field { get; private set; }
-        private Board()
-        {
-            Field = new string[NumberOfRows, NumberOfCols];
-            this.FillBoard();
-        }
 
         public static Board Instance
         {
@@ -42,6 +44,17 @@
             }
         }
 
+        public void Notify(Figure figure)
+        {
+            Field[figure.Position.X, figure.Position.Y] = figure.Name.ToString();
+        }
+
+        public void Notify(Figure figure, Position oldPosition)
+        {
+            Field[figure.Position.X, figure.Position.Y] = figure.Name.ToString();
+            Field[oldPosition.X, oldPosition.Y] = "+";
+        }
+
         private void FillBoard()
         {
             for (int row = 0; row < Field.GetLength(0); row++)
@@ -58,17 +71,6 @@
                     }
                 }
             }
-        }
-
-        public void Notify(Figure figure)
-        {
-            Field[figure.Position.X, figure.Position.Y] = figure.Name.ToString();
-        }
-
-        public void Notify(Figure figure, Position oldPosition)
-        {
-            Field[figure.Position.X, figure.Position.Y] = figure.Name.ToString();
-            Field[oldPosition.X, oldPosition.Y] = "+";
         }
     }
 }

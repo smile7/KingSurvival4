@@ -1,6 +1,7 @@
-﻿using System;
-namespace KingSurvival4
+﻿namespace KingSurvival4
 {
+    using System;
+
     /// <summary>
     /// The 'Component' abstract class for Decorator pattern and Simple Factory pattern
     /// </summary>
@@ -12,6 +13,7 @@ namespace KingSurvival4
             this.Name = name;
             this.Symbol = symbol;
         }
+
         public Position Position { get; set; }
 
         public char Name { get; set; }

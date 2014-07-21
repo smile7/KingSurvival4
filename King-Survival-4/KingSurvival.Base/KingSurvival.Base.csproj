@@ -47,7 +47,6 @@
     <Compile Include="GameObjects\Board.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="Decorator.cs" />
-    <Compile Include="Direction.cs" />
     <Compile Include="GameObjects\Figure.cs" />
     <Compile Include="FigureGetter.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
