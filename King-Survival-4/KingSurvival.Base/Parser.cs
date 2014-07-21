@@ -5,7 +5,7 @@
         private const string UpLeft = "UL";
         private const string DownLeft = "DL";
         private const string UpRight = "UR";
-        private const string DownRight = "DR";
+       
         public Parser(string command)
         {
             this.Command = command;
@@ -25,10 +25,8 @@
                     return new Position(-1, 1);
                 case DownLeft:
                     return new Position(1, -1);
-                case DownRight:
-                    return new Position(1, 1); 
                 default:
-                    return new Position(0, 0); 
+                    return new Position(1, 1); 
             }
         }
     }
