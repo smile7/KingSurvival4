@@ -13,7 +13,6 @@
         public const int MinColumnIndex = 0;
         public const int MaxColumnIndex = 8;
 
-
         protected Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', 'P');
         protected Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', 'P');
         protected Figure thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', 'P');
@@ -21,6 +20,7 @@
         protected Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', 'K');
 
         Board board;
+
         public KingSurvivalConsoleEngine(ConsoleReader reader, ConsoleRenderer renderer)
             : base(reader, renderer)
         {
@@ -49,9 +49,9 @@
 
                 this.RenderBoard(Board.Field);
 
-
                 bool hasWon = false;
                 bool hasLost = false;
+
                 if (kingsTurn)
                 {
                     do
