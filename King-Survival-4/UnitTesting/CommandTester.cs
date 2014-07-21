@@ -5,7 +5,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class CommandTests
+    public class CommandTester
     {
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]

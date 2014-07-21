@@ -5,7 +5,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
  
     [TestClass]
-    public class MoveableFigureTests
+    public class MoveableFigureTester
     {
         [TestMethod]
         public void MoveableFigureMoveMethodTester()

@@ -5,7 +5,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class FigureTests
+    public class FigureTester
     {
         [TestMethod]
         public void FigureSaveMementoTester()

@@ -5,7 +5,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class BoardTests
+    public class BoardTester
     {
         [TestMethod]
         public void BoardInstanceFieldFillingTest()

@@ -5,7 +5,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class FigureGetterTests
+    public class FigureGetterTester
     {
         [TestMethod]
         public void GetFigureMethodTesterForKing()

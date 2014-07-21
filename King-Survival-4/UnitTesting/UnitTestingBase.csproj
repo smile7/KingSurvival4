@@ -50,12 +50,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BoardTests.cs" />
+    <Compile Include="BoardTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FigureTests.cs" />
-    <Compile Include="MoveableFigureTests.cs" />
-    <Compile Include="FigureGetterTests.cs" />
-    <Compile Include="CommandTests.cs" />
+    <Compile Include="FigureTester.cs" />
+    <Compile Include="MoveableFigureTester.cs" />
+    <Compile Include="FigureGetterTester.cs" />
+    <Compile Include="CommandTester.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KingSurvival.Base\KingSurvival.Base.csproj">

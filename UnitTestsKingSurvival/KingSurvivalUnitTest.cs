@@ -1,14 +1,13 @@
 ﻿namespace UnitTestsKingSurvival
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.IO;
     using KingSurvival4;
-
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+ 
     [TestClass]
     public class KingSurvivalUnitTest
     {
-
         [TestMethod]
         public void KingWinsIn7TurnsPlusTestingllegalTurns()
         {
