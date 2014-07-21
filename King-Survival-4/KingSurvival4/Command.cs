@@ -8,7 +8,7 @@
         private ProspectMemory memory;
         private string input;
 
-        private string[] COMMANDS = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
+        private string[] Commands = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
 
         public Command(string initialInput)
         {
