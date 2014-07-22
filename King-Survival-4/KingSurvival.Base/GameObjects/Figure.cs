@@ -22,9 +22,9 @@
         /// This saves a copy of a figure for further refference to its previous position
         /// </summary>
         /// <returns>A copy of the current figure</returns>
-        public Memento SaveMemento()
+        public FigureMemento SaveMemento()
         {
-            return new Memento(this.Position, this.Name, this.Symbol);
+            return new FigureMemento(this.Position, this.Name, this.Symbol);
         }
 
         /// <summary>

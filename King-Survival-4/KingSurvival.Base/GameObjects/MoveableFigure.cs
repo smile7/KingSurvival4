@@ -3,7 +3,7 @@
     /// <summary>
     /// The 'ConcreteDecorator' class which enables a figure to move to a different position by extending its behaviour
     /// </summary>
-    public class MoveableFigure : Decorator
+    public class MoveableFigure : FigureDecorator
     {
         public MoveableFigure(Figure figure)
             : base(figure)

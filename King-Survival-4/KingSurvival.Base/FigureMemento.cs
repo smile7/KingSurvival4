@@ -1,8 +1,12 @@
 ﻿namespace KingSurvival4
 {
-    public class Memento
+    /// <summary>
+    /// A memento class for figure.
+    /// Helps access the previous position of the figure if needed.
+    /// </summary>
+    public class FigureMemento
     {
-        public Memento(Position position, char name, char symbol)
+        public FigureMemento(Position position, char name, char symbol)
         {
             this.Position = position;
             this.Name = name;

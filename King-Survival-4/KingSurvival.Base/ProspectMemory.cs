@@ -2,6 +2,6 @@
 {
     public class ProspectMemory
     {
-        public Memento Memento { get; set; }
+        public FigureMemento Memento { get; set; }
     }
 }

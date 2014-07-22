@@ -3,11 +3,11 @@
     /// <summary>
     /// The 'Decorator' abstract class which enables to extend the class Figure
     /// </summary>
-    public abstract class Decorator : Figure
+    public abstract class FigureDecorator : Figure
     {
         public Figure Figure { get; set; }
 
-        public Decorator(Figure figure)
+        public FigureDecorator(Figure figure)
             : base(figure.Position, figure.Name, figure.Symbol)
         {
             this.Figure = figure;

@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="GameObjects\Board.cs" />
     <Compile Include="Command.cs" />
-    <Compile Include="Decorator.cs" />
+    <Compile Include="FigureDecorator.cs" />
     <Compile Include="GameObjects\Figure.cs" />
     <Compile Include="FigureGetter.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
@@ -54,7 +54,7 @@
     <Compile Include="Interfaces\IWriter.cs" />
     <Compile Include="GameObjects\King.cs" />
     <Compile Include="KingSurvivalEngine.cs" />
-    <Compile Include="Memento.cs" />
+    <Compile Include="FigureMemento.cs" />
     <Compile Include="GameObjects\MoveableFigure.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="GameObjects\Pawn.cs" />
