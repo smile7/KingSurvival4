@@ -12,6 +12,10 @@
             Console.WriteLine(message);
         }
 
+        /// <summary>
+        /// Prints the whole board on the console
+        /// </summary>
+        /// <param name="board">The board</param>
         public void RenderBoard(string[,] board)
         {
             Console.WriteLine("   KING SURVIVAL GAME");
