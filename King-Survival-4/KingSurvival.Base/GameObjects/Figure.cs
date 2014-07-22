@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// The 'Component' abstract class for Decorator pattern and Simple Factory pattern
+    /// An abstract class for the figures on the board which is implemented afterwards with Simple Factory pattern
     /// </summary>
     public abstract class Figure
     {
@@ -20,11 +20,19 @@
 
         public char Symbol { get; set; }
 
+        /// <summary>
+        /// This saves a copy of a figure for further refference to its previous position
+        /// </summary>
+        /// <returns>A copy of the current figure</returns>
         public Memento SaveMemento()
         {
             return new Memento(this.Position, this.Name, this.Symbol);
         }
 
+        /// <summary>
+        /// Deep clone of a figure
+        /// </summary>
+        /// <returns>A deep copy of the current figure</returns>
         public object Clone()
         {
             Figure newFigure = (Figure)this.MemberwiseClone();
