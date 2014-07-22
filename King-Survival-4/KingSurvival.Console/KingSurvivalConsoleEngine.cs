@@ -55,7 +55,7 @@
                 {
                     do
                     {
-                        this.PostMessage("King's turn: ");
+                        this.PostMessage(ConsoleMessages.KingsTurnMessage());
                         try
                         {
                             var command = new Command(this.GetCommand().ToUpper());
@@ -73,7 +73,6 @@
                             }
 
                             kingsTurn = false;
-
                             hasWon = this.HasKingWon();
                             if (hasWon)
                             {
@@ -83,15 +82,15 @@
                         }
                         catch (ArgumentOutOfRangeException)
                         {
-                            this.PostMessage("Illegal move. Please try again.");
+                            this.PostMessage(ConsoleMessages.InvalidMoveMessage());
                         }
                         catch (IndexOutOfRangeException)
                         {
-                            this.PostMessage("Your move is outside the board. Please try again.");
+                            this.PostMessage(ConsoleMessages.OutsideBoardMoveMessage());
                         }
                         catch (InvalidOperationException)
                         {
-                            this.PostMessage("You can't step over a Pawn. Please enter new command.");
+                            this.PostMessage(ConsoleMessages.StepOverFigureMoveMessage());
                         }
                     }
                     while (kingsTurn);
@@ -105,8 +104,7 @@
                 {
                     do
                     {
-                        this.PostMessage("Pawn's turn: ");
-
+                        this.PostMessage(ConsoleMessages.PawnsTurnMessage());
                         try
                         {
                             var command = new Command(this.GetCommand().ToUpper());
@@ -132,9 +130,7 @@
                             }
 
                             this.ClearOldFigurePosition(chosenPawn, oldPosition, initial);
-
                             kingsTurn = true;
-
                             hasLost = this.HasKingLost();
                             if (hasLost)
                             {
@@ -144,15 +140,15 @@
                         }
                         catch (ArgumentOutOfRangeException)
                         {
-                            this.PostMessage("Illegal move. Please try again.");
+                            this.PostMessage(ConsoleMessages.InvalidMoveMessage());
                         }
                         catch (IndexOutOfRangeException)
                         {
-                            this.PostMessage("Your move is outside the board. Please try again.");
+                            this.PostMessage(ConsoleMessages.OutsideBoardMoveMessage());
                         }
                         catch (InvalidOperationException)
                         {
-                            this.PostMessage("You can't step over another figure. Please enter new command.");
+                            this.PostMessage(ConsoleMessages.StepOverFigureMoveMessage());
                         }
                     }
                     while (!kingsTurn);
