@@ -44,10 +44,11 @@
             {
                 foreach (var figure in this.Figures)
                 {
-                    this.board.Notify(figure);
+                    board.Notify(figure);
                 }
 
                 this.RenderBoard(Board.Field);
+
 
                 bool hasWon = false;
                 bool hasLost = false;
@@ -55,6 +56,7 @@
                 {
                     do
                     {
+
                         this.PostMessage("King's turn: ");
                         try
                         {
@@ -67,21 +69,14 @@
                                 throw new ArgumentOutOfRangeException();
                             }
 
-                            if (this.IsMoveValid(this.king, initial))
+                            if (ClearOldFigurePosition(this.king, oldPosition, initial))
                             {
                                 countTurns++;
-                                var clonedKing = this.king.Clone() as Figure;
-                                oldPosition.Memento = clonedKing.SaveMemento();
-
-                                MoveableFigure changeKingsPosition = new MoveableFigure(this.king);
-                                changeKingsPosition.MoveFigure(initial);
-
-                                this.board.Notify(this.king, oldPosition.Memento.Position);
                             }
 
                             kingsTurn = false;
 
-                            hasWon = this.HasKingWon();
+                            hasWon = HasKingWon();
                             if (hasWon)
                             {
                                 Console.WriteLine("King won in {0} turns", countTurns);
@@ -138,21 +133,12 @@
                                     throw new ArgumentOutOfRangeException();
                             }
 
-                            if (this.IsMoveValid(chosenPawn, initial))
-                            {
-                                var clonedPawn = chosenPawn.Clone() as Figure;
-                                oldPosition.Memento = clonedPawn.SaveMemento();
-
-                                MoveableFigure changePawnsPOsition = new MoveableFigure(chosenPawn);
-                                changePawnsPOsition.MoveFigure(initial);
-
-                                this.board.Notify(chosenPawn, oldPosition.Memento.Position);
-                            }
+                            ClearOldFigurePosition(chosenPawn, oldPosition, initial);
 
                             kingsTurn = true;
 
-                            hasLost = this.HasKingLost();
 
+                            hasLost = HasKingLost();
                             if (hasLost)
                             {
                                 Console.WriteLine("King lost in {0} turns", countTurns);
@@ -182,6 +168,37 @@
             }
         }
 
+        private bool ClearOldFigurePosition(Figure figure, ProspectMemory oldPosition, Position initial)
+        {
+            if (this.IsMoveValid(figure, initial))
+            {
+                var clonedFigure = figure.Clone() as Figure;
+                oldPosition.Memento = clonedFigure.SaveMemento();
+
+                MoveableFigure changeFigurePosition = new MoveableFigure(figure);
+                changeFigurePosition.MoveFigure(initial);
+
+                board.Notify(figure, oldPosition.Memento.Position);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool IsMoveValid(Figure figure, Position direction)
+        {
+            int newX = figure.Position.X + direction.X;
+            int newY = figure.Position.Y + direction.Y;
+
+            if (IsPositionInsideBoard(newX, newY))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public bool HasKingWon()
         {
             if (this.king.Position.X == 0)
@@ -208,19 +225,6 @@
             var upLeft = this.IsCellWhiteOrBlack(this.king.Position.X - 1, this.king.Position.Y - 1);
 
             if (!downRight && !downLeft && !upRight && !upLeft)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private bool IsMoveValid(Figure figure, Position direction)
-        {
-            int newX = figure.Position.X + direction.X;
-            int newY = figure.Position.Y + direction.Y;
-
-            if (this.IsPositionInsideBoard(newX, newY))
             {
                 return true;
             }
