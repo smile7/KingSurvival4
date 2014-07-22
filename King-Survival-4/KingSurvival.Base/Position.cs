@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// A class representing the coordinates of the figures on the board
+    /// </summary>
     public class Position : ICloneable
     {
         public Position(int x, int y)

@@ -1,9 +1,10 @@
 ﻿namespace KingSurvival4
 {
+    using System;
     /// <summary>
     /// An abstract class for the figures on the board which is implemented afterwards with Simple Factory pattern
     /// </summary>
-    public abstract class Figure
+    public abstract class Figure : ICloneable
     {
         public Figure(Position position, char name, char symbol)
         {

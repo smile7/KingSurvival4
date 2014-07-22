@@ -1,7 +1,13 @@
 ﻿namespace KingSurvival4
 {
+    /// <summary>
+    /// A class which receives the second 2 letters of a command and parses them to a position
+    /// </summary>
     internal class Parser
     {
+        /// <summary>
+        /// Constants for the possible directions
+        /// </summary>
         private const string UpLeft = "UL";
         private const string DownLeft = "DL";
         private const string UpRight = "UR";
@@ -13,6 +19,10 @@
 
         public string Command { get; set; }
 
+        /// <summary>
+        /// Parses the direction in the command to a new position
+        /// </summary>
+        /// <returns>The new position</returns>
         public Position GetNewPosition()
         {
             string directionStr = this.Command.ToUpper();
