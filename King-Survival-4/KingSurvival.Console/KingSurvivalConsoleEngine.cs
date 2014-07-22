@@ -48,12 +48,12 @@
 
                 this.RenderBoard(Board.Field);
 
-                this.SomeMethod();
+                this.ExecuteCommand();
                 
             }
         }
 
-        private void SomeMethod()
+        private void ExecuteCommand()
         {
             do
             {
