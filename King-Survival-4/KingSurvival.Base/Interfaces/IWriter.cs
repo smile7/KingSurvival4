@@ -1,10 +1,10 @@
 ﻿namespace KingSurvival4
 {
-    public interface IRenderer
+    public interface IWriter
     {
         void WriteMessage(string message);
 
-        void Render(string[,] board);
+        void RenderBoard(string[,] board);
 
         void Clear();
     }

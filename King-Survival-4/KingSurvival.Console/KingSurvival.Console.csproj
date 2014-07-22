@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="ConsoleMessages.cs" />
     <Compile Include="InputOutputEngines\ConsoleReader.cs" />
-    <Compile Include="InputOutputEngines\ConsoleRenderer.cs" />
+    <Compile Include="InputOutputEngines\ConsoleWriter.cs" />
     <Compile Include="KingSurvival4Demo.cs" />
     <Compile Include="KingSurvivalConsoleEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

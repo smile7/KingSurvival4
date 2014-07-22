@@ -17,7 +17,7 @@
                 using (StringWriter output = new StringWriter())
                 {
                     Console.SetOut(output);
-                    KingSurvivalEngine testEngine = new KingSurvivalConsoleEngine(new ConsoleReader(), new ConsoleRenderer());
+                    KingSurvivalEngine testEngine = new KingSurvivalConsoleEngine(new ConsoleReader(), new ConsoleWriter());
                     testEngine.Start();
                     string outputStr = output.ToString();
                     outputStr = outputStr.Substring(0, outputStr.Length - 2);

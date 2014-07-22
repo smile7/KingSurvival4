@@ -2,9 +2,12 @@
 {
     using System;
 
+    /// <summary>
+    /// The class which reads the messages from the console
+    /// </summary>
     public class ConsoleReader : IReader
     {
-        public string Read()
+        public string ReadMessage()
         {
             return Console.ReadLine();
         }

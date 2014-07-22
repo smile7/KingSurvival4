@@ -7,13 +7,13 @@
     /// </summary>
     public abstract class KingSurvivalEngine
     {
-        public KingSurvivalEngine(IReader reader, IRenderer renderer)
+        public KingSurvivalEngine(IReader reader, IWriter renderer)
         {
             this.Reader = reader;
             this.Renderer = renderer;
         }
 
-        protected IRenderer Renderer { get; private set; } //TO DO: check if null when set
+        protected IWriter Renderer { get; private set; } //TO DO: check if null when set
 
         protected IReader Reader { get; private set; }
 
@@ -23,7 +23,7 @@
 
         protected string GetCommand()
         {
-            return this.Reader.Read();
+            return this.Reader.ReadMessage();
         }
 
         protected void PostMessage(string message)
@@ -34,7 +34,7 @@
         protected void RenderBoard(string[,] board)
         {
             this.Renderer.Clear();
-            this.Renderer.Render(board);
+            this.Renderer.RenderBoard(board);
         }
     }
 }

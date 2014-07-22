@@ -2,14 +2,17 @@
 {
     using System;
 
-    public class ConsoleRenderer : IRenderer
+    /// <summary>
+    /// The class which writes the messages from the console and prints the board
+    /// </summary>
+    public class ConsoleWriter : IWriter
     {
         public void WriteMessage(string message)
         {
             Console.WriteLine(message);
         }
 
-        public void Render(string[,] board)
+        public void RenderBoard(string[,] board)
         {
             Console.WriteLine("   KING SURVIVAL GAME");
             Console.WriteLine("    0 1 2 3 4 5 6 7");

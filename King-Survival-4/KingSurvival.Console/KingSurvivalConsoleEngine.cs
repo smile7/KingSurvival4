@@ -4,7 +4,7 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// FACADE for Facade pattern and Concrete implementation of Bridge pattern
+    /// The main class Engine for the console applicatioin; implementing the FACADE pattern
     /// </summary>
     public class KingSurvivalConsoleEngine : KingSurvivalEngine
     {
@@ -21,7 +21,7 @@
 
         private Board board;
 
-        public KingSurvivalConsoleEngine(ConsoleReader reader, ConsoleRenderer renderer)
+        public KingSurvivalConsoleEngine(ConsoleReader reader, ConsoleWriter renderer)
             : base(reader, renderer)
         {
             this.board = Board.Instance;
@@ -37,22 +37,6 @@
         {
             bool kingsTurn = true;
             int countTurns = 0;
-
-            string[,] matrix = 
-            { 
-                               { "+", "-", "+", "-", "+", "-", "+", "-" }, 
-                               { "-", "+", "-", "+", "-", "+", "-", "+" }, 
-                               { "+", "-", "+", "-", "+", "-", "+", "-" }, 
-                               { "-", "+", "-", "+", "-", "+", "-", "+" }, 
-                               { "+", "-", "+", "-", "+", "-", "+", "-" }, 
-                               { "-", "+", "-", "+", "-", "+", "-", "+" }, 
-                               { "+", "-", "+", "-", "+", "-", "+", "-" }, 
-                               { "-", "+", "-", "+", "-", "+", "-", "+" }
-                               };
-
-            Console.WriteLine(matrix);
-            Console.WriteLine(Board.Field);
-            Console.WriteLine(matrix == Board.Field);
 
             ProspectMemory oldPosition = new ProspectMemory();
 

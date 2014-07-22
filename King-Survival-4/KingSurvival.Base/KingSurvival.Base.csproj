@@ -51,7 +51,7 @@
     <Compile Include="FigureGetter.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IReader.cs" />
-    <Compile Include="Interfaces\IRenderer.cs" />
+    <Compile Include="Interfaces\IWriter.cs" />
     <Compile Include="GameObjects\King.cs" />
     <Compile Include="KingSurvivalEngine.cs" />
     <Compile Include="Memento.cs" />
