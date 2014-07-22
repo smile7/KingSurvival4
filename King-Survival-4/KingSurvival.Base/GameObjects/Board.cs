@@ -5,15 +5,6 @@
     /// </summary>
     public sealed class Board
     {
-        /// <summary>
-        /// A private constructor for the Singleton implementation
-        /// </summary>
-        private Board()
-        {
-            Field = new string[NumberOfRows, NumberOfCols];
-            this.FillBoard();
-        }
-
         public const string WhiteCell = "+";
 
         public const string BlackCell = "-";
@@ -25,6 +16,15 @@
         private static volatile Board instance;
 
         private static object syncLock = new object();
+
+        /// <summary>
+        /// A private constructor for the Singleton implementation
+        /// </summary>
+        private Board()
+        {
+            Field = new string[NumberOfRows, NumberOfCols];
+            this.FillBoard();
+        }
 
         public static string[,] Field { get; private set; }
 
@@ -53,7 +53,7 @@
         /// <summary>
         /// Notifies the board that there is a figure on it
         /// </summary>
-        /// <param name="figure"></param>
+        /// <param name="figure">The given figure</param>
         public void Notify(Figure figure)
         {
             Field[figure.Position.X, figure.Position.Y] = figure.Name.ToString();

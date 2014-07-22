@@ -4,7 +4,7 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// The main class Engine for the console applicatioin; implementing the FACADE pattern
+    /// The main class Engine for the console application; implementing the FACADE pattern
     /// </summary>
     public class KingSurvivalConsoleEngine : KingSurvivalEngine
     {
@@ -44,11 +44,10 @@
             {
                 foreach (var figure in this.Figures)
                 {
-                    board.Notify(figure);
+                    this.board.Notify(figure);
                 }
 
                 this.RenderBoard(Board.Field);
-
 
                 bool hasWon = false;
                 bool hasLost = false;
@@ -56,7 +55,6 @@
                 {
                     do
                     {
-
                         this.PostMessage("King's turn: ");
                         try
                         {
@@ -69,14 +67,14 @@
                                 throw new ArgumentOutOfRangeException();
                             }
 
-                            if (ClearOldFigurePosition(this.king, oldPosition, initial))
+                            if (this.ClearOldFigurePosition(this.king, oldPosition, initial))
                             {
                                 countTurns++;
                             }
 
                             kingsTurn = false;
 
-                            hasWon = HasKingWon();
+                            hasWon = this.HasKingWon();
                             if (hasWon)
                             {
                                 Console.WriteLine("King won in {0} turns", countTurns);
@@ -133,12 +131,11 @@
                                     throw new ArgumentOutOfRangeException();
                             }
 
-                            ClearOldFigurePosition(chosenPawn, oldPosition, initial);
+                            this.ClearOldFigurePosition(chosenPawn, oldPosition, initial);
 
                             kingsTurn = true;
 
-
-                            hasLost = HasKingLost();
+                            hasLost = this.HasKingLost();
                             if (hasLost)
                             {
                                 Console.WriteLine("King lost in {0} turns", countTurns);
@@ -168,37 +165,6 @@
             }
         }
 
-        private bool ClearOldFigurePosition(Figure figure, ProspectMemory oldPosition, Position initial)
-        {
-            if (this.IsMoveValid(figure, initial))
-            {
-                var clonedFigure = figure.Clone() as Figure;
-                oldPosition.Memento = clonedFigure.SaveMemento();
-
-                MoveableFigure changeFigurePosition = new MoveableFigure(figure);
-                changeFigurePosition.MoveFigure(initial);
-
-                board.Notify(figure, oldPosition.Memento.Position);
-
-                return true;
-            }
-
-            return false;
-        }
-
-        private bool IsMoveValid(Figure figure, Position direction)
-        {
-            int newX = figure.Position.X + direction.X;
-            int newY = figure.Position.Y + direction.Y;
-
-            if (IsPositionInsideBoard(newX, newY))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         public bool HasKingWon()
         {
             if (this.king.Position.X == 0)
@@ -219,12 +185,12 @@
 
         public bool HasKingLost()
         {
-            var downRight = this.IsCellWhiteOrBlack(this.king.Position.X + 1, this.king.Position.Y + 1);
-            var downLeft = this.IsCellWhiteOrBlack(this.king.Position.X + 1, this.king.Position.Y - 1);
-            var upRight = this.IsCellWhiteOrBlack(this.king.Position.X - 1, this.king.Position.Y + 1);
-            var upLeft = this.IsCellWhiteOrBlack(this.king.Position.X - 1, this.king.Position.Y - 1);
+            bool canMoveDownRight = this.IsCellWhiteOrBlack(this.king.Position.X + 1, this.king.Position.Y + 1);
+            bool canMoveDownLeft = this.IsCellWhiteOrBlack(this.king.Position.X + 1, this.king.Position.Y - 1);
+            bool canMoveUpRight = this.IsCellWhiteOrBlack(this.king.Position.X - 1, this.king.Position.Y + 1);
+            bool canMoveUpLeft = this.IsCellWhiteOrBlack(this.king.Position.X - 1, this.king.Position.Y - 1);
 
-            if (!downRight && !downLeft && !upRight && !upLeft)
+            if (!canMoveDownRight && !canMoveDownLeft && !canMoveUpRight && !canMoveUpLeft)
             {
                 return true;
             }
@@ -253,6 +219,37 @@
             }
 
             return true;
+        }
+
+        private bool ClearOldFigurePosition(Figure figure, ProspectMemory oldPosition, Position initial)
+        {
+            if (this.IsMoveValid(figure, initial))
+            {
+                var clonedFigure = figure.Clone() as Figure;
+                oldPosition.Memento = clonedFigure.SaveMemento();
+
+                MoveableFigure changeFigurePosition = new MoveableFigure(figure);
+                changeFigurePosition.MoveFigure(initial);
+
+                this.board.Notify(figure, oldPosition.Memento.Position);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool IsMoveValid(Figure figure, Position direction)
+        {
+            int newX = figure.Position.X + direction.X;
+            int newY = figure.Position.Y + direction.Y;
+
+            if (this.IsPositionInsideBoard(newX, newY))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

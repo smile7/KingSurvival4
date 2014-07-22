@@ -1,6 +1,7 @@
 ﻿namespace KingSurvival4
 {
     using System;
+
     /// <summary>
     /// An abstract class for the figures on the board which is implemented afterwards with Simple Factory pattern
     /// </summary>

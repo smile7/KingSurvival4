@@ -5,12 +5,12 @@
     /// </summary>
     public abstract class FigureDecorator : Figure
     {
-        public Figure Figure { get; set; }
-
         public FigureDecorator(Figure figure)
             : base(figure.Position, figure.Name, figure.Symbol)
         {
             this.Figure = figure;
         }
+
+        public Figure Figure { get; set; }
     }
 }

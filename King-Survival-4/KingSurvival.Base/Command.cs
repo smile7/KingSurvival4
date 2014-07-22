@@ -12,7 +12,7 @@
     {
         private Parser parser;
         private string input;
-        private string[] Commands = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
+        private string[] validCommands = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
 
         public Command(string initialInput)
         {
@@ -60,11 +60,11 @@
         /// Checks if the input string is a valid command. 
         /// There are only 12 valid commands.
         /// </summary>
-        /// <param name="currentInput"></param>
-        /// <returns></returns>
+        /// <param name="currentInput">The given command</param>
+        /// <returns>Does the command list contain the given input or not</returns>
         private bool IsValid(string currentInput)
         {
-            if (this.Commands.Contains(currentInput))
+            if (this.validCommands.Contains(currentInput))
             {
                 return true;
             }

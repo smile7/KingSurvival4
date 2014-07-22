@@ -1,7 +1,7 @@
 ﻿namespace KingSurvival4
 {
     /// <summary>
-    /// The start of the programme
+    /// The start of the program
     /// </summary>
     public class KingSurvival4Demo
     {

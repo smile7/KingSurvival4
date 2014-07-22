@@ -14,7 +14,7 @@
             this.Renderer = renderer;
         }
 
-        protected IWriter Renderer { get; private set; } //TO DO: check if null when set
+        protected IWriter Renderer { get; private set; }
 
         protected IReader Reader { get; private set; }
 
@@ -28,7 +28,7 @@
         /// <summary>
         /// Read a command from the player of the game
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A string with the command</returns>
         protected string GetCommand()
         {
             return this.Reader.ReadMessage();
@@ -37,7 +37,7 @@
         /// <summary>
         /// Send a message to the player of the game
         /// </summary>
-        /// <param name="message"></param>
+        /// <param name="message">The message that should be displayed</param>
         protected void PostMessage(string message)
         {
             this.Renderer.WriteMessage(message);
