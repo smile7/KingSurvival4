@@ -13,7 +13,7 @@
 
         public string Command { get; set; }
 
-        public Position GetDirection()
+        public Position GetNewPosition()
         {
             string directionStr = this.Command.ToUpper();
 

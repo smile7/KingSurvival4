@@ -1,7 +1,7 @@
 ﻿namespace KingSurvival4
 {
     /// <summary>
-    /// The 'ConcreteDecorator' class which enables a figure to move to a different position
+    /// The 'ConcreteDecorator' class which enables a figure to move to a different position by extending its behaviour
     /// </summary>
     public class MoveableFigure : Decorator
     {

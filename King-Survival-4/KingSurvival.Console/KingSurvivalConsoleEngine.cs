@@ -59,7 +59,7 @@
                         try
                         {
                             var command = new Command(this.GetCommand().ToUpper());
-                            Position initial = command.DetermineDirection();
+                            Position initial = command.DetermineNewPosition();
                             string kingSymbol = command.FigureLetter;
 
                             if (kingSymbol != "K")
@@ -117,7 +117,7 @@
                         try
                         {
                             var command = new Command(this.GetCommand().ToUpper());
-                            Position initial = command.DetermineDirection();
+                            Position initial = command.DetermineNewPosition();
                             Figure chosenPawn = this.firstPawn;
                             string pawnSymbol = command.FigureLetter;
                             switch (pawnSymbol)

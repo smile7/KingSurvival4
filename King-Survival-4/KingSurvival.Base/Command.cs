@@ -3,25 +3,27 @@
     using System;
     using System.Linq;
 
+    /// <summary>
+    /// The command class which receives a string and divides its letters 
+    ///  - the first letter is for the figure which is about to be played
+    ///  - the second and third letter are for the new position of the figure
+    /// </summary>
     public class Command : ICommand
     {
         private Parser parser;
-        private ProspectMemory memory;
         private string input;
-
         private string[] Commands = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
 
         public Command(string initialInput)
         {
-            this.memory = new ProspectMemory();
             this.Input = initialInput;
             this.FigureLetter = initialInput.Substring(0, 1);
-            this.DirectionLetters = initialInput.Substring(1);
+            this.NewPositionLetters = initialInput.Substring(1);
         }
 
         public string FigureLetter { get; set; }
 
-        public string DirectionLetters { get; set; }
+        public string NewPositionLetters { get; set; }
 
         public string Input
         {
@@ -43,13 +45,23 @@
             }
         }
 
-        public Position DetermineDirection()
+        /// <summary>
+        /// Determines what is the new position of the figure based on the last 2 letters of the command
+        /// </summary>
+        /// <returns>The new position is returned</returns>
+        public Position DetermineNewPosition()
         {
-            this.parser = new Parser(this.DirectionLetters);
-            var direction = this.parser.GetDirection();
-            return direction;
+            this.parser = new Parser(this.NewPositionLetters);
+            var newPosition = this.parser.GetNewPosition();
+            return newPosition;
         }
 
+        /// <summary>
+        /// Checks if the input string is a valid command. 
+        /// There are only 12 valid commands.
+        /// </summary>
+        /// <param name="currentInput"></param>
+        /// <returns></returns>
         private bool IsValid(string currentInput)
         {
             if (this.Commands.Contains(currentInput))
