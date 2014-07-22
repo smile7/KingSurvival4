@@ -1,8 +1,9 @@
 ﻿namespace KingSurvival4
 {
-    using System;
-
-    public class King : Figure, ICloneable
+    /// <summary>
+    /// A specific implementation of the abstract class Figure representing the King in the game
+    /// </summary>
+    public class King : Figure
     {
         private const char KingName = 'K';
         private const char KingSymbol = 'K';
