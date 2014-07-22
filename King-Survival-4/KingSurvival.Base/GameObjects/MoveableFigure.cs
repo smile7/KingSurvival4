@@ -13,11 +13,11 @@
         /// <summary>
         /// Moves the figure to a different position
         /// </summary>
-        /// <param name="directions">The new coordinates of the position</param>
-        public void MoveFigure(Position directions)
+        /// <param name="newPosition">The new coordinates of the position</param>
+        public void MoveFigure(Position newPosition)
         {
-            this.Figure.Position.X += directions.X;
-            this.Figure.Position.Y += directions.Y;
+            this.Figure.Position.X += newPosition.X;
+            this.Figure.Position.Y += newPosition.Y;
         }
     }
 }

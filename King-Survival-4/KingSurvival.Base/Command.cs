@@ -40,7 +40,7 @@
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("Illegal move");
+                    throw new ArgumentOutOfRangeException();
                 }
             }
         }

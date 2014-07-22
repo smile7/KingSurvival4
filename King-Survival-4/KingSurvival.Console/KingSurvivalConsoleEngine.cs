@@ -21,6 +21,10 @@
 
         private Board board;
 
+        private ProspectMemory oldPosition = new ProspectMemory();
+        private int countTurns = 0;
+        private bool kingsTurn = true;
+
         public KingSurvivalConsoleEngine(ConsoleReader reader, ConsoleWriter renderer)
             : base(reader, renderer)
         {
@@ -35,11 +39,6 @@
 
         public override void Start()
         {
-            bool kingsTurn = true;
-            int countTurns = 0;
-
-            ProspectMemory oldPosition = new ProspectMemory();
-
             while (true)
             {
                 foreach (var figure in this.Figures)
@@ -49,116 +48,206 @@
 
                 this.RenderBoard(Board.Field);
 
-                bool hasWon = false;
-                bool hasLost = false;
-                if (kingsTurn)
+                this.SomeMethod();
+                //bool hasWon = false;
+                //bool hasLost = false;
+                //if (kingsTurn)
+                //{
+                //    do
+                //    {
+                //        this.PostMessage(ConsoleMessages.KingsTurnMessage());
+                //        try
+                //        {
+                //            var command = new Command(this.GetCommand().ToUpper());
+                //            Position initial = command.DetermineNewPosition();
+                //            string kingSymbol = command.FigureLetter;
+
+                //            if (kingSymbol != "K")
+                //            {
+                //                throw new ArgumentOutOfRangeException();
+                //            }
+
+                //            if (this.ChangeFigurePosition(this.king, oldPosition, initial))
+                //            {
+                //                countTurns++;
+                //            }
+
+                //            kingsTurn = false;
+                //            hasWon = this.HasKingWon();
+                //            if (hasWon)
+                //            {
+                //                Console.WriteLine("King won in {0} turns", countTurns);
+                //                break;
+                //            }
+                //        }
+                //        catch (ArgumentOutOfRangeException)
+                //        {
+                //            this.PostMessage(ConsoleMessages.InvalidMoveMessage());
+                //        }
+                //        catch (IndexOutOfRangeException)
+                //        {
+                //            this.PostMessage(ConsoleMessages.OutsideBoardMoveMessage());
+                //        }
+                //        catch (InvalidOperationException)
+                //        {
+                //            this.PostMessage(ConsoleMessages.StepOverFigureMoveMessage());
+                //        }
+                //    }
+                //    while (kingsTurn);
+
+                //    if (hasWon)
+                //    {
+                //        break;
+                //    }
+                //}
+                //else
+                //{
+                //    do
+                //    {
+                //        this.PostMessage(ConsoleMessages.PawnsTurnMessage());
+                //        try
+                //        {
+                //            var command = new Command(this.GetCommand().ToUpper());
+                //            Position initial = command.DetermineNewPosition();
+                //            Figure chosenPawn = this.firstPawn;
+                //            string pawnSymbol = command.FigureLetter;
+                //            switch (pawnSymbol)
+                //            {
+                //                case "A":
+                //                    chosenPawn = this.firstPawn;
+                //                    break;
+                //                case "B":
+                //                    chosenPawn = this.secondPawn;
+                //                    break;
+                //                case "C":
+                //                    chosenPawn = this.thirdPawn;
+                //                    break;
+                //                default:
+                //                    chosenPawn = this.fourthPawn;
+                //                    break;
+                //            }
+
+                //            this.ChangeFigurePosition(chosenPawn, oldPosition, initial);
+                //            kingsTurn = true;
+                //            hasLost = this.HasKingLost();
+                //            if (hasLost)
+                //            {
+                //                Console.WriteLine("King lost in {0} turns", countTurns);
+                //                break;
+                //            }
+                //        }
+                //        catch (ArgumentOutOfRangeException)
+                //        {
+                //            this.PostMessage(ConsoleMessages.InvalidMoveMessage());
+                //        }
+                //        catch (IndexOutOfRangeException)
+                //        {
+                //            this.PostMessage(ConsoleMessages.OutsideBoardMoveMessage());
+                //        }
+                //        catch (InvalidOperationException)
+                //        {
+                //            this.PostMessage(ConsoleMessages.StepOverFigureMoveMessage());
+                //        }
+                //    }
+                //    while (!kingsTurn);
+
+                //    if (hasLost)
+                //    {
+                //        break;
+                //    }
+                //}
+            }
+        }
+
+        private void SomeMethod()
+        {
+            do
+            {
+                if (this.kingsTurn)
                 {
-                    do
-                    {
-                        this.PostMessage(ConsoleMessages.KingsTurnMessage());
-                        try
-                        {
-                            var command = new Command(this.GetCommand().ToUpper());
-                            Position initial = command.DetermineNewPosition();
-                            string kingSymbol = command.FigureLetter;
-
-                            if (kingSymbol != "K")
-                            {
-                                throw new ArgumentOutOfRangeException();
-                            }
-
-                            if (this.ClearOldFigurePosition(this.king, oldPosition, initial))
-                            {
-                                countTurns++;
-                            }
-
-                            kingsTurn = false;
-                            hasWon = this.HasKingWon();
-                            if (hasWon)
-                            {
-                                Console.WriteLine("King won in {0} turns", countTurns);
-                                break;
-                            }
-                        }
-                        catch (ArgumentOutOfRangeException)
-                        {
-                            this.PostMessage(ConsoleMessages.InvalidMoveMessage());
-                        }
-                        catch (IndexOutOfRangeException)
-                        {
-                            this.PostMessage(ConsoleMessages.OutsideBoardMoveMessage());
-                        }
-                        catch (InvalidOperationException)
-                        {
-                            this.PostMessage(ConsoleMessages.StepOverFigureMoveMessage());
-                        }
-                    }
-                    while (kingsTurn);
-
-                    if (hasWon)
-                    {
-                        break;
-                    }
+                    this.PostMessage(ConsoleMessages.KingsTurnMessage());
                 }
                 else
                 {
-                    do
-                    {
-                        this.PostMessage(ConsoleMessages.PawnsTurnMessage());
-                        try
-                        {
-                            var command = new Command(this.GetCommand().ToUpper());
-                            Position initial = command.DetermineNewPosition();
-                            Figure chosenPawn = this.firstPawn;
-                            string pawnSymbol = command.FigureLetter;
-                            switch (pawnSymbol)
-                            {
-                                case "A":
-                                    chosenPawn = this.firstPawn;
-                                    break;
-                                case "B":
-                                    chosenPawn = this.secondPawn;
-                                    break;
-                                case "C":
-                                    chosenPawn = this.thirdPawn;
-                                    break;
-                                case "D":
-                                    chosenPawn = this.fourthPawn;
-                                    break;
-                                default:
-                                    throw new ArgumentOutOfRangeException();
-                            }
+                    this.PostMessage(ConsoleMessages.PawnsTurnMessage());
+                }
 
-                            this.ClearOldFigurePosition(chosenPawn, oldPosition, initial);
-                            kingsTurn = true;
-                            hasLost = this.HasKingLost();
-                            if (hasLost)
-                            {
-                                Console.WriteLine("King lost in {0} turns", countTurns);
+                try
+                {
+                    Figure currentFigure;
+                    var command = new Command(this.GetCommand().ToUpper());
+                    Position initial = command.DetermineNewPosition();
+
+                    if (this.kingsTurn)
+                    {
+                        currentFigure = this.king;
+
+                        string kingSymbol = command.FigureLetter;
+                        if (kingSymbol != "K")
+                        {
+                            throw new ArgumentOutOfRangeException();
+                        }
+                    }
+                    else
+                    {
+                        string pawnSymbol = command.FigureLetter;
+                        switch (pawnSymbol)
+                        {
+                            case "A":
+                                currentFigure = this.firstPawn;
                                 break;
-                            }
-                        }
-                        catch (ArgumentOutOfRangeException)
-                        {
-                            this.PostMessage(ConsoleMessages.InvalidMoveMessage());
-                        }
-                        catch (IndexOutOfRangeException)
-                        {
-                            this.PostMessage(ConsoleMessages.OutsideBoardMoveMessage());
-                        }
-                        catch (InvalidOperationException)
-                        {
-                            this.PostMessage(ConsoleMessages.StepOverFigureMoveMessage());
+                            case "B":
+                                currentFigure = this.secondPawn;
+                                break;
+                            case "C":
+                                currentFigure = this.thirdPawn;
+                                break;
+                            default:
+                                currentFigure = this.fourthPawn;
+                                break;
                         }
                     }
-                    while (!kingsTurn);
 
-                    if (hasLost)
+                    this.ChangeFigurePosition(currentFigure, oldPosition, initial);
+
+                    if (this.kingsTurn)
                     {
-                        break;
+                        countTurns++;
+
+                        bool hasWon = this.HasKingWon();
+                        if (hasWon)
+                        {
+                            Console.WriteLine("King won in {0} turns", countTurns);
+                            break;
+                        }
                     }
+                    else
+                    {
+                        bool hasLost = this.HasKingLost();
+                        if (hasLost)
+                        {
+                            Console.WriteLine("King lost in {0} turns", countTurns);
+                            break;
+                        }
+                    }
+
+                    this.kingsTurn = !this.kingsTurn;
+                    break;
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    this.PostMessage(ConsoleMessages.InvalidMoveMessage());
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    this.PostMessage(ConsoleMessages.OutsideBoardMoveMessage());
+                }
+                catch (InvalidOperationException)
+                {
+                    this.PostMessage(ConsoleMessages.StepOverFigureMoveMessage());
                 }
             }
+            while (true);
         }
 
         public bool HasKingWon()
@@ -202,6 +291,8 @@
                 {
                     return true;
                 }
+
+                throw new InvalidOperationException();
             }
 
             return false;
@@ -211,13 +302,13 @@
         {
             if (col >= MaxColumnIndex || col < MinColumnIndex || row >= MaxRowIndex || row < MinRowIndex)
             {
-                throw new IndexOutOfRangeException();
+                return false;
             }
 
             return true;
         }
 
-        private bool ClearOldFigurePosition(Figure figure, ProspectMemory oldPosition, Position initial)
+        private bool ChangeFigurePosition(Figure figure, ProspectMemory oldPosition, Position initial)
         {
             if (this.IsMoveValid(figure, initial))
             {
@@ -232,20 +323,25 @@
                 return true;
             }
 
-            return false;
+            throw new ArgumentOutOfRangeException();
         }
 
-        private bool IsMoveValid(Figure figure, Position direction)
+        private bool IsMoveValid(Figure figure, Position newPosition)
         {
-            int newX = figure.Position.X + direction.X;
-            int newY = figure.Position.Y + direction.Y;
+            int newX = figure.Position.X + newPosition.X;
+            int newY = figure.Position.Y + newPosition.Y;
 
-            if (this.IsPositionInsideBoard(newX, newY))
+            if (this.IsCellWhiteOrBlack(newX, newY))
             {
                 return true;
             }
 
             return false;
         }
+
+        //private bool HasSteppedOverAnotherFigure(int row, int col)
+        //{
+        //    if(Board[row, col] !=)
+        //}
     }
 }
