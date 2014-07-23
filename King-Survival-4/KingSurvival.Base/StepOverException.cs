@@ -1,11 +1,9 @@
-﻿using System;
-
-
-namespace KingSurvival4
+﻿namespace KingSurvival4
 {
+using System;
+
     public class StepOverException : Exception
     {
-
         public StepOverException()
         {
         }

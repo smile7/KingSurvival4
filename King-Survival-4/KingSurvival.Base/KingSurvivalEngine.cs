@@ -14,11 +14,11 @@
             this.Renderer = renderer;
         }
 
+        public IList<Figure> Figures { get; set; }
+
         protected IWriter Renderer { get; private set; }
 
         protected IReader Reader { get; private set; }
-
-        public IList<Figure> Figures { get; set; }
 
         /// <summary>
         /// The start of the game

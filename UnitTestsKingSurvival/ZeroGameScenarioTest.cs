@@ -8,9 +8,9 @@
     [TestClass]
     public class ZeroGameScenarioTest
     {
-        //[TestMethod]
-        //public void KingWinsIn7Turns()
-        //{
+        // [TestMethod]
+        // public void KingWinsIn7Turns()
+        // {
         //    using (StringReader input = new StringReader("kul\nadl\nadr\nkur\nadl\nkur\nbdr\nkul\nbdl\nkur\ncdl\nkur\nddr\nkur\n\n"))
         //    {
         //        Console.SetIn(input);
@@ -26,6 +26,6 @@
         //            Assert.AreEqual("King won in 7 turns", toCompare, "When playing based on the zero test scenario, King didn't win.");
         //        }
         //    }
-        //}
+        // }
     }
 }

@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="KingSurvivalUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ConsoleMessagesTests.cs" />
     <Compile Include="ZeroGameScenarioTest.cs" />
   </ItemGroup>
   <ItemGroup>

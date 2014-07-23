@@ -102,17 +102,17 @@
                         }
                     }
 
-                    this.ChangeFigurePosition(currentFigure, oldPosition, initial);
+                    this.ChangeFigurePosition(currentFigure, this.oldPosition, initial);
 
                     if (this.kingsTurn)
                     {
-                        countTurns++;
+                        this.countTurns++;
 
                         bool hasWon = this.HasKingWon();
                         if (hasWon)
                         {
                             this.RenderBoard(Board.Field);
-                            this.PostMessage(ConsoleMessages.KingWonMessage(countTurns));
+                            this.PostMessage(ConsoleMessages.KingWonMessage(this.countTurns));
                             this.isGameInProgress = false;
                             break;
                         }
@@ -123,7 +123,7 @@
                         if (hasLost)
                         {
                             this.RenderBoard(Board.Field);
-                            this.PostMessage(ConsoleMessages.KingLostMessage(countTurns));
+                            this.PostMessage(ConsoleMessages.KingLostMessage(this.countTurns));
                             this.isGameInProgress = false;
                             break;
                         }

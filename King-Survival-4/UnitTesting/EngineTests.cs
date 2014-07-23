@@ -1,7 +1,7 @@
 ﻿namespace UnitTesting
 {
-using KingSurvival4;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using KingSurvival4;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class EngineTests
