@@ -136,7 +136,7 @@
                 {
                     this.PostMessage(ConsoleMessages.OutsideBoardMoveMessage());
                 }
-                catch (InvalidOperationException)
+                catch (StepOverException)
                 {
                     this.PostMessage(ConsoleMessages.StepOverFigureMoveMessage());
                 }
@@ -230,7 +230,7 @@
                     return true;
                 }
 
-                throw new InvalidOperationException();
+                throw new StepOverException();
             }
 
             throw new IndexOutOfRangeException();
