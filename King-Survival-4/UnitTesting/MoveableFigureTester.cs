@@ -3,7 +3,7 @@
     using System;
     using KingSurvival4;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
- 
+
     [TestClass]
     public class MoveableFigureTester
     {
