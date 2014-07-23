@@ -148,7 +148,7 @@
             while (true);
         }
 
-        public bool HasKingWon()
+        private bool HasKingWon()
         {
             if (this.king.Position.X == 0)
             {
@@ -166,7 +166,7 @@
             return true;
         }
 
-        public bool HasKingLost()
+        private bool HasKingLost()
         {
             bool canMoveDownRight = this.IsSurrounded(this.king.Position.X + 1, this.king.Position.Y + 1);
             bool canMoveDownLeft = this.IsSurrounded(this.king.Position.X + 1, this.king.Position.Y - 1);

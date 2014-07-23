@@ -130,5 +130,12 @@
 
             Assert.IsTrue(areEqual);
         }
+
+        [TestMethod]
+        public void BoardsizeTest()
+        {
+            Assert.AreEqual(8, Board.Field.GetLength(0), "The main board width is not 8.");
+            Assert.AreEqual(8, Board.Field.GetLength(1), "The board height is not 8");
+        }
     }
 }

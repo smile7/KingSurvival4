@@ -18,7 +18,7 @@
 
         protected IReader Reader { get; private set; }
 
-        protected IList<Figure> Figures { get; set; }
+        public IList<Figure> Figures { get; set; }
 
         /// <summary>
         /// The start of the game
