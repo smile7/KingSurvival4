@@ -24,6 +24,7 @@
         private ProspectMemory oldPosition = new ProspectMemory();
         private int countTurns = 0;
         private bool kingsTurn = true;
+        private bool isGameInProgress = true;
 
         public KingSurvivalConsoleEngine(ConsoleReader reader, ConsoleWriter renderer)
             : base(reader, renderer)
@@ -39,7 +40,7 @@
 
         public override void Start()
         {
-            while (true)
+            while (this.isGameInProgress)
             {
                 foreach (var figure in this.Figures)
                 {
@@ -49,7 +50,6 @@
                 this.RenderBoard(Board.Field);
 
                 this.ExecuteCommand();
-                
             }
         }
 
@@ -111,7 +111,9 @@
                         bool hasWon = this.HasKingWon();
                         if (hasWon)
                         {
+                            this.RenderBoard(Board.Field);
                             Console.WriteLine("King won in {0} turns", countTurns);
+                            this.isGameInProgress = false;
                             break;
                         }
                     }
@@ -120,7 +122,9 @@
                         bool hasLost = this.HasKingLost();
                         if (hasLost)
                         {
+                            this.RenderBoard(Board.Field);
                             Console.WriteLine("King lost in {0} turns", countTurns);
+                            this.isGameInProgress = false;
                             break;
                         }
                     }
