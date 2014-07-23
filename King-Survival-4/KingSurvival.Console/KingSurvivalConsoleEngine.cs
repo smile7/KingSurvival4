@@ -112,7 +112,7 @@
                         if (hasWon)
                         {
                             this.RenderBoard(Board.Field);
-                            Console.WriteLine("King won in {0} turns", countTurns);
+                            this.PostMessage(ConsoleMessages.KingWonMessage(countTurns));
                             this.isGameInProgress = false;
                             break;
                         }
@@ -123,7 +123,7 @@
                         if (hasLost)
                         {
                             this.RenderBoard(Board.Field);
-                            Console.WriteLine("King lost in {0} turns", countTurns);
+                            this.PostMessage(ConsoleMessages.KingLostMessage(countTurns));
                             this.isGameInProgress = false;
                             break;
                         }

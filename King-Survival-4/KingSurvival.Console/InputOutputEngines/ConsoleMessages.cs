@@ -29,5 +29,15 @@
         {
             return "You can't step over another figure. Please enter a new command.";
         }
+
+        public static string KingWonMessage(int steps)
+        {
+            return string.Format("King won in {0} turns", steps);
+        }
+
+        public static string KingLostMessage(int steps)
+        {
+            return string.Format("King lost in {0} turns", steps);
+        }
     }
 }
