@@ -12,14 +12,14 @@
         /// <param name="name">The name of the figure which is going to be created</param>
         /// <param name="symbol">The symbol of the figure which is going to be created</param>
         /// <returns>Returns King or Pawn depending on the symbol</returns>
-        public static Figure GetFigure(Position position, char name, char symbol)
+        public static Figure GetFigure(Position position, char symbol, string name)
         {
-            switch (symbol)
+            switch (name)
             {
-                case 'K':
+                case "King":
                     return new King(position);
                 default:
-                    return new Pawn(position, name);
+                    return new Pawn(position, symbol);
             }
         }
     }

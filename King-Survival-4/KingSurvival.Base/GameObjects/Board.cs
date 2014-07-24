@@ -56,7 +56,7 @@
         /// <param name="figure">The given figure</param>
         public void Notify(Figure figure)
         {
-            Field[figure.Position.X, figure.Position.Y] = figure.Name.ToString();
+            Field[figure.Position.X, figure.Position.Y] = figure.Symbol.ToString();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@
         /// <param name="oldPosition">The old position of the figure</param>
         public void Notify(Figure figure, Position oldPosition)
         {
-            Field[figure.Position.X, figure.Position.Y] = figure.Name.ToString();
+            Field[figure.Position.X, figure.Position.Y] = figure.Symbol.ToString();
             Field[oldPosition.X, oldPosition.Y] = "+";
         }
 

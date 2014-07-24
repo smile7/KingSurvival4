@@ -5,14 +5,9 @@
     /// </summary>
     public static class ConsoleMessages
     {
-        public static string KingsTurnMessage()
+        public static string FiguresTurnMessage(string figuresName)
         {
-            return "King's turn:";
-        }
-
-        public static string PawnsTurnMessage()
-        {
-            return "Pawn's turn:";
+            return string.Format("{0}'s turn:", figuresName);
         }
 
         public static string InvalidMoveMessage()

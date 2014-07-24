@@ -10,7 +10,7 @@
         [TestMethod]
         public void KingsTurnMessageTest()
         {
-            Assert.AreEqual("King's turn:", ConsoleMessages.KingsTurnMessage()); 
+            Assert.AreEqual("King's turn:", ConsoleMessages.FiguresTurnMessage()); 
         }
 
         [TestMethod]

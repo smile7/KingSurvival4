@@ -7,7 +7,7 @@
     /// </summary>
     public abstract class Figure : ICloneable
     {
-        public Figure(Position position, char name, char symbol)
+        public Figure(Position position, char symbol, string name)
         {
             this.Position = position;
             this.Name = name;
@@ -16,7 +16,7 @@
 
         public Position Position { get; set; }
 
-        public char Name { get; set; }
+        public string Name { get; set; }
 
         public char Symbol { get; set; }
 
@@ -26,7 +26,7 @@
         /// <returns>A copy of the current figure</returns>
         public FigureMemento SaveMemento()
         {
-            return new FigureMemento(this.Position, this.Name, this.Symbol);
+            return new FigureMemento(this.Position, this.Symbol, this.Name);
         }
 
         /// <summary>

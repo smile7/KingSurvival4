@@ -13,11 +13,11 @@
         public const int MinColumnIndex = 0;
         public const int MaxColumnIndex = 8;
 
-        private Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', 'P');
-        private Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', 'P');
-        private Figure thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', 'P');
-        private Figure fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', 'P');
-        private Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', 'K');
+        private Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', "Pawn");
+        private Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', "Pawn");
+        private Figure thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', "Pawn");
+        private Figure fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', "Pawn");
+        private Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', "King");
 
         private Board board;
 
@@ -56,15 +56,16 @@
 
         private void ExecuteCommand()
         {
+            //TO DO: DETERMINE IN THE BEGINNING WHICH IS THE CURRENT FIGURE THAT SHOULD BE MOVED
             do
             {
                 if (this.kingsTurn)
                 {
-                    this.PostMessage(ConsoleMessages.KingsTurnMessage());
+                    this.PostMessage(ConsoleMessages.FiguresTurnMessage(this.king.Name));
                 }
                 else
                 {
-                    this.PostMessage(ConsoleMessages.PawnsTurnMessage());
+                    this.PostMessage(ConsoleMessages.FiguresTurnMessage(this.firstPawn.Name));
                 }
 
                 try

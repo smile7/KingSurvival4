@@ -6,16 +6,16 @@
     /// </summary>
     public class FigureMemento
     {
-        public FigureMemento(Position position, char name, char symbol)
+        public FigureMemento(Position position, char symbol, string name)
         {
             this.Position = position;
-            this.Name = name;
             this.Symbol = symbol;
+            this.Name = name;
         }
 
         public Position Position { get; set; }
 
-        public char Name { get; set; }
+        public string Name { get; set; }
 
         public char Symbol { get; set; }
     }

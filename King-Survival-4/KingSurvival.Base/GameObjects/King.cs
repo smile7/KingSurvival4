@@ -5,11 +5,11 @@
     /// </summary>
     public class King : Figure
     {
-        private const char KingName = 'K';
+        private const string KingName = "King";
         private const char KingSymbol = 'K';
 
         public King(Position initialPosition)
-            : base(initialPosition, KingName, KingSymbol)
+            : base(initialPosition, KingSymbol, KingName)
         {
         }
     }

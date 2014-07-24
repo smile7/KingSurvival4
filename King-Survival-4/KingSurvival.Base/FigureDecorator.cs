@@ -6,7 +6,7 @@
     public abstract class FigureDecorator : Figure
     {
         public FigureDecorator(Figure figure)
-            : base(figure.Position, figure.Name, figure.Symbol)
+            : base(figure.Position, figure.Symbol, figure.Name)
         {
             this.Figure = figure;
         }
