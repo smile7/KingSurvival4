@@ -8,7 +8,7 @@
     ///  - the first letter is for the figure which is about to be played
     ///  - the second and third letter are for the new position of the figure
     /// </summary>
-    public class Command : ICommand
+    public class Command
     {
         private string input;
         private string[] validCommands = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
@@ -20,11 +20,11 @@
             this.NewPositionLetters = initialInput.Substring(1);
         }
 
-        public string FigureLetter { get; set; }
+        public string FigureLetter { get; private set; }
 
-        public string NewPositionLetters { get; set; }
+        public string NewPositionLetters { get; private set; }
 
-        public string Input
+        private string Input
         {
             get
             {
@@ -39,7 +39,7 @@
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("The command is not valid.");
                 }
             }
         }
@@ -50,9 +50,10 @@
         /// </summary>
         /// <param name="currentInput">The given command</param>
         /// <returns>Does the command list contain the given input or not</returns>
-        private bool IsValid(string currentInput)
+
+        private bool IsValid(string input)
         {
-            if (this.validCommands.Contains(currentInput))
+            if (this.validCommands.Contains(input))
             {
                 return true;
             }
