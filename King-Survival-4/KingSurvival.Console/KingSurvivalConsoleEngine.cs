@@ -94,9 +94,11 @@
                                 case "C":
                                     currentFigure = this.thirdPawn;
                                     break;
-                                default:
-                                    currentFigure = this.fourthPawn;
+                                case "D":
+                                    currentFigure = this.thirdPawn;
                                     break;
+                                default:
+                                    throw new InvalidOperationException();
                             }
                         }
 
