@@ -9,7 +9,7 @@
     /// </summary>
     public abstract class KingSurvivalEngine
     {
-        private IWriter renderer;
+        private IWriter writer;
         private IReader reader;
         public KingSurvivalEngine(IReader reader, IWriter renderer)
         {
@@ -23,7 +23,7 @@
         {
             get
             {
-                return this.renderer;
+                return this.writer;
             }
 
             set
@@ -33,7 +33,7 @@
                     throw new NullReferenceException("The writer cannot be null!");
                 }
 
-                this.renderer = value;
+                this.writer = value;
             }
         }
 
