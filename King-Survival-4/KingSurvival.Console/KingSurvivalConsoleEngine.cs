@@ -61,14 +61,13 @@
                     this.PostMessage(ConsoleMessages.PawnsTurnMessage());
                 }
 
-                //TO DO: DETERMINE IN THE BEGINNING WHICH IS THE CURRENT FIGURE THAT SHOULD BE MOVED
                 do
                 {
                     try
                     {
                         Figure currentFigure;
                         var command = new Command(this.GetCommand().ToUpper());
-                        Position newPosition = Parser.GetNewPosition(command.NewPositionLetters);
+                        var newPosition = Parser.GetNewPosition(command.NewPositionLetters);
 
                         if (this.kingsTurn)
                         {
@@ -212,15 +211,6 @@
             return false;
         }
 
-        private bool IsPositionInsideBoard(int row, int col)
-        {
-            if (col >= MaxColumnIndex || col < MinColumnIndex || row >= MaxRowIndex || row < MinRowIndex)
-            {
-                return false;
-            }
-
-            return true;
-        }
 
         private bool ChangeFigurePosition(Figure figure, FigureMemory oldPosition, Position initial)
         {
@@ -266,6 +256,16 @@
             }
 
             return false;
+        }
+
+        private bool IsPositionInsideBoard(int row, int col)
+        {
+            if (col >= MaxColumnIndex || col < MinColumnIndex || row >= MaxRowIndex || row < MinRowIndex)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
