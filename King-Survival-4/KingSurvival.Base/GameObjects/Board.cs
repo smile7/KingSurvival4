@@ -35,20 +35,18 @@
         {
             get
             {
-                //if (instance == null)
-                //{
-                //    lock (syncLock)
-                //    {
-                //        if (instance == null)
-                //        {
-                //            instance = new Board();
-                //        }
-                //    }
-                //}
+                if (instance == null)
+                {
+                    lock (syncLock)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new Board();
+                        }
+                    }
+                }
 
-                //return instance;
-
-                return new Board();
+                return instance;
             }
         }
 
