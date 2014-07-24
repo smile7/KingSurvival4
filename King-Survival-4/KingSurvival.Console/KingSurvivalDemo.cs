@@ -3,11 +3,11 @@
     /// <summary>
     /// The start of the program
     /// </summary>
-    public class KingSurvival4Demo
+    public class KingSurvivalDemo
     {
         public static void Main()
         {
-            KingSurvivalEngine engine = new KingSurvivalConsoleEngine(new ConsoleReader(), new ConsoleWriter());
+            KingSurvivalEngine engine = new KingSurvivalConsoleEngine();
             engine.Start();
         }
     }

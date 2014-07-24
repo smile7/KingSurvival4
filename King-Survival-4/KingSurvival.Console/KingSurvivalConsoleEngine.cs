@@ -26,8 +26,8 @@
         private bool kingsTurn = true;
         private bool isGameInProgress = true;
 
-        public KingSurvivalConsoleEngine(ConsoleReader reader, ConsoleWriter renderer)
-            : base(reader, renderer)
+        public KingSurvivalConsoleEngine()
+            : base(new ConsoleReader(), new ConsoleWriter())
         {
             this.board = Board.Instance;
             this.Figures = new List<Figure>();
@@ -38,15 +38,16 @@
             this.Figures.Add(this.king);
         }
 
-        public override void Start()
+        protected override void GameBegins()
         {
+
+            foreach (var figure in this.Figures)
+            {
+                this.board.Notify(figure);
+            }
+
             while (this.isGameInProgress)
             {
-                foreach (var figure in this.Figures)
-                {
-                    this.board.Notify(figure);
-                }
-
                 this.RenderBoard(Board.Field);
 
                 this.ExecuteCommand();

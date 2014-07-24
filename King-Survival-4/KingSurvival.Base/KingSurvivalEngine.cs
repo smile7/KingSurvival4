@@ -1,5 +1,6 @@
 ﻿namespace KingSurvival4
 {
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -8,22 +9,62 @@
     /// </summary>
     public abstract class KingSurvivalEngine
     {
+        private IWriter renderer;
+        private IReader reader;
         public KingSurvivalEngine(IReader reader, IWriter renderer)
         {
             this.Reader = reader;
-            this.Renderer = renderer;
+            this.Writer = renderer;
         }
 
         protected IList<Figure> Figures { get; set; }
 
-        protected IWriter Renderer { get; private set; }
+        protected IWriter Writer
+        {
+            get
+            {
+                return this.renderer;
+            }
 
-        protected IReader Reader { get; private set; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new NullReferenceException("The writer cannot be null!");
+                }
+
+                this.renderer = value;
+            }
+        }
+
+        protected IReader Reader
+        {
+            get
+            {
+                return this.reader;
+            }
+
+            set
+            {
+                if (value == null)
+                {
+                    throw new NullReferenceException("The reader cannot be null!");
+                }
+
+                this.reader = value;
+            }
+        }
 
         /// <summary>
         /// The start of the game
         /// </summary>
-        public abstract void Start();
+        public void Start()
+        {
+            this.GameBegins();
+        }
+
+        protected abstract void GameBegins();
+
 
         /// <summary>
         /// Read a command from the player of the game
@@ -40,7 +81,7 @@
         /// <param name="message">The message that should be displayed</param>
         protected void PostMessage(string message)
         {
-            this.Renderer.WriteMessage(message);
+            this.Writer.WriteMessage(message);
         }
 
         /// <summary>
@@ -49,8 +90,8 @@
         /// <param name="board"></param>
         protected void RenderBoard(string[,] board)
         {
-            this.Renderer.Clear();
-            this.Renderer.RenderBoard(board);
+            this.Writer.Clear();
+            this.Writer.RenderBoard(board);
         }
     }
 }
