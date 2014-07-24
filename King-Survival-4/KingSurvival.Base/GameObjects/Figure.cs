@@ -12,7 +12,6 @@
             this.Position = position;
             this.Name = name;
             this.Symbol = symbol;
-
         }
 
         public Position Position { get; set; }
