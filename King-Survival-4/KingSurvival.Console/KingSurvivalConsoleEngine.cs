@@ -52,18 +52,18 @@
             {
                 this.RenderBoard(Board.Field);
 
+                if (this.kingsTurn)
+                {
+                    this.PostMessage(ConsoleMessages.KingsTurnMessage());
+                }
+                else
+                {
+                    this.PostMessage(ConsoleMessages.PawnsTurnMessage());
+                }
+
                 //TO DO: DETERMINE IN THE BEGINNING WHICH IS THE CURRENT FIGURE THAT SHOULD BE MOVED
                 do
                 {
-                    if (this.kingsTurn)
-                    {
-                        this.PostMessage(ConsoleMessages.FiguresTurnMessage(this.king.Name));
-                    }
-                    else
-                    {
-                        this.PostMessage(ConsoleMessages.FiguresTurnMessage(this.firstPawn.Name));
-                    }
-
                     try
                     {
                         Figure currentFigure;
@@ -77,7 +77,7 @@
                             string kingSymbol = command.FigureLetter;
                             if (kingSymbol != "K")
                             {
-                                throw new ArgumentOutOfRangeException();
+                                throw new InvalidOperationException();
                             }
                         }
                         else
@@ -138,6 +138,10 @@
                     catch (StepOverException)
                     {
                         this.PostMessage(ConsoleMessages.StepOverFigureMoveMessage());
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        this.PostMessage(ConsoleMessages.WrongFigureCommand());
                     }
                 }
                 while (true);
@@ -231,7 +235,7 @@
                 return true;
             }
 
-            throw new ArgumentOutOfRangeException();
+            return false;
         }
 
         private bool IsMoveValid(Figure figure, Position newPosition)
