@@ -63,8 +63,15 @@
             this.GameBegins();
         }
 
+        /// <summary>
+        /// This is the logic of the game, the actual game starts here
+        /// </summary>
         protected abstract void GameBegins();
 
+        /// <summary>
+        /// When the king wins or loses, this is the end logic
+        /// </summary>
+        protected abstract void GameEnds(bool hasKingWon);
 
         /// <summary>
         /// Read a command from the player of the game
