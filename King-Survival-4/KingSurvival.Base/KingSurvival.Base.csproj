@@ -59,7 +59,7 @@
     <Compile Include="GameObjects\Pawn.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProspectMemory.cs" />
+    <Compile Include="FigureMemory.cs" />
     <Compile Include="Exceptions\StepOverException.cs" />
   </ItemGroup>
   <ItemGroup>

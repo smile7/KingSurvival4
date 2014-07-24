@@ -21,7 +21,7 @@
 
         private Board board;
 
-        private ProspectMemory oldPosition = new ProspectMemory();
+        private FigureMemory oldPosition = new FigureMemory();
         private int countTurns = 0;
         private bool kingsTurn = true;
         private bool isGameInProgress = true;
@@ -68,7 +68,7 @@
                     {
                         Figure currentFigure;
                         var command = new Command(this.GetCommand().ToUpper());
-                        Position initial = Parser.GetNewPosition(command.NewPositionLetters);
+                        Position newPosition = Parser.GetNewPosition(command.NewPositionLetters);
 
                         if (this.kingsTurn)
                         {
@@ -102,7 +102,7 @@
                             }
                         }
 
-                        this.ChangeFigurePosition(currentFigure, this.oldPosition, initial);
+                        this.ChangeFigurePosition(currentFigure, this.oldPosition, newPosition);
 
                         if (this.kingsTurn)
                         {
@@ -222,7 +222,7 @@
             return true;
         }
 
-        private bool ChangeFigurePosition(Figure figure, ProspectMemory oldPosition, Position initial)
+        private bool ChangeFigurePosition(Figure figure, FigureMemory oldPosition, Position initial)
         {
             if (this.IsMoveValid(figure, initial))
             {
