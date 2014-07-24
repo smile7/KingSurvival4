@@ -70,7 +70,7 @@
                 {
                     Figure currentFigure;
                     var command = new Command(this.GetCommand().ToUpper());
-                    Position initial = command.DetermineNewPosition();
+                    Position initial = Parser.GetNewPosition(command.NewPositionLetters);
 
                     if (this.kingsTurn)
                     {

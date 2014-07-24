@@ -14,7 +14,7 @@
             this.Renderer = renderer;
         }
 
-        public IList<Figure> Figures { get; set; }
+        protected IList<Figure> Figures { get; set; }
 
         protected IWriter Renderer { get; private set; }
 

@@ -3,7 +3,7 @@
     /// <summary>
     /// A class which receives the second 2 letters of a command and parses them to a position
     /// </summary>
-    internal class Parser
+    public static class Parser
     {
         /// <summary>
         /// Constants for the possible directions
@@ -12,20 +12,13 @@
         private const string DownLeft = "DL";
         private const string UpRight = "UR";
 
-        public Parser(string command)
-        {
-            this.Command = command;
-        }
-
-        public string Command { get; set; }
-
         /// <summary>
-        /// Parses the direction in the command to a new position
+        /// Determines what is the new position of the figure based on the last 2 letters of the command
         /// </summary>
         /// <returns>The new position</returns>
-        public Position GetNewPosition()
+        public static Position GetNewPosition(string command)
         {
-            string directionStr = this.Command.ToUpper();
+            string directionStr = command.ToUpper();
 
             switch (directionStr)
             {

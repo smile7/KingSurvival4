@@ -10,7 +10,6 @@
     /// </summary>
     public class Command : ICommand
     {
-        private Parser parser;
         private string input;
         private string[] validCommands = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
 
@@ -43,17 +42,6 @@
                     throw new ArgumentOutOfRangeException();
                 }
             }
-        }
-
-        /// <summary>
-        /// Determines what is the new position of the figure based on the last 2 letters of the command
-        /// </summary>
-        /// <returns>The new position is returned</returns>
-        public Position DetermineNewPosition()
-        {
-            this.parser = new Parser(this.NewPositionLetters);
-            var newPosition = this.parser.GetNewPosition();
-            return newPosition;
         }
 
         /// <summary>

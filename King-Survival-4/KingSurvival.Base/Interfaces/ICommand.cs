@@ -2,6 +2,6 @@
 {
     internal interface ICommand
     {
-        Position DetermineNewPosition();
+        //Position DetermineNewPosition();
     }
 }
