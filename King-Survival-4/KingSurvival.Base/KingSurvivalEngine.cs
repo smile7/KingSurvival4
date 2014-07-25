@@ -74,7 +74,7 @@
         /// <summary>
         /// When the king wins or loses, this is the end logic
         /// </summary>
-        protected abstract void GameEnds(bool hasKingWon);
+        protected abstract void GameEnds();
 
         /// <summary>
         /// Determines if the king wins in the end

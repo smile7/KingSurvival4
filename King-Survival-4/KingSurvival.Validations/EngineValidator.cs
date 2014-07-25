@@ -4,12 +4,22 @@
     using KingSurvival.Base.GameObjects;
     using KingSurvival.Base.Exceptions;
     using KingSurvival.Base;
+
+    /// <summary>
+    /// The class which does the validations for the engine
+    /// </summary>
     public static class EngineValidator
     {
         private const int MinRowIndex = 0;
         private const int MaxRowIndex = 8;
         private const int MinColumnIndex = 0;
         private const int MaxColumnIndex = 8;
+
+        /// <summary>
+        /// Method which checks if the game has ended: the king has won or the king has lost
+        /// </summary>
+        /// <param name="king">The king figure</param>
+        /// <returns>True or false</returns>
         public static bool HasGameEnded(Figure king)
         {
             if (king.Position.X == 0)
@@ -44,39 +54,6 @@
 
             return false;
         }
-
-        //protected bool HasKingWon()
-        //{
-        //    if (this.king.Position.X == 0)
-        //    {
-        //        return true;
-        //    }
-
-        //    for (int i = 0; i < Board.Field.GetLength(0); i += 2)
-        //    {
-        //        if (Board.Field[Board.Field.GetLength(1) - 1, i] == Board.WhiteCell || Board.Field[Board.Field.GetLength(1) - 1, i] == Board.BlackCell)
-        //        {
-        //            return false;
-        //        }
-        //    }
-
-        //    return true;
-        //}
-
-        //protected override bool HasKingLost()
-        //{
-        //    bool canMoveDownRight = this.IsSurrounded(this.king.Position.X + 1, this.king.Position.Y + 1);
-        //    bool canMoveDownLeft = this.IsSurrounded(this.king.Position.X + 1, this.king.Position.Y - 1);
-        //    bool canMoveUpRight = this.IsSurrounded(this.king.Position.X - 1, this.king.Position.Y + 1);
-        //    bool canMoveUpLeft = this.IsSurrounded(this.king.Position.X - 1, this.king.Position.Y - 1);
-
-        //    if (!canMoveDownRight && !canMoveDownLeft && !canMoveUpRight && !canMoveUpLeft)
-        //    {
-        //        return true;
-        //    }
-
-        //    return false;
-        //}
 
         private static bool IsSurrounded(int row, int col)
         {

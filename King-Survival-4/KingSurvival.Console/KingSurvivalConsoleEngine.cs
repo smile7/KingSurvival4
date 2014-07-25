@@ -13,17 +13,16 @@
     /// </summary>
     public class KingSurvivalConsoleEngine : KingSurvivalEngine
     {
-
-        protected readonly Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', "Pawn");
-        protected readonly Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', "Pawn");
-        protected readonly Figure thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', "Pawn");
-        protected readonly Figure fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', "Pawn");
-        protected readonly Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', "King");
+        private readonly Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', "Pawn");
+        private readonly Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', "Pawn");
+        private readonly Figure thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', "Pawn");
+        private readonly Figure fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', "Pawn");
+        private readonly Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', "King");
 
         private readonly Board board;
         private readonly FigureMemory oldPosition = new FigureMemory();
-        private readonly bool isGameInProgress = true;
 
+        private bool isGameInProgress = true;
         private int countTurns = 0;
         private bool kingsTurn = true;
 
@@ -45,8 +44,6 @@
             {
                 this.board.Notify(figure);
             }
-
-            bool hasKingWon = false;
 
             while (this.isGameInProgress)
             {
@@ -104,26 +101,10 @@
 
                         this.ChangeFigurePosition(currentFigure, this.oldPosition, newPosition);
 
-                        //if (this.kingsTurn)
-                        //{
-                            
-                        //    bool hasWon = this.HasKingWon();
-                        //    if (hasWon)
-                        //    {
-                        //        hasKingWon = true;
-                        //        this.isGameInProgress = false;
-                        //        break;
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    bool hasLost = this.HasKingLost();
-                        //    if (hasLost)
-                        //    {
-                        //        this.isGameInProgress = false;
-                        //        break;
-                        //    }
-                        //}
+                        if (EngineValidator.HasGameEnded(this.king))
+                        {
+                            this.isGameInProgress = false;
+                        }
 
                         this.kingsTurn = !this.kingsTurn;
                         break;
@@ -148,14 +129,14 @@
                 while (true);
             }
 
-            this.GameEnds(hasKingWon);
+            this.GameEnds();
         }
 
-        protected override void GameEnds(bool hasKingWon)
+        protected override void GameEnds()
         {
             this.RenderBoard(Board.Field);
 
-            if (hasKingWon)
+            if (this.HasKingWon())
             {
                 this.WriteMessage(ConsoleMessages.KingWonMessage(this.countTurns));
             }
@@ -164,10 +145,6 @@
                 this.WriteMessage(ConsoleMessages.KingLostMessage(this.countTurns));
             }
         }
-
-        //TO DO: Make a method which finds out if the game has ended and 
-        //after that ask if hasKingWon in order to write the final message in GameEnds
-
 
         protected override bool HasKingWon()
         {
@@ -204,7 +181,5 @@
 
             return false;
         }
-
-        
     }
 }
