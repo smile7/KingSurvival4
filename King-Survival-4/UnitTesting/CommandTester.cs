@@ -12,6 +12,7 @@
         public void CommandInvalidInputTester()
         {
             var command = new Command("alabala");
+            Assert.IsNull(command);
         }
 
         [TestMethod]

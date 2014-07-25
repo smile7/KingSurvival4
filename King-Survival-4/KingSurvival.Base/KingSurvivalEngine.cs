@@ -13,6 +13,7 @@
     {
         private IWriter writer;
         private IReader reader;
+
         public KingSurvivalEngine(IReader reader, IWriter renderer)
         {
             this.Reader = reader;
@@ -74,6 +75,12 @@
         /// When the king wins or loses, this is the end logic
         /// </summary>
         protected abstract void GameEnds(bool hasKingWon);
+
+        /// <summary>
+        /// Determines if the king wins in the end
+        /// </summary>
+        /// <returns>True/false</returns>
+        protected abstract bool HasKingWon();
 
         /// <summary>
         /// Read a command from the player of the game

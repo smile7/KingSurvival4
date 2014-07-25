@@ -13,9 +13,9 @@
 
         private const int NumberOfCols = 8;
 
-        private static volatile Board instance;
-
         private static readonly object syncLock = new object();
+
+        private static volatile Board instance;
 
         /// <summary>
         /// A private constructor for the Singleton implementation

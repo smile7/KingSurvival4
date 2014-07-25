@@ -17,18 +17,18 @@
         public const int MinColumnIndex = 0;
         public const int MaxColumnIndex = 8;
 
-        private readonly Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', "Pawn");
-        private readonly Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', "Pawn");
-        private readonly Figure thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', "Pawn");
-        private readonly Figure fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', "Pawn");
-        private readonly Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', "King");
+        protected readonly Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', "Pawn");
+        protected readonly Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', "Pawn");
+        protected readonly Figure thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', "Pawn");
+        protected readonly Figure fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', "Pawn");
+        protected readonly Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', "King");
 
         private readonly Board board;
-
         private readonly FigureMemory oldPosition = new FigureMemory();
+        private readonly bool isGameInProgress = true;
+
         private int countTurns = 0;
         private bool kingsTurn = true;
-        private bool isGameInProgress = true;
 
         public KingSurvivalConsoleEngine()
             : base(new ConsoleReader(), new ConsoleWriter())
@@ -75,6 +75,7 @@
                         if (this.kingsTurn)
                         {
                             currentFigure = this.king;
+                            this.countTurns++;
 
                             string kingSymbol = command.FigureLetter;
                             if (kingSymbol != "K")
@@ -106,27 +107,26 @@
 
                         this.ChangeFigurePosition(currentFigure, this.oldPosition, newPosition);
 
-                        if (this.kingsTurn)
-                        {
-                            this.countTurns++;
-
-                            bool hasWon = this.HasKingWon();
-                            if (hasWon)
-                            {
-                                hasKingWon = true;
-                                this.isGameInProgress = false;
-                                break;
-                            }
-                        }
-                        else
-                        {
-                            bool hasLost = this.HasKingLost();
-                            if (hasLost)
-                            {
-                                this.isGameInProgress = false;
-                                break;
-                            }
-                        }
+                        //if (this.kingsTurn)
+                        //{
+                            
+                        //    bool hasWon = this.HasKingWon();
+                        //    if (hasWon)
+                        //    {
+                        //        hasKingWon = true;
+                        //        this.isGameInProgress = false;
+                        //        break;
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    bool hasLost = this.HasKingLost();
+                        //    if (hasLost)
+                        //    {
+                        //        this.isGameInProgress = false;
+                        //        break;
+                        //    }
+                        //}
 
                         this.kingsTurn = !this.kingsTurn;
                         break;
@@ -168,7 +168,11 @@
             }
         }
 
-        private bool HasKingWon()
+        //TO DO: Make a method which finds out if the game has ended and 
+        //after that ask if hasKingWon in order to write the final message in GameEnds
+
+
+        protected override bool HasKingWon()
         {
             if (this.king.Position.X == 0)
             {
@@ -185,35 +189,6 @@
 
             return true;
         }
-
-        private bool HasKingLost()
-        {
-            bool canMoveDownRight = this.IsSurrounded(this.king.Position.X + 1, this.king.Position.Y + 1);
-            bool canMoveDownLeft = this.IsSurrounded(this.king.Position.X + 1, this.king.Position.Y - 1);
-            bool canMoveUpRight = this.IsSurrounded(this.king.Position.X - 1, this.king.Position.Y + 1);
-            bool canMoveUpLeft = this.IsSurrounded(this.king.Position.X - 1, this.king.Position.Y - 1);
-
-            if (!canMoveDownRight && !canMoveDownLeft && !canMoveUpRight && !canMoveUpLeft)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private bool IsSurrounded(int row, int col)
-        {
-            if (this.IsPositionInsideBoard(row, col))
-            {
-                if (this.HasSteppedOverAnotherFigure(row, col))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
 
         private bool ChangeFigurePosition(Figure figure, FigureMemory oldPosition, Position initial)
         {
@@ -251,7 +226,7 @@
             throw new IndexOutOfRangeException();
         }
 
-        private bool HasSteppedOverAnotherFigure(int row, int col)
+        protected bool HasSteppedOverAnotherFigure(int row, int col)
         {
             if (Board.Field[row, col] == Board.WhiteCell || Board.Field[row, col] == Board.BlackCell)
             {
@@ -261,7 +236,7 @@
             return false;
         }
 
-        private bool IsPositionInsideBoard(int row, int col)
+        protected bool IsPositionInsideBoard(int row, int col)
         {
             if (col >= MaxColumnIndex || col < MinColumnIndex || row >= MaxRowIndex || row < MinRowIndex)
             {

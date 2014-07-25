@@ -10,8 +10,8 @@
     /// </summary>
     public class Command
     {
-        private string input;
         private readonly string[] validCommands = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
+        private string input;
 
         public Command(string initialInput)
         {
@@ -60,7 +60,6 @@
         /// </summary>
         /// <param name="currentInput">The given command</param>
         /// <returns>Does the command list contain the given input or not</returns>
-
         private bool IsValid(string input)
         {
             if (this.validCommands.Contains(input))
