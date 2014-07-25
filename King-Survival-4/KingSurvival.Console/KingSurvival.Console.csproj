@@ -56,6 +56,10 @@
       <Project>{43aabb14-2173-4d98-ae92-7a21d626a481}</Project>
       <Name>KingSurvival.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KingSurvival.Validations\KingSurvival.Validations.csproj">
+      <Project>{dd16854e-bbe6-4c48-86d8-a517eb5cbda1}</Project>
+      <Name>KingSurvival.Validations</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

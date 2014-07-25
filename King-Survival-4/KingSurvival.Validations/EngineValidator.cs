@@ -1,13 +1,18 @@
 ﻿namespace KingSurvival.Validations
 {
     using System;
-    using KingSurvival.Console;
     using KingSurvival.Base.GameObjects;
-    public class EngineValidator : KingSurvivalConsoleEngine
+    using KingSurvival.Base.Exceptions;
+    using KingSurvival.Base;
+    public static class EngineValidator
     {
-        protected bool HasGameEnded()
+        private const int MinRowIndex = 0;
+        private const int MaxRowIndex = 8;
+        private const int MinColumnIndex = 0;
+        private const int MaxColumnIndex = 8;
+        public static bool HasGameEnded(Figure king)
         {
-            if (this.king.Position.X == 0)
+            if (king.Position.X == 0)
             {
                 return true;
             }
@@ -27,10 +32,10 @@
                 return true;
             }
 
-            bool canMoveDownRight = this.IsSurrounded(this.king.Position.X + 1, this.king.Position.Y + 1);
-            bool canMoveDownLeft = this.IsSurrounded(this.king.Position.X + 1, this.king.Position.Y - 1);
-            bool canMoveUpRight = this.IsSurrounded(this.king.Position.X - 1, this.king.Position.Y + 1);
-            bool canMoveUpLeft = this.IsSurrounded(this.king.Position.X - 1, this.king.Position.Y - 1);
+            bool canMoveDownRight = IsSurrounded(king.Position.X + 1, king.Position.Y + 1);
+            bool canMoveDownLeft = IsSurrounded(king.Position.X + 1, king.Position.Y - 1);
+            bool canMoveUpRight = IsSurrounded(king.Position.X - 1, king.Position.Y + 1);
+            bool canMoveUpLeft = IsSurrounded(king.Position.X - 1, king.Position.Y - 1);
 
             if (!canMoveDownRight && !canMoveDownLeft && !canMoveUpRight && !canMoveUpLeft)
             {
@@ -73,17 +78,55 @@
         //    return false;
         //}
 
-        private bool IsSurrounded(int row, int col)
+        private static bool IsSurrounded(int row, int col)
         {
-            if (this.IsPositionInsideBoard(row, col))
+            if (IsPositionInsideBoard(row, col))
             {
-                if (this.HasSteppedOverAnotherFigure(row, col))
+                if (HasSteppedOverAnotherFigure(row, col))
                 {
                     return true;
                 }
             }
 
             return false;
+        }
+
+        public static bool IsMoveValid(Figure figure, Position newPosition)
+        {
+            int newX = figure.Position.X + newPosition.X;
+            int newY = figure.Position.Y + newPosition.Y;
+
+            if (IsPositionInsideBoard(newX, newY))
+            {
+                if (HasSteppedOverAnotherFigure(newX, newY))
+                {
+                    return true;
+                }
+
+                throw new StepOverException();
+            }
+
+            throw new IndexOutOfRangeException();
+        }
+
+        private static bool HasSteppedOverAnotherFigure(int row, int col)
+        {
+            if (Board.Field[row, col] == Board.WhiteCell || Board.Field[row, col] == Board.BlackCell)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private static bool IsPositionInsideBoard(int row, int col)
+        {
+            if (col >= MaxColumnIndex || col < MinColumnIndex || row >= MaxRowIndex || row < MinRowIndex)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

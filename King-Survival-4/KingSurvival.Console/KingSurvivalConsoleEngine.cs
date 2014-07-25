@@ -6,16 +6,13 @@
     using KingSurvival.Base.Exceptions;
     using KingSurvival.Base.GameObjects;
     using KingSurvival.Console.InputOutputEngines;
+    using KingSurvival.Validations;
 
     /// <summary>
     /// The main class Engine for the console application; implementing the FACADE pattern
     /// </summary>
     public class KingSurvivalConsoleEngine : KingSurvivalEngine
     {
-        public const int MinRowIndex = 0;
-        public const int MaxRowIndex = 8;
-        public const int MinColumnIndex = 0;
-        public const int MaxColumnIndex = 8;
 
         protected readonly Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', "Pawn");
         protected readonly Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', "Pawn");
@@ -192,7 +189,7 @@
 
         private bool ChangeFigurePosition(Figure figure, FigureMemory oldPosition, Position initial)
         {
-            if (this.IsMoveValid(figure, initial))
+            if (EngineValidator.IsMoveValid(figure, initial))
             {
                 var clonedFigure = figure.Clone() as Figure;
                 oldPosition.Memento = clonedFigure.SaveMemento();
@@ -208,42 +205,6 @@
             return false;
         }
 
-        private bool IsMoveValid(Figure figure, Position newPosition)
-        {
-            int newX = figure.Position.X + newPosition.X;
-            int newY = figure.Position.Y + newPosition.Y;
-
-            if (this.IsPositionInsideBoard(newX, newY))
-            {
-                if (this.HasSteppedOverAnotherFigure(newX, newY))
-                {
-                    return true;
-                }
-
-                throw new StepOverException();
-            }
-
-            throw new IndexOutOfRangeException();
-        }
-
-        protected bool HasSteppedOverAnotherFigure(int row, int col)
-        {
-            if (Board.Field[row, col] == Board.WhiteCell || Board.Field[row, col] == Board.BlackCell)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        protected bool IsPositionInsideBoard(int row, int col)
-        {
-            if (col >= MaxColumnIndex || col < MinColumnIndex || row >= MaxRowIndex || row < MinRowIndex)
-            {
-                return false;
-            }
-
-            return true;
-        }
+        
     }
 }

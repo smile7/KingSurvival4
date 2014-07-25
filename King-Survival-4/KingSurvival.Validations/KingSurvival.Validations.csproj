@@ -52,10 +52,6 @@
       <Project>{43aabb14-2173-4d98-ae92-7a21d626a481}</Project>
       <Name>KingSurvival.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KingSurvival.Console\KingSurvival.Console.csproj">
-      <Project>{f3003736-a5f8-4575-a09d-bb891a693e15}</Project>
-      <Name>KingSurvival.Console</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
