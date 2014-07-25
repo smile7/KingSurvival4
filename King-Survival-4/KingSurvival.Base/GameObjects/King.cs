@@ -1,4 +1,4 @@
-﻿namespace KingSurvival4
+﻿namespace KingSurvival.Base.GameObjects
 {
     /// <summary>
     /// A specific implementation of the abstract class Figure representing the King in the game

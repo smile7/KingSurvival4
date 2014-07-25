@@ -1,8 +1,6 @@
 ﻿namespace UnitTestsKingSurvival
 {
     using System;
-    using System.IO;
-    using KingSurvival4;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]

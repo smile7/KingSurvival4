@@ -1,7 +1,8 @@
 ﻿namespace UnitTesting
 {
     using System;
-    using KingSurvival4;
+    using KingSurvival.Base;
+    using KingSurvival.Base.GameObjects;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
@@ -10,7 +11,7 @@
         [TestMethod]
         public void FigureSaveMementoTester()
         {
-            FigureMemento memento = new FigureMemento(new Position(1, 2), 'A', 'P');
+            FigureMemento memento = new FigureMemento(new Position(1, 2), 'A', "Pawn");
             Pawn pawn = new Pawn(new Position(1, 2), 'A');
             var figureMemento = pawn.SaveMemento();
 

@@ -1,4 +1,4 @@
-﻿namespace KingSurvival4
+﻿namespace KingSurvival.Base
 {
     /// <summary>
     /// A class which receives the second 2 letters of a command and parses them to a position

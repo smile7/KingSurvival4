@@ -1,6 +1,7 @@
-﻿namespace KingSurvival4
+﻿namespace KingSurvival.Console.InputOutputEngines
 {
     using System;
+    using KingSurvival.Base.Interfaces;
 
     /// <summary>
     /// The class which writes the messages from the console and prints the board

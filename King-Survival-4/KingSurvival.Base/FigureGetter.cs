@@ -1,5 +1,7 @@
-﻿namespace KingSurvival4
+﻿namespace KingSurvival.Base
 {
+    using KingSurvival.Base.GameObjects;
+
     /// <summary>
     /// The Figure 'Creator' class implementing the Simple Factory pattern
     /// </summary>

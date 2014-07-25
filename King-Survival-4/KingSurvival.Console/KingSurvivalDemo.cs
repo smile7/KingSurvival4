@@ -1,5 +1,7 @@
-﻿namespace KingSurvival4
+﻿namespace KingSurvival.Console
 {
+    using KingSurvival.Base;
+
     /// <summary>
     /// The start of the program
     /// </summary>

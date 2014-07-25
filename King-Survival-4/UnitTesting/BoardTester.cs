@@ -1,7 +1,8 @@
 ﻿namespace UnitTesting
 {
     using System;
-    using KingSurvival4;
+    using KingSurvival.Base;
+    using KingSurvival.Base.GameObjects;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
@@ -10,8 +11,6 @@
         [TestMethod]
         public void BoardInstanceFieldFillingTest()
         {
-            Board board = Board.Instance;
-
             string[,] matrix = 
             { 
                                { "+", "-", "+", "-", "+", "-", "+", "-" }, 

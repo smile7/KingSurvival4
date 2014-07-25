@@ -1,5 +1,7 @@
-﻿namespace KingSurvival4
+﻿namespace KingSurvival.Base
 {
+    using KingSurvival.Base.GameObjects;
+
     /// <summary>
     /// The 'Decorator' abstract class which enables to extend the class Figure
     /// </summary>

@@ -1,7 +1,11 @@
-﻿namespace KingSurvival4
+﻿namespace KingSurvival.Console
 {
     using System;
     using System.Collections.Generic;
+    using KingSurvival.Base;
+    using KingSurvival.Base.Exceptions;
+    using KingSurvival.Base.GameObjects;
+    using KingSurvival.Console.InputOutputEngines;
 
     /// <summary>
     /// The main class Engine for the console application; implementing the FACADE pattern
@@ -13,15 +17,15 @@
         public const int MinColumnIndex = 0;
         public const int MaxColumnIndex = 8;
 
-        private Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', "Pawn");
-        private Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', "Pawn");
-        private Figure thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', "Pawn");
-        private Figure fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', "Pawn");
-        private Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', "King");
+        private readonly Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', "Pawn");
+        private readonly Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', "Pawn");
+        private readonly Figure thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', "Pawn");
+        private readonly Figure fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', "Pawn");
+        private readonly Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', "King");
 
-        private Board board;
+        private readonly Board board;
 
-        private FigureMemory oldPosition = new FigureMemory();
+        private readonly FigureMemory oldPosition = new FigureMemory();
         private int countTurns = 0;
         private bool kingsTurn = true;
         private bool isGameInProgress = true;
@@ -40,7 +44,6 @@
 
         protected override void GameBegins()
         {
-
             foreach (var figure in this.Figures)
             {
                 this.board.Notify(figure);
@@ -54,11 +57,11 @@
 
                 if (this.kingsTurn)
                 {
-                    this.PostMessage(ConsoleMessages.KingsTurnMessage());
+                    this.WriteMessage(ConsoleMessages.KingsTurnMessage());
                 }
                 else
                 {
-                    this.PostMessage(ConsoleMessages.PawnsTurnMessage());
+                    this.WriteMessage(ConsoleMessages.PawnsTurnMessage());
                 }
 
                 do
@@ -130,19 +133,19 @@
                     }
                     catch (ArgumentOutOfRangeException)
                     {
-                        this.PostMessage(ConsoleMessages.InvalidMoveMessage());
+                        this.WriteMessage(ConsoleMessages.InvalidMoveMessage());
                     }
                     catch (IndexOutOfRangeException)
                     {
-                        this.PostMessage(ConsoleMessages.OutsideBoardMoveMessage());
+                        this.WriteMessage(ConsoleMessages.OutsideBoardMoveMessage());
                     }
                     catch (StepOverException)
                     {
-                        this.PostMessage(ConsoleMessages.StepOverFigureMoveMessage());
+                        this.WriteMessage(ConsoleMessages.StepOverFigureMoveMessage());
                     }
                     catch (InvalidOperationException)
                     {
-                        this.PostMessage(ConsoleMessages.WrongFigureCommand());
+                        this.WriteMessage(ConsoleMessages.WrongFigureCommand());
                     }
                 }
                 while (true);
@@ -157,11 +160,11 @@
 
             if (hasKingWon)
             {
-                this.PostMessage(ConsoleMessages.KingWonMessage(this.countTurns));
+                this.WriteMessage(ConsoleMessages.KingWonMessage(this.countTurns));
             }
             else
             {
-                this.PostMessage(ConsoleMessages.KingLostMessage(this.countTurns));
+                this.WriteMessage(ConsoleMessages.KingLostMessage(this.countTurns));
             }
         }
 

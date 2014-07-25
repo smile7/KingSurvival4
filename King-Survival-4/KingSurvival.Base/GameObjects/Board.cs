@@ -1,4 +1,4 @@
-﻿namespace KingSurvival4
+﻿namespace KingSurvival.Base.GameObjects
 {
     /// <summary>
     /// A Singleton class for the board which also implements method Notify for the Observer pattern
@@ -15,7 +15,7 @@
 
         private static volatile Board instance;
 
-        private static object syncLock = new object();
+        private static readonly object syncLock = new object();
 
         /// <summary>
         /// A private constructor for the Singleton implementation

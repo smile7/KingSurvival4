@@ -1,4 +1,4 @@
-﻿namespace KingSurvival4
+﻿namespace KingSurvival.Base
 {
     /// <summary>
     /// A memento class for figure.

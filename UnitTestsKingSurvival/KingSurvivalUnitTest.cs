@@ -2,7 +2,8 @@
 {
     using System;
     using System.IO;
-    using KingSurvival4;
+    using KingSurvival.Base;
+    using KingSurvival.Console;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
  
     [TestClass]
@@ -17,7 +18,7 @@
                 using (StringWriter output = new StringWriter())
                 {
                     Console.SetOut(output);
-                    KingSurvivalEngine testEngine = new KingSurvivalConsoleEngine(new ConsoleReader(), new ConsoleWriter());
+                    KingSurvivalEngine testEngine = new KingSurvivalConsoleEngine();
                     testEngine.Start();
                     string outputStr = output.ToString();
                     outputStr = outputStr.Substring(0, outputStr.Length - 2);

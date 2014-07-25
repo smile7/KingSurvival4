@@ -1,7 +1,8 @@
 ﻿namespace UnitTesting
 {
     using System;
-    using KingSurvival4;
+    using KingSurvival.Base;
+    using KingSurvival.Base.GameObjects;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
@@ -10,14 +11,14 @@
         [TestMethod]
         public void GetFigureMethodTesterForKing()
         {
-            var figure = FigureGetter.GetFigure(new Position(0, 0), 'K', 'K');
+            var figure = FigureGetter.GetFigure(new Position(0, 0), 'K', "King");
             Assert.IsTrue(figure is King);
         }
 
         [TestMethod]
         public void GetFigureMethodTesterForPawn()
         {
-            var figure = FigureGetter.GetFigure(new Position(0, 0), 'A', 'P');
+            var figure = FigureGetter.GetFigure(new Position(0, 0), 'A', "Pawn");
             Assert.IsTrue(figure is Pawn);
         }
     }

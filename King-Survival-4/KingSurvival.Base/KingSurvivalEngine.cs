@@ -1,7 +1,9 @@
-﻿namespace KingSurvival4
+﻿namespace KingSurvival.Base
 {
     using System;
     using System.Collections.Generic;
+    using KingSurvival.Base.GameObjects;
+    using KingSurvival.Base.Interfaces;
 
     /// <summary>
     /// The main abstract class of the game which defines the methods and the properties that
@@ -86,7 +88,7 @@
         /// Send a message to the player of the game
         /// </summary>
         /// <param name="message">The message that should be displayed</param>
-        protected void PostMessage(string message)
+        protected void WriteMessage(string message)
         {
             this.Writer.WriteMessage(message);
         }

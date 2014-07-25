@@ -1,4 +1,4 @@
-﻿namespace KingSurvival4
+﻿namespace KingSurvival.Console.InputOutputEngines
 {
     /// <summary>
     /// The class which contains all the messages that are printed on the board during the game

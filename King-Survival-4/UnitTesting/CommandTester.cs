@@ -1,7 +1,7 @@
 ﻿namespace UnitTesting
 {
     using System;
-    using KingSurvival4;
+    using KingSurvival.Base;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
@@ -15,17 +15,10 @@
         }
 
         [TestMethod]
-        public void CommandValidInputTester()
-        {
-            var command = new Command("kur");
-            Assert.AreEqual(command.Input, "KUR");
-        }
-
-        [TestMethod]
         public void CommandDetermineDirectionMethodDownRightTester()
         {
             var command = new Command("adr");
-            var position = command.DetermineNewPosition();
+            var position = Parser.GetNewPosition(command.NewPositionLetters);
             Assert.AreEqual(position.X, 1);
             Assert.AreEqual(position.Y, 1);
         }
@@ -34,7 +27,7 @@
         public void CommandDetermineDirectionMethodDownLeftTester()
         {
             var command = new Command("adl");
-            var position = command.DetermineNewPosition();
+            var position = Parser.GetNewPosition(command.NewPositionLetters);
             Assert.AreEqual(position.X, 1);
             Assert.AreEqual(position.Y, -1);
         }
@@ -43,7 +36,7 @@
         public void CommandDetermineDirectionMethodUpLeftTester()
         {
             var command = new Command("kul");
-            var position = command.DetermineNewPosition();
+            var position = Parser.GetNewPosition(command.NewPositionLetters);
             Assert.AreEqual(position.X, -1);
             Assert.AreEqual(position.Y, -1);
         }
@@ -52,7 +45,7 @@
         public void CommandDetermineDirectionMethodUpRightTester()
         {
             var command = new Command("kur");
-            var position = command.DetermineNewPosition();
+            var position = Parser.GetNewPosition(command.NewPositionLetters);
             Assert.AreEqual(position.X, -1);
             Assert.AreEqual(position.Y, 1);
         }

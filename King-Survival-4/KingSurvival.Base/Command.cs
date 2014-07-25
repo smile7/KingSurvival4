@@ -1,4 +1,4 @@
-﻿namespace KingSurvival4
+﻿namespace KingSurvival.Base
 {
     using System;
     using System.Linq;
@@ -11,18 +11,28 @@
     public class Command
     {
         private string input;
-        private string[] validCommands = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
+        private readonly string[] validCommands = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
 
         public Command(string initialInput)
         {
             this.Input = initialInput;
-            this.FigureLetter = initialInput.Substring(0, 1);
-            this.NewPositionLetters = initialInput.Substring(1);
         }
 
-        public string FigureLetter { get; private set; }
+        public string FigureLetter
+        {
+            get
+            {
+                return this.Input.Substring(0, 1);
+            }
+        }
 
-        public string NewPositionLetters { get; private set; }
+        public string NewPositionLetters
+        {
+            get
+            {
+                return this.Input.Substring(1);
+            }
+        }
 
         private string Input
         {
