@@ -92,7 +92,7 @@
                                     currentFigure = this.thirdPawn;
                                     break;
                                 case "D":
-                                    currentFigure = this.thirdPawn;
+                                    currentFigure = this.fourthPawn;
                                     break;
                                 default:
                                     throw new InvalidOperationException();
