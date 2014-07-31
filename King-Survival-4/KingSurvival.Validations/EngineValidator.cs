@@ -25,7 +25,7 @@
 
             if (this.IsPositionInsideBoard(newX, newY))
             {
-                if (this.HasSteppedOverAnotherFigure(newX, newY))
+                if (this.IsCellEmpty(newX, newY))
                 {
                     return true;
                 }
@@ -43,7 +43,7 @@
         /// <returns>True or false</returns>
         public bool HasGameEnded(IDictionary<char, Figure> figures)
         {
-            if (this.IsFigureOnTopOfBoard(figures[Constants.KingSymbol]) || this.ArePawnsOnBottomOfBoard(figures) || this.IsSurrounded(figures[Constants.KingSymbol]))
+            if (this.IsFigureOnTopOfBoard(figures[Constants.KingSymbol]) || this.ArePawnsOnBottomOfBoard(figures))
             {
                 return true;
             }
@@ -107,42 +107,15 @@
         /// <returns>True/false</returns>
         private bool ArePawnsOnBottomOfBoard(IDictionary<char, Figure> figures)
         {
-            if (figures[Constants.FirstPawnSymbol].Position.Y != Constants.MinNumberOfRows ||
-                figures[Constants.SecondPawnSymbol].Position.Y != Constants.MinNumberOfRows ||
-                figures[Constants.ThirdPawnSymbol].Position.Y != Constants.MinNumberOfRows ||
-                figures[Constants.FourthPawnSymbol].Position.Y != Constants.MinNumberOfRows)
+            if (figures[Constants.FirstPawnSymbol].Position.Y != Constants.MaxNumberOfRows ||
+                figures[Constants.SecondPawnSymbol].Position.Y != Constants.MaxNumberOfRows ||
+                figures[Constants.ThirdPawnSymbol].Position.Y != Constants.MaxNumberOfRows ||
+                figures[Constants.FourthPawnSymbol].Position.Y != Constants.MaxNumberOfRows)
             {
                 return false;
             }
 
             return true;
-        }
-
-        /// <summary>
-        /// Checks if a figure is surrounded and cannot move anymore
-        /// </summary>
-        /// <param name="figure">The figure</param>
-        /// <returns>true/false</returns>
-        private bool IsSurrounded(Figure figure)
-        {
-            try
-            {
-                bool canMoveDownRight = this.IsMoveValid(figure, new Position(figure.Position.X + 1, figure.Position.Y + 1));
-                bool canMoveDownLeft = this.IsMoveValid(figure, new Position(figure.Position.X + 1, figure.Position.Y - 1));
-                bool canMoveUpRight = this.IsMoveValid(figure, new Position(figure.Position.X - 1, figure.Position.Y + 1));
-                bool canMoveUpLeft = this.IsMoveValid(figure, new Position(figure.Position.X - 1, figure.Position.Y - 1));
-
-                if (canMoveDownRight || canMoveDownLeft || canMoveUpRight || canMoveUpLeft)
-                {
-                    return true;
-                }
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-            return false;
         }
 
         /// <summary>
@@ -152,7 +125,7 @@
         /// <param name="row">The x coordinate</param>
         /// <param name="col">The y coordinate</param>
         /// <returns>True/false</returns>
-        private bool HasSteppedOverAnotherFigure(int row, int col)
+        private bool IsCellEmpty(int row, int col)
         {
             if (Board.Field[row, col] == Constants.WhiteCell || Board.Field[row, col] == Constants.BlackCell)
             {
