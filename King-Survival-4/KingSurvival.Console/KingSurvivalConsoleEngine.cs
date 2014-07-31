@@ -134,7 +134,7 @@
                 try
                 {
                     var command = new Command(this.GetCommand().ToUpper());
-                    var newPosition = this.parser.GetNewPosition(command.NewPositionLetters);
+                    var direction = this.parser.GetNewPosition(command.NewPositionLetters);
                     string figureSymbol = command.FigureLetter;
 
                     if (this.kingsTurn)
@@ -154,7 +154,7 @@
                         }
                     }
 
-                    this.ChangeFigurePosition(this.Figures[figureSymbol], this.oldPositionMemory, newPosition);
+                    this.ChangeFigurePosition(this.Figures[figureSymbol], this.oldPositionMemory, direction);
 
                     if (this.validator.HasGameEnded(this.Figures))
                     {
@@ -188,19 +188,19 @@
         /// Changes the position of a figure if it is valid
         /// </summary>
         /// <param name="figure">The figure that wants to move</param>
-        /// <param name="oldPosition">The memory which saves the previous state of the figure</param>
-        /// <param name="newPosition">The new position where we want to move the figure</param>
-        private void ChangeFigurePosition(Figure figure, FigureMemory oldPosition, Position newPosition)
+        /// <param name="oldPositionMemory">The memory which saves the previous state of the figure</param>
+        /// <param name="direction">The new position where we want to move the figure</param>
+        private void ChangeFigurePosition(Figure figure, FigureMemory oldPositionMemory, Position direction)
         {
-            if (this.validator.IsMoveValid(figure, newPosition))
+            if (this.validator.IsMoveValid(figure, direction))
             {
                 var clonedFigure = figure.Clone() as Figure;
-                oldPosition.Memento = clonedFigure.SaveMemento();
+                oldPositionMemory.Memento = clonedFigure.SaveMemento();
 
                 MoveableFigure movingFigure = new MoveableFigure(figure);
-                movingFigure.MoveFigure(newPosition);
+                movingFigure.MoveFigure(direction);
 
-                this.board.Notify(figure, oldPosition.Memento.Position);
+                this.board.Notify(figure, oldPositionMemory.Memento.Position);
             }
         }
     }

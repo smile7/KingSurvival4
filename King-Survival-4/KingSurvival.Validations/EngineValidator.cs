@@ -21,12 +21,12 @@
         /// Checks if a figure moves to a new position, the new position is valid
         /// </summary>
         /// <param name="figure">The figure that is about to move</param>
-        /// <param name="newPosition">The position that we want to move the figure to</param>
+        /// <param name="direction">The position that we want to move the figure to</param>
         /// <returns></returns>
-        public bool IsMoveValid(Figure figure, Position newPosition)
+        public bool IsMoveValid(Figure figure, Position direction)
         {
-            int newX = figure.Position.X + newPosition.X;
-            int newY = figure.Position.Y + newPosition.Y;
+            int newX = figure.Position.X + direction.X;
+            int newY = figure.Position.Y + direction.Y;
 
             if (this.IsPositionInsideBoard(newX, newY))
             {
