@@ -80,7 +80,8 @@
         /// Determines if the king wins in the end
         /// </summary>
         /// <returns>True/false</returns>
-        protected abstract bool HasKingWon();
+        //protected abstract bool HasKingWon();
+
 
         /// <summary>
         /// Read a command from the player of the game

@@ -1,6 +1,8 @@
 ﻿namespace KingSurvival.Validations
 {
     using System;
+    using System.Collections.Generic;
+
     using KingSurvival.Base.GameObjects;
     using KingSurvival.Base.Exceptions;
     using KingSurvival.Base;
@@ -16,58 +18,11 @@
         private const int MaxColumnIndex = 8;
 
         /// <summary>
-        /// Method which checks if the game has ended: the king has won or the king has lost
+        /// Checks if a figure moves to a new position, the new position is valid
         /// </summary>
-        /// <param name="king">The king figure</param>
-        /// <returns>True or false</returns>
-        public static bool HasGameEnded(Figure king)
-        {
-            if (king.Position.X == 0)
-            {
-                return true;
-            }
-
-            var canPawnsMove = false;
-
-            for (int i = 0; i < Board.Field.GetLength(0); i += 2)
-            {
-                if (Board.Field[Board.Field.GetLength(1) - 1, i] == Board.WhiteCell || Board.Field[Board.Field.GetLength(1) - 1, i] == Board.BlackCell)
-                {
-                    canPawnsMove = true;
-                }
-            }
-
-            if (!canPawnsMove)
-            {
-                return true;
-            }
-
-            bool canMoveDownRight = IsSurrounded(king.Position.X + 1, king.Position.Y + 1);
-            bool canMoveDownLeft = IsSurrounded(king.Position.X + 1, king.Position.Y - 1);
-            bool canMoveUpRight = IsSurrounded(king.Position.X - 1, king.Position.Y + 1);
-            bool canMoveUpLeft = IsSurrounded(king.Position.X - 1, king.Position.Y - 1);
-
-            if (!canMoveDownRight && !canMoveDownLeft && !canMoveUpRight && !canMoveUpLeft)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private static bool IsSurrounded(int row, int col)
-        {
-            if (IsPositionInsideBoard(row, col))
-            {
-                if (HasSteppedOverAnotherFigure(row, col))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
+        /// <param name="figure">The figure that is about to move</param>
+        /// <param name="newPosition">The position that we want to move the figure to</param>
+        /// <returns></returns>
         public static bool IsMoveValid(Figure figure, Position newPosition)
         {
             int newX = figure.Position.X + newPosition.X;
@@ -86,6 +41,43 @@
             throw new IndexOutOfRangeException();
         }
 
+        /// <summary>
+        /// Method which checks if the game has ended
+        /// </summary>
+        /// <param name="king">List of figures</param>
+        /// <returns>True or false</returns>
+        public static bool HasGameEnded(IList<Figure> figures)
+        {
+            if (IsFigureOnTopOfBoard(figures[4]) || ArePawnsOnBottomOfBoard(figures) || IsSurrounded(figures[4]))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Method which checks if the king has won or lost
+        /// </summary>
+        /// <param name="king">List of figures</param>
+        /// <returns>True or false</returns>
+        public static bool HasKingWon(IList<Figure> figures)
+        {
+            if (IsFigureOnTopOfBoard(figures[4]) || ArePawnsOnBottomOfBoard(figures))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if a figure has stepped over another figure
+        /// or the cell is empty
+        /// </summary>
+        /// <param name="row">The x coordinate</param>
+        /// <param name="col">The y coordinate</param>
+        /// <returns>True/false</returns>
         private static bool HasSteppedOverAnotherFigure(int row, int col)
         {
             if (Board.Field[row, col] == Board.WhiteCell || Board.Field[row, col] == Board.BlackCell)
@@ -96,6 +88,12 @@
             return false;
         }
 
+        /// <summary>
+        /// Checks if a position is inside the board or not
+        /// </summary>
+        /// <param name="row">The x coordinate</param>
+        /// <param name="col">The y coordinate</param>
+        /// <returns>True/false</returns>
         private static bool IsPositionInsideBoard(int row, int col)
         {
             if (col >= MaxColumnIndex || col < MinColumnIndex || row >= MaxRowIndex || row < MinRowIndex)
@@ -104,6 +102,66 @@
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Checks if the pawns can move or they are all at the bottom of the board
+        /// </summary>
+        /// <param name="figures">List of figures</param>
+        /// <returns>True/false</returns>
+        private static bool ArePawnsOnBottomOfBoard(IList<Figure> figures)
+        {
+            for (int i = 0; i < figures.Count - 1; i++)
+            {
+                if (figures[i].Position.Y != 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Checks if a figure is on the top of the board
+        /// </summary>
+        /// <param name="figure">The figure</param>
+        /// <returns>true/false</returns>
+        private static bool IsFigureOnTopOfBoard(Figure figure)
+        {
+            if (figure.Position.X == 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if a figure is surrounded and cannot move anymore
+        /// </summary>
+        /// <param name="figure">The figure</param>
+        /// <returns>true/false</returns>
+        private static bool IsSurrounded(Figure figure)
+        {
+            try
+            {
+                bool canMoveDownRight = IsMoveValid(figure, new Position(figure.Position.X + 1, figure.Position.Y + 1));
+                bool canMoveDownLeft = IsMoveValid(figure, new Position(figure.Position.X + 1, figure.Position.Y - 1));
+                bool canMoveUpRight = IsMoveValid(figure, new Position(figure.Position.X - 1, figure.Position.Y + 1));
+                bool canMoveUpLeft = IsMoveValid(figure, new Position(figure.Position.X - 1, figure.Position.Y - 1));
+
+                if (canMoveDownRight || canMoveDownLeft || canMoveUpRight || canMoveUpLeft)
+                {
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return false;
         }
     }
 }
