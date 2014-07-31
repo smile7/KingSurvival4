@@ -1,16 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KingSurvival.Base
+﻿namespace KingSurvival.Base
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Static class with all the constants in the game.
     /// </summary>
     public static class Constants
     {
+        public const int CommandLength = 3;
+
+        public const string WhiteCell = "+";
+
+        public const string BlackCell = "-";
+
+        public const int MaxNumberOfRows = 8;
+
+        public const int MaxNumberOfCols = 8;
+
+        public const int MinNumberOfRows = 0;
+
+        public const int MinNumberOfCols = 0;
+
         public const int FirstPawnInitialRow = 0;
 
         public const int FirstPawnInitialCol = 0;
@@ -48,6 +59,10 @@ namespace KingSurvival.Base
         public const string MoveDownRight = "DR";
 
         public const string MoveDownLeft = "DL";
+
+        public const string KingName = "King";
+
+        public const string PawnName = "Pawn";
 
         public static List<char> ListOfSymbols = new List<char>(new char[] { 'A', 'B', 'C', 'K' });
 

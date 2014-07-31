@@ -1,6 +1,7 @@
 ﻿namespace KingSurvival.Base.GameObjects
 {
     using System;
+
     using KingSurvival.Base.FigureExtensions;
 
     /// <summary>

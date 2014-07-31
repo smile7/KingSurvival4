@@ -5,10 +5,8 @@
     /// </summary>
     public class Pawn : Figure
     {
-        private const string PawnName = "Pawn";
-
         public Pawn(Position initialPosition, char symbol) 
-            : base(initialPosition, symbol, PawnName)
+            : base(initialPosition, symbol, Constants.PawnName)
         {
         }
     }

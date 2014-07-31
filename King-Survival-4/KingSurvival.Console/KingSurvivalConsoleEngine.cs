@@ -50,11 +50,23 @@
             : base(new ConsoleReader(), new ConsoleWriter())
         {
             this.board = Board.Instance;
-            this.firstPawn = FigureGetter.GetFigure(new Position(Constants.FirstPawnInitialRow, Constants.FirstPawnInitialCol), Constants.FirstPawnSymbol, "Pawn");
-            this.secondPawn = FigureGetter.GetFigure(new Position(Constants.FirstPawnInitialRow, Constants.SecondPawnInitialCol), Constants.SecondPawnSymbol, "Pawn");
-            this.thirdPawn = FigureGetter.GetFigure(new Position(Constants.ThirdPawnInitialRow, Constants.ThirdPawnInitialCol), Constants.ThirdPawnSymbol, "Pawn");
-            this.fourthPawn = FigureGetter.GetFigure(new Position(Constants.FourthPawnInitialRow, Constants.FourthPawnInitialCol), Constants.FourthPawnSymbol, "Pawn");
-            this.king = FigureGetter.GetFigure(new Position(Constants.KingInitialRow, Constants.KingInitialCol), Constants.KingSymbol, "King");
+            this.firstPawn = FigureGetter.GetFigure(
+                new Position(Constants.FirstPawnInitialRow, Constants.FirstPawnInitialCol), 
+                Constants.FirstPawnSymbol, 
+                Constants.PawnName);
+            this.secondPawn = FigureGetter.GetFigure(
+                new Position(Constants.FirstPawnInitialRow, Constants.SecondPawnInitialCol), 
+                Constants.SecondPawnSymbol, 
+                Constants.PawnName);
+            this.thirdPawn = FigureGetter.GetFigure(
+                new Position(Constants.ThirdPawnInitialRow, Constants.ThirdPawnInitialCol), 
+                Constants.ThirdPawnSymbol, Constants.PawnName);
+            this.fourthPawn = FigureGetter.GetFigure(
+                new Position(Constants.FourthPawnInitialRow, Constants.FourthPawnInitialCol), 
+                Constants.FourthPawnSymbol, Constants.PawnName);
+            this.king = FigureGetter.GetFigure(
+                new Position(Constants.KingInitialRow, Constants.KingInitialCol), Constants.KingSymbol, 
+                Constants.KingName);
 
             this.validator = new EngineValidator();
             this.parser = new Parser();

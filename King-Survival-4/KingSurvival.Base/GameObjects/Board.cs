@@ -5,14 +5,6 @@
     /// </summary>
     public sealed class Board
     {
-        public const string WhiteCell = "+";
-
-        public const string BlackCell = "-";
-
-        private const int NumberOfRows = 8;
-
-        private const int NumberOfCols = 8;
-
         private static readonly object syncLock = new object();
 
         private static volatile Board instance;
@@ -22,7 +14,7 @@
         /// </summary>
         private Board()
         {
-            Field = new string[NumberOfRows, NumberOfCols];
+            Field = new string[Constants.MaxNumberOfRows, Constants.MaxNumberOfCols];
             this.FillBoard();
         }
 
@@ -67,7 +59,7 @@
         public void Notify(Figure figure, Position oldPosition)
         {
             Field[figure.Position.X, figure.Position.Y] = figure.Symbol.ToString();
-            Field[oldPosition.X, oldPosition.Y] = WhiteCell;
+            Field[oldPosition.X, oldPosition.Y] = Constants.WhiteCell;
         }
 
         /// <summary>
@@ -81,11 +73,11 @@
                 {
                     if ((row + col) % 2 == 0)
                     {
-                        Field[row, col] = WhiteCell;
+                        Field[row, col] = Constants.WhiteCell;
                     }
                     else
                     {
-                        Field[row, col] = BlackCell;
+                        Field[row, col] = Constants.BlackCell;
                     }
                 }
             }

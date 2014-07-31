@@ -12,11 +12,6 @@
     /// </summary>
     public class EngineValidator : IEngineValidator
     {
-        private const int MinRowIndex = 0;
-        private const int MaxRowIndex = 8;
-        private const int MinColumnIndex = 0;
-        private const int MaxColumnIndex = 8;
-
         /// <summary>
         /// Checks if a figure moves to a new position, the new position is valid
         /// </summary>
@@ -48,7 +43,7 @@
         /// <returns>True or false</returns>
         public bool HasGameEnded(IDictionary<char, Figure> figures)
         {
-            if (this.IsFigureOnTopOfBoard(figures['K']) || this.ArePawnsOnBottomOfBoard(figures) || this.IsSurrounded(figures['K']))
+            if (this.IsFigureOnTopOfBoard(figures[Constants.KingSymbol]) || this.ArePawnsOnBottomOfBoard(figures) || this.IsSurrounded(figures[Constants.KingSymbol]))
             {
                 return true;
             }
@@ -63,7 +58,7 @@
         /// <returns>True or false</returns>
         public bool HasKingWon(IDictionary<char, Figure> figures)
         {
-            if (this.IsFigureOnTopOfBoard(figures['K']) || this.ArePawnsOnBottomOfBoard(figures))
+            if (this.IsFigureOnTopOfBoard(figures[Constants.KingSymbol]) || this.ArePawnsOnBottomOfBoard(figures))
             {
                 return true;
             }
@@ -78,7 +73,7 @@
         /// <returns>true/false</returns>
         private bool IsFigureOnTopOfBoard(Figure figure)
         {
-            if (figure.Position.X == 0)
+            if (figure.Position.X == Constants.MinNumberOfRows)
             {
                 return true;
             }
@@ -94,7 +89,10 @@
         /// <returns>True/false</returns>
         private bool IsPositionInsideBoard(int row, int col)
         {
-            if (col >= MaxColumnIndex || col < MinColumnIndex || row >= MaxRowIndex || row < MinRowIndex)
+            if (col < Constants.MinNumberOfCols ||
+                col >= Constants.MaxNumberOfCols ||
+                row < Constants.MinNumberOfRows ||
+                row >= Constants.MaxNumberOfRows)
             {
                 return false;
             }
@@ -109,10 +107,10 @@
         /// <returns>True/false</returns>
         private bool ArePawnsOnBottomOfBoard(IDictionary<char, Figure> figures)
         {
-            if(figures['A'].Position.Y != 0 || 
-                figures['B'].Position.Y != 0 || 
-                figures['C'].Position.Y != 0 ||
-                figures['D'].Position.Y != 0)
+            if (figures[Constants.FirstPawnSymbol].Position.Y != Constants.MinNumberOfRows ||
+                figures[Constants.SecondPawnSymbol].Position.Y != Constants.MinNumberOfRows ||
+                figures[Constants.ThirdPawnSymbol].Position.Y != Constants.MinNumberOfRows ||
+                figures[Constants.FourthPawnSymbol].Position.Y != Constants.MinNumberOfRows)
             {
                 return false;
             }
@@ -156,7 +154,7 @@
         /// <returns>True/false</returns>
         private bool HasSteppedOverAnotherFigure(int row, int col)
         {
-            if (Board.Field[row, col] == Board.WhiteCell || Board.Field[row, col] == Board.BlackCell)
+            if (Board.Field[row, col] == Constants.WhiteCell || Board.Field[row, col] == Constants.BlackCell)
             {
                 return true;
             }

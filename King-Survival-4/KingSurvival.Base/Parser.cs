@@ -8,13 +8,6 @@
     public class Parser : IParser
     {
         /// <summary>
-        /// Constants for the possible directions
-        /// </summary>
-        private const string UpLeft = "UL";
-        private const string DownLeft = "DL";
-        private const string UpRight = "UR";
-
-        /// <summary>
         /// Determines what is the new position of the figure based on the last 2 letters of the command
         /// </summary>
         /// <returns>The new position</returns>

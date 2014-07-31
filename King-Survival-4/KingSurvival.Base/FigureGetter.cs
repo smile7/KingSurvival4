@@ -18,7 +18,7 @@
         {
             switch (name)
             {
-                case "King":
+                case Constants.KingName:
                     return new King(position);
                 default:
                     return new Pawn(position, symbol);

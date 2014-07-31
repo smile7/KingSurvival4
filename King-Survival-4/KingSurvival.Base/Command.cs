@@ -1,7 +1,6 @@
 ﻿namespace KingSurvival.Base
 {
     using System;
-    using System.Linq;
 
     /// <summary>
     /// The command class which receives a string and divides its letters 
@@ -56,7 +55,7 @@
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("The command is not valid.");
+                    throw new ArgumentOutOfRangeException();
                 }
             }
         }
@@ -69,7 +68,7 @@
         /// <returns>Does the command list contain the given input or not</returns>
         private bool IsValid(string input)
         {
-            if (input.Length == 3)
+            if (input.Length == Constants.CommandLength)
             {
                 if (Constants.ListOfSymbols.Contains(input[0]))
                 {
