@@ -72,23 +72,6 @@
         }
 
         /// <summary>
-        /// Checks if a figure has stepped over another figure
-        /// or the cell is empty
-        /// </summary>
-        /// <param name="row">The x coordinate</param>
-        /// <param name="col">The y coordinate</param>
-        /// <returns>True/false</returns>
-        private bool HasSteppedOverAnotherFigure(int row, int col)
-        {
-            if (Board.Field[row, col] == Board.WhiteCell || Board.Field[row, col] == Board.BlackCell)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
         /// Checks if a position is inside the board or not
         /// </summary>
         /// <param name="row">The x coordinate</param>
@@ -159,6 +142,23 @@
             catch (Exception)
             {
                 return false;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if a figure has stepped over another figure
+        /// or the cell is empty
+        /// </summary>
+        /// <param name="row">The x coordinate</param>
+        /// <param name="col">The y coordinate</param>
+        /// <returns>True/false</returns>
+        private bool HasSteppedOverAnotherFigure(int row, int col)
+        {
+            if (Board.Field[row, col] == Board.WhiteCell || Board.Field[row, col] == Board.BlackCell)
+            {
+                return true;
             }
 
             return false;

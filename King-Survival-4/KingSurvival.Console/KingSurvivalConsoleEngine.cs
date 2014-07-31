@@ -16,6 +16,11 @@
     public class KingSurvivalConsoleEngine : KingSurvivalEngine
     {
         /// <summary>
+        /// Field for the board
+        /// </summary>
+        private readonly Board board;
+
+        /// <summary>
         /// Private figures for the console implementation of the game
         /// </summary>
         private readonly Figure firstPawn;
@@ -25,16 +30,12 @@
         private readonly Figure king;
 
         /// <summary>
-        /// Field for the board
-        /// </summary>
-        private readonly Board board;
-
-        /// <summary>
         /// This varialble saves the state of the figure's old position
         /// </summary>
         private readonly FigureMemory oldPositionMemory;
         private readonly IEngineValidator validator;
         private readonly IParser parser;
+
 
         private bool isGameInProgress = true;
         private int countTurns = 0;
@@ -211,8 +212,8 @@
                 var clonedFigure = figure.Clone() as Figure;
                 oldPosition.Memento = clonedFigure.SaveMemento();
 
-                MoveableFigure changeFigurePosition = new MoveableFigure(figure);
-                changeFigurePosition.MoveFigure(newPosition);
+                MoveableFigure movingFigure = new MoveableFigure(figure);
+                movingFigure.MoveFigure(newPosition);
 
                 this.board.Notify(figure, oldPosition.Memento.Position);
             }
