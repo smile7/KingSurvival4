@@ -2,10 +2,12 @@
 {
     using System;
 
+    using KingSurvival.Base.Interfaces;
+
     /// <summary>
     /// A class representing the coordinates of the figures on the board
     /// </summary>
-    public class Position : ICloneable
+    public class Position : ICloneable, IPosition
     {
         public Position(int x, int y)
         {

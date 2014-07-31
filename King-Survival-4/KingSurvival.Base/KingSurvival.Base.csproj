@@ -49,6 +49,8 @@
     <Compile Include="FigureExtensions\FigureDecorator.cs" />
     <Compile Include="GameObjects\Figure.cs" />
     <Compile Include="FigureGetter.cs" />
+    <Compile Include="Interfaces\IParser.cs" />
+    <Compile Include="Interfaces\IPosition.cs" />
     <Compile Include="Interfaces\IReader.cs" />
     <Compile Include="Interfaces\IWriter.cs" />
     <Compile Include="GameObjects\King.cs" />

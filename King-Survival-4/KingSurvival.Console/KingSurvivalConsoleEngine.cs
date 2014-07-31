@@ -17,11 +17,11 @@
         /// <summary>
         /// Private figures for the console implementation of the game
         /// </summary>
-        private readonly Figure firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', "Pawn");
-        private readonly Figure secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', "Pawn");
-        private readonly Figure thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', "Pawn");
-        private readonly Figure fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', "Pawn");
-        private readonly Figure king = FigureGetter.GetFigure(new Position(7, 3), 'K', "King");
+        private readonly Figure firstPawn;
+        private readonly Figure secondPawn;
+        private readonly Figure thirdPawn;
+        private readonly Figure fourthPawn;
+        private readonly Figure king;
 
         /// <summary>
         /// Field for the board
@@ -31,7 +31,8 @@
         /// <summary>
         /// This varialble saves the state of the figure's old position
         /// </summary>
-        private readonly FigureMemory oldPosition = new FigureMemory();
+        private readonly FigureMemory oldPositionMemory;
+        private readonly EngineValidator validator;
 
         private bool isGameInProgress = true;
         private int countTurns = 0;
@@ -46,6 +47,15 @@
             : base(new ConsoleReader(), new ConsoleWriter())
         {
             this.board = Board.Instance;
+            this.firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', "Pawn");
+            this.secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', "Pawn");
+            this.thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', "Pawn");
+            this.fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', "Pawn");
+            this.king = FigureGetter.GetFigure(new Position(7, 3), 'K', "King");
+
+            this.validator = new EngineValidator();
+            this.oldPositionMemory = new FigureMemory();
+
             this.AddFiguresToList();
         }
 
@@ -78,7 +88,7 @@
         {
             this.RenderBoard(Board.Field);
 
-            if (EngineValidator.HasKingWon(this.Figures))
+            if (this.validator.HasKingWon(this.Figures))
             {
                 this.WriteMessage(ConsoleMessages.KingWonMessage(this.countTurns));
             }
@@ -155,9 +165,9 @@
                         }
                     }
 
-                    this.ChangeFigurePosition(currentFigure, this.oldPosition, newPosition);
+                    this.ChangeFigurePosition(currentFigure, this.oldPositionMemory, newPosition);
 
-                    if (EngineValidator.HasGameEnded(this.Figures))
+                    if (this.validator.HasGameEnded(this.Figures))
                     {
                         this.isGameInProgress = false;
                     }
@@ -193,7 +203,7 @@
         /// <param name="newPosition">The new position where we want to move the figure</param>
         private void ChangeFigurePosition(Figure figure, FigureMemory oldPosition, Position newPosition)
         {
-            if (EngineValidator.IsMoveValid(figure, newPosition))
+            if (this.validator.IsMoveValid(figure, newPosition))
             {
                 var clonedFigure = figure.Clone() as Figure;
                 oldPosition.Memento = clonedFigure.SaveMemento();
