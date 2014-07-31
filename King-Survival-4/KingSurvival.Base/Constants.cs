@@ -64,8 +64,8 @@
 
         public const string PawnName = "Pawn";
 
-        public static List<char> ListOfSymbols = new List<char>(new char[] { 'A', 'B', 'C', 'K' });
+        public static readonly List<char> ListOfSymbols = new List<char>(new char[] { 'A', 'B', 'C', 'K' });
 
-        public static List<string> ListOfConstants = new List<string>(new string[] { "UR", "UL", "DR", "DL" });
+        public static readonly List<string> ListOfConstants = new List<string>(new string[] { "UR", "UL", "DR", "DL" });
     }
 }

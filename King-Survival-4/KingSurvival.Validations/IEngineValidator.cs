@@ -15,6 +15,5 @@
         bool HasGameEnded(IDictionary<char, Figure> figures);
 
         bool HasKingWon(IDictionary<char, Figure> figures);
-
     }
 }

@@ -3,8 +3,8 @@
     using System;
 
     using KingSurvival.Base;
-    using KingSurvival.Base.GameObjects;
     using KingSurvival.Base.FigureExtensions;
+    using KingSurvival.Base.GameObjects;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]

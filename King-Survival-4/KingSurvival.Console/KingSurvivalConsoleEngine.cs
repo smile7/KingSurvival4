@@ -4,9 +4,9 @@
 
     using KingSurvival.Base;
     using KingSurvival.Base.Exceptions;
-    using KingSurvival.Base.Interfaces;
     using KingSurvival.Base.FigureExtensions;
     using KingSurvival.Base.GameObjects;
+    using KingSurvival.Base.Interfaces;
     using KingSurvival.Console.InputOutputEngines;
     using KingSurvival.Validations;
 
@@ -36,7 +36,6 @@
         private readonly IEngineValidator validator;
         private readonly IParser parser;
 
-
         private bool isGameInProgress = true;
         private int countTurns = 0;
         private bool kingsTurn = true;
@@ -50,23 +49,11 @@
             : base(new ConsoleReader(), new ConsoleWriter())
         {
             this.board = Board.Instance;
-            this.firstPawn = FigureGetter.GetFigure(
-                new Position(Constants.FirstPawnInitialRow, Constants.FirstPawnInitialCol), 
-                Constants.FirstPawnSymbol, 
-                Constants.PawnName);
-            this.secondPawn = FigureGetter.GetFigure(
-                new Position(Constants.FirstPawnInitialRow, Constants.SecondPawnInitialCol), 
-                Constants.SecondPawnSymbol, 
-                Constants.PawnName);
-            this.thirdPawn = FigureGetter.GetFigure(
-                new Position(Constants.ThirdPawnInitialRow, Constants.ThirdPawnInitialCol), 
-                Constants.ThirdPawnSymbol, Constants.PawnName);
-            this.fourthPawn = FigureGetter.GetFigure(
-                new Position(Constants.FourthPawnInitialRow, Constants.FourthPawnInitialCol), 
-                Constants.FourthPawnSymbol, Constants.PawnName);
-            this.king = FigureGetter.GetFigure(
-                new Position(Constants.KingInitialRow, Constants.KingInitialCol), Constants.KingSymbol, 
-                Constants.KingName);
+            this.firstPawn = FigureGetter.GetFigure(new Position(Constants.FirstPawnInitialRow, Constants.FirstPawnInitialCol), Constants.FirstPawnSymbol, Constants.PawnName);
+            this.secondPawn = FigureGetter.GetFigure(new Position(Constants.FirstPawnInitialRow, Constants.SecondPawnInitialCol), Constants.SecondPawnSymbol, Constants.PawnName);
+            this.thirdPawn = FigureGetter.GetFigure(new Position(Constants.ThirdPawnInitialRow, Constants.ThirdPawnInitialCol), Constants.ThirdPawnSymbol, Constants.PawnName);
+            this.fourthPawn = FigureGetter.GetFigure(new Position(Constants.FourthPawnInitialRow, Constants.FourthPawnInitialCol), Constants.FourthPawnSymbol, Constants.PawnName);
+            this.king = FigureGetter.GetFigure(new Position(Constants.KingInitialRow, Constants.KingInitialCol), Constants.KingSymbol, Constants.KingName);
 
             this.validator = new EngineValidator();
             this.parser = new Parser();
