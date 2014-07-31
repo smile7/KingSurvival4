@@ -15,10 +15,20 @@
         private IWriter writer;
         private IReader reader;
 
-        public KingSurvivalEngine(IReader reader, IWriter renderer)
+        /// <summary>
+        /// Dependency inversion principle where we have 2 constructors
+        /// </summary>
+        /// <param name="reader">Reader</param>
+        /// <param name="writer">Writer</param>
+        public KingSurvivalEngine(IReader reader, IWriter writer)
+            :this(reader, writer, new List<Figure>())
+        {
+        }
+        public KingSurvivalEngine(IReader reader, IWriter writer, IList<Figure> initialFigures)
         {
             this.Reader = reader;
-            this.Writer = renderer;
+            this.Writer = writer;
+            this.Figures = initialFigures;
         }
 
         protected IList<Figure> Figures { get; set; }

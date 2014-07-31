@@ -47,7 +47,6 @@
             : base(new ConsoleReader(), new ConsoleWriter())
         {
             this.board = Board.Instance;
-            this.Figures = new List<Figure>();
             AddFiguresToList();
         }
 
