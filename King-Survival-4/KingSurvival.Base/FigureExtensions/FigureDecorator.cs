@@ -1,4 +1,4 @@
-﻿namespace KingSurvival.Base
+﻿namespace KingSurvival.Base.FigureExtensions
 {
     using KingSurvival.Base.GameObjects;
 

@@ -1,8 +1,10 @@
 ﻿namespace UnitTesting
 {
     using System;
+
     using KingSurvival.Base;
     using KingSurvival.Base.GameObjects;
+    using KingSurvival.Base.FigureExtensions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]

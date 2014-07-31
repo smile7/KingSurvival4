@@ -2,6 +2,7 @@
 {
     using System;
     using System.IO;
+
     using KingSurvival.Base;
     using KingSurvival.Console;
     using Microsoft.VisualStudio.TestTools.UnitTesting;

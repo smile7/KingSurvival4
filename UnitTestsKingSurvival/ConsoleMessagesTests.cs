@@ -1,6 +1,7 @@
 ﻿namespace UnitTestsKingSurvival
 {
     using System;
+
     using KingSurvival.Console.InputOutputEngines;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

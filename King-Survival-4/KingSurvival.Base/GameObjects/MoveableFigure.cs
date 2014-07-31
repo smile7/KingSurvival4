@@ -1,5 +1,7 @@
 ﻿namespace KingSurvival.Base.GameObjects
 {
+    using KingSurvival.Base.FigureExtensions;
+
     /// <summary>
     /// The 'ConcreteDecorator' class which enables a figure to move to a different position by extending its behaviour
     /// </summary>

@@ -2,11 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+
     using KingSurvival.Base;
     using KingSurvival.Base.Exceptions;
     using KingSurvival.Base.GameObjects;
     using KingSurvival.Console.InputOutputEngines;
     using KingSurvival.Validations;
+    using KingSurvival.Base.FigureExtensions;
 
     /// <summary>
     /// The main class Engine for the console application; implementing the FACADE pattern

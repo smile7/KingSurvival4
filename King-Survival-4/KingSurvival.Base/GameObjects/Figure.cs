@@ -1,6 +1,7 @@
 ﻿namespace KingSurvival.Base.GameObjects
 {
     using System;
+    using KingSurvival.Base.FigureExtensions;
 
     /// <summary>
     /// An abstract class for the figures on the board which is implemented afterwards with Simple Factory pattern
