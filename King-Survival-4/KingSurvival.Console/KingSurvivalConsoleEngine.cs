@@ -1,7 +1,6 @@
 ﻿namespace KingSurvival.Console
 {
     using System;
-    using System.Collections.Generic;
 
     using KingSurvival.Base;
     using KingSurvival.Base.Exceptions;
