@@ -23,11 +23,11 @@
         /// A property for the first letter in the command 
         /// which says which figure should be played
         /// </summary>
-        public string FigureLetter
+        public char FigureLetter
         {
             get
             {
-                return this.Input.Substring(0, 1);
+                return this.Input[0];
             }
         }
 

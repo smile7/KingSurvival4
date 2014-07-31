@@ -46,9 +46,9 @@
         /// </summary>
         /// <param name="king">List of figures</param>
         /// <returns>True or false</returns>
-        public bool HasGameEnded(IDictionary<string, Figure> figures)
+        public bool HasGameEnded(IDictionary<char, Figure> figures)
         {
-            if (this.IsFigureOnTopOfBoard(figures["K"]) || this.ArePawnsOnBottomOfBoard(figures) || this.IsSurrounded(figures["K"]))
+            if (this.IsFigureOnTopOfBoard(figures['K']) || this.ArePawnsOnBottomOfBoard(figures) || this.IsSurrounded(figures['K']))
             {
                 return true;
             }
@@ -61,9 +61,24 @@
         /// </summary>
         /// <param name="king">List of figures</param>
         /// <returns>True or false</returns>
-        public bool HasKingWon(IDictionary<string, Figure> figures)
+        public bool HasKingWon(IDictionary<char, Figure> figures)
         {
-            if (this.IsFigureOnTopOfBoard(figures["K"]) || this.ArePawnsOnBottomOfBoard(figures))
+            if (this.IsFigureOnTopOfBoard(figures['K']) || this.ArePawnsOnBottomOfBoard(figures))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if a figure is on the top of the board
+        /// </summary>
+        /// <param name="figure">The figure</param>
+        /// <returns>true/false</returns>
+        private bool IsFigureOnTopOfBoard(Figure figure)
+        {
+            if (figure.Position.X == 0)
             {
                 return true;
             }
@@ -92,32 +107,17 @@
         /// </summary>
         /// <param name="figures">List of figures</param>
         /// <returns>True/false</returns>
-        private bool ArePawnsOnBottomOfBoard(IDictionary<string, Figure> figures)
+        private bool ArePawnsOnBottomOfBoard(IDictionary<char, Figure> figures)
         {
-            if(figures["A"].Position.Y != 0 || 
-                figures["B"].Position.Y != 0 || 
-                figures["C"].Position.Y != 0 ||
-                figures["D"].Position.Y != 0)
+            if(figures['A'].Position.Y != 0 || 
+                figures['B'].Position.Y != 0 || 
+                figures['C'].Position.Y != 0 ||
+                figures['D'].Position.Y != 0)
             {
                 return false;
             }
 
             return true;
-        }
-
-        /// <summary>
-        /// Checks if a figure is on the top of the board
-        /// </summary>
-        /// <param name="figure">The figure</param>
-        /// <returns>true/false</returns>
-        private bool IsFigureOnTopOfBoard(Figure figure)
-        {
-            if (figure.Position.X == 0)
-            {
-                return true;
-            }
-
-            return false;
         }
 
         /// <summary>

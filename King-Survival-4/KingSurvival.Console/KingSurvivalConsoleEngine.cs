@@ -108,11 +108,11 @@
         /// </summary>
         private void AddFiguresToList()
         {
-            this.Figures.Add("A", this.firstPawn);
-            this.Figures.Add("B", this.secondPawn);
-            this.Figures.Add("C", this.thirdPawn);
-            this.Figures.Add("D", this.fourthPawn);
-            this.Figures.Add("K", this.king);
+            this.Figures.Add((char)FigureSymbols.FirstPawnSymbol, this.firstPawn);
+            this.Figures.Add((char)FigureSymbols.SecondPawnSymbol, this.secondPawn);
+            this.Figures.Add((char)FigureSymbols.ThirdPawnSymbol, this.thirdPawn);
+            this.Figures.Add((char)FigureSymbols.FourthPawnSymbol, this.fourthPawn);
+            this.Figures.Add((char)FigureSymbols.KingSymbol, this.king);
         }
 
         /// <summary>
@@ -135,11 +135,11 @@
                 {
                     var command = new Command(this.GetCommand().ToUpper());
                     var direction = this.parser.GetNewPosition(command.NewPositionLetters);
-                    string figureSymbol = command.FigureLetter;
+                    char figureSymbol = command.FigureLetter;
 
                     if (this.kingsTurn)
                     {
-                        if (figureSymbol != "K")
+                        if (figureSymbol != (char)FigureSymbols.KingSymbol)
                         {
                             throw new InvalidOperationException();
                         }
@@ -148,7 +148,7 @@
                     }
                     else
                     {
-                        if (figureSymbol == "K")
+                        if (figureSymbol == (char)FigureSymbols.KingSymbol)
                         {
                             throw new InvalidOperationException();
                         }

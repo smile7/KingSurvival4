@@ -12,9 +12,9 @@
     {
         bool IsMoveValid(Figure figure, Position newPosition);
 
-        bool HasGameEnded(IDictionary<string, Figure> figures);
+        bool HasGameEnded(IDictionary<char, Figure> figures);
 
-        bool HasKingWon(IDictionary<string, Figure> figures);
+        bool HasKingWon(IDictionary<char, Figure> figures);
 
     }
 }
