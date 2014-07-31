@@ -24,6 +24,7 @@
             :this(reader, writer, new List<Figure>())
         {
         }
+
         public KingSurvivalEngine(IReader reader, IWriter writer, IList<Figure> initialFigures)
         {
             this.Reader = reader;
@@ -86,14 +87,7 @@
         /// When the king wins or loses, this is the end logic
         /// </summary>
         protected abstract void GameEnds();
-
-        /// <summary>
-        /// Determines if the king wins in the end
-        /// </summary>
-        /// <returns>True/false</returns>
-        //protected abstract bool HasKingWon();
-
-
+        
         /// <summary>
         /// Read a command from the player of the game
         /// </summary>

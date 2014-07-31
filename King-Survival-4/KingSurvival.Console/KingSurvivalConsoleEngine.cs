@@ -4,10 +4,10 @@
 
     using KingSurvival.Base;
     using KingSurvival.Base.Exceptions;
+    using KingSurvival.Base.FigureExtensions;
     using KingSurvival.Base.GameObjects;
     using KingSurvival.Console.InputOutputEngines;
     using KingSurvival.Validations;
-    using KingSurvival.Base.FigureExtensions;
 
     /// <summary>
     /// The main class Engine for the console application; implementing the FACADE pattern
@@ -46,7 +46,7 @@
             : base(new ConsoleReader(), new ConsoleWriter())
         {
             this.board = Board.Instance;
-            AddFiguresToList();
+            this.AddFiguresToList();
         }
 
         /// <summary>
@@ -64,7 +64,7 @@
             {
                 this.RenderBoard(Board.Field);
 
-                PlayFigureTurn();
+                this.PlayFigureTurn();
             }
 
             this.GameEnds();

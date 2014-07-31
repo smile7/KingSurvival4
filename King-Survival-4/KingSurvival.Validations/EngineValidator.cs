@@ -3,9 +3,9 @@
     using System;
     using System.Collections.Generic;
 
-    using KingSurvival.Base.GameObjects;
-    using KingSurvival.Base.Exceptions;
     using KingSurvival.Base;
+    using KingSurvival.Base.Exceptions;
+    using KingSurvival.Base.GameObjects;
 
     /// <summary>
     /// The class which does the validations for the engine
