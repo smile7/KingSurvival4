@@ -4,6 +4,7 @@
 
     using KingSurvival.Base;
     using KingSurvival.Base.Exceptions;
+    using KingSurvival.Base.Interfaces;
     using KingSurvival.Base.FigureExtensions;
     using KingSurvival.Base.GameObjects;
     using KingSurvival.Console.InputOutputEngines;
@@ -32,7 +33,8 @@
         /// This varialble saves the state of the figure's old position
         /// </summary>
         private readonly FigureMemory oldPositionMemory;
-        private readonly EngineValidator validator;
+        private readonly IEngineValidator validator;
+        private readonly IParser parser;
 
         private bool isGameInProgress = true;
         private int countTurns = 0;
@@ -54,6 +56,7 @@
             this.king = FigureGetter.GetFigure(new Position(7, 3), 'K', "King");
 
             this.validator = new EngineValidator();
+            this.parser = new Parser();
             this.oldPositionMemory = new FigureMemory();
 
             this.AddFiguresToList();
@@ -130,7 +133,7 @@
                 {
                     Figure currentFigure;
                     var command = new Command(this.GetCommand().ToUpper());
-                    var newPosition = Parser.GetNewPosition(command.NewPositionLetters);
+                    var newPosition = this.parser.GetNewPosition(command.NewPositionLetters);
 
                     if (this.kingsTurn)
                     {

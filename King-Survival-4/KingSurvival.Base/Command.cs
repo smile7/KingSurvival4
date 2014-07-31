@@ -10,6 +10,9 @@
     /// </summary>
     public class Command
     {
+        /// <summary>
+        /// A field for the 12 valid commands
+        /// </summary>
         private readonly string[] validCommands = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
         private string input;
 
@@ -18,6 +21,10 @@
             this.Input = initialInput;
         }
 
+        /// <summary>
+        /// A property for the first letter in the command 
+        /// which says which figure should be played
+        /// </summary>
         public string FigureLetter
         {
             get
@@ -26,6 +33,10 @@
             }
         }
 
+        /// <summary>
+        /// A property for the second and third letter in the command 
+        /// which says which direction the figure should go
+        /// </summary>
         public string NewPositionLetters
         {
             get
