@@ -44,7 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\Directions.cs" />
+    <Compile Include="Enums\DirectionHorizontalSymbols.cs" />
+    <Compile Include="Enums\DirectionVerticalSymbols.cs" />
     <Compile Include="Enums\FigureSymbols.cs" />
     <Compile Include="GameObjects\Board.cs" />
     <Compile Include="Command.cs" />

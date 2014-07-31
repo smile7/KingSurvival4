@@ -9,6 +9,7 @@
     using KingSurvival.Base.GameObjects;
     using KingSurvival.Console.InputOutputEngines;
     using KingSurvival.Validations;
+    using KingSurvival.Base.Enums;
 
     /// <summary>
     /// The main class Engine for the console application; implementing the FACADE pattern
@@ -50,11 +51,11 @@
             : base(new ConsoleReader(), new ConsoleWriter())
         {
             this.board = Board.Instance;
-            this.firstPawn = FigureGetter.GetFigure(new Position(0, 0), 'A', "Pawn");
-            this.secondPawn = FigureGetter.GetFigure(new Position(0, 2), 'B', "Pawn");
-            this.thirdPawn = FigureGetter.GetFigure(new Position(0, 4), 'C', "Pawn");
-            this.fourthPawn = FigureGetter.GetFigure(new Position(0, 6), 'D', "Pawn");
-            this.king = FigureGetter.GetFigure(new Position(7, 3), 'K', "King");
+            this.firstPawn = FigureGetter.GetFigure(new Position(0, 0), (char)FigureSymbols.FirstPawnSymbol, "Pawn");
+            this.secondPawn = FigureGetter.GetFigure(new Position(0, 2), (char)FigureSymbols.SecondPawnSymbol, "Pawn");
+            this.thirdPawn = FigureGetter.GetFigure(new Position(0, 4), (char)FigureSymbols.ThirdPawnSymbol, "Pawn");
+            this.fourthPawn = FigureGetter.GetFigure(new Position(0, 6), (char)FigureSymbols.FourthPawnSymbol, "Pawn");
+            this.king = FigureGetter.GetFigure(new Position(7, 3), (char)FigureSymbols.KingSymbol, "King");
 
             this.validator = new EngineValidator();
             this.parser = new Parser();

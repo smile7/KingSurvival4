@@ -3,6 +3,8 @@
     using System;
     using System.Linq;
 
+    using KingSurvival.Base.Enums;
+
     /// <summary>
     /// The command class which receives a string and divides its letters 
     ///  - the first letter is for the figure which is about to be played
@@ -10,10 +12,6 @@
     /// </summary>
     public class Command
     {
-        /// <summary>
-        /// A field for the 12 valid commands
-        /// </summary>
-        private readonly string[] validCommands = { "KUL", "KUR", "KDL", "KDR", "ADL", "ADR", "BDL", "BDR", "CDL", "CDR", "DDL", "DDR" };
         private string input;
 
         public Command(string initialInput)
@@ -73,11 +71,15 @@
         /// <returns>Does the command list contain the given input or not</returns>
         private bool IsValid(string input)
         {
-            if (this.validCommands.Contains(input))
+            if (input.Length == 3)
             {
-                return true;
+                if (Enum.IsDefined(typeof(FigureSymbols), (int)input[0]) &&
+                    Enum.IsDefined(typeof(DirectionVerticalSymbols), (int)input[1]) &&
+                    Enum.IsDefined(typeof(DirectionHorizontalSymbols), (int)input[2]))
+                {
+                    return true;
+                }
             }
-
             return false;
         }
     }

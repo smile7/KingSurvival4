@@ -67,7 +67,7 @@
         public void Notify(Figure figure, Position oldPosition)
         {
             Field[figure.Position.X, figure.Position.Y] = figure.Symbol.ToString();
-            Field[oldPosition.X, oldPosition.Y] = "+";
+            Field[oldPosition.X, oldPosition.Y] = WhiteCell;
         }
 
         /// <summary>
