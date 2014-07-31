@@ -46,9 +46,9 @@
         /// </summary>
         /// <param name="king">List of figures</param>
         /// <returns>True or false</returns>
-        public bool HasGameEnded(IList<Figure> figures)
+        public bool HasGameEnded(IDictionary<string, Figure> figures)
         {
-            if (this.IsFigureOnTopOfBoard(figures[4]) || this.ArePawnsOnBottomOfBoard(figures) || this.IsSurrounded(figures[4]))
+            if (this.IsFigureOnTopOfBoard(figures["K"]) || this.ArePawnsOnBottomOfBoard(figures) || this.IsSurrounded(figures["K"]))
             {
                 return true;
             }
@@ -61,9 +61,9 @@
         /// </summary>
         /// <param name="king">List of figures</param>
         /// <returns>True or false</returns>
-        public bool HasKingWon(IList<Figure> figures)
+        public bool HasKingWon(IDictionary<string, Figure> figures)
         {
-            if (this.IsFigureOnTopOfBoard(figures[4]) || this.ArePawnsOnBottomOfBoard(figures))
+            if (this.IsFigureOnTopOfBoard(figures["K"]) || this.ArePawnsOnBottomOfBoard(figures))
             {
                 return true;
             }
@@ -92,14 +92,14 @@
         /// </summary>
         /// <param name="figures">List of figures</param>
         /// <returns>True/false</returns>
-        private bool ArePawnsOnBottomOfBoard(IList<Figure> figures)
+        private bool ArePawnsOnBottomOfBoard(IDictionary<string, Figure> figures)
         {
-            for (int i = 0; i < figures.Count - 1; i++)
+            if(figures["A"].Position.Y != 0 || 
+                figures["B"].Position.Y != 0 || 
+                figures["C"].Position.Y != 0 ||
+                figures["D"].Position.Y != 0)
             {
-                if (figures[i].Position.Y != 0)
-                {
-                    return false;
-                }
+                return false;
             }
 
             return true;

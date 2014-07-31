@@ -72,7 +72,7 @@
         {
             foreach (var figure in this.Figures)
             {
-                this.board.Notify(figure);
+                this.board.Notify(figure.Value);
             }
 
             while (this.isGameInProgress)
@@ -108,11 +108,11 @@
         /// </summary>
         private void AddFiguresToList()
         {
-            this.Figures.Add(this.firstPawn);
-            this.Figures.Add(this.secondPawn);
-            this.Figures.Add(this.thirdPawn);
-            this.Figures.Add(this.fourthPawn);
-            this.Figures.Add(this.king);
+            this.Figures.Add("A", this.firstPawn);
+            this.Figures.Add("B", this.secondPawn);
+            this.Figures.Add("C", this.thirdPawn);
+            this.Figures.Add("D", this.fourthPawn);
+            this.Figures.Add("K", this.king);
         }
 
         /// <summary>
@@ -133,44 +133,28 @@
             {
                 try
                 {
-                    Figure currentFigure;
                     var command = new Command(this.GetCommand().ToUpper());
                     var newPosition = this.parser.GetNewPosition(command.NewPositionLetters);
+                    string figureSymbol = command.FigureLetter;
 
                     if (this.kingsTurn)
                     {
-                        currentFigure = this.king;
-                        this.countTurns++;
+                        if (figureSymbol != "K")
+                        {
+                            throw new InvalidOperationException();
+                        }
 
-                        string kingSymbol = command.FigureLetter;
-                        if (kingSymbol != "K")
+                        this.countTurns++;
+                    }
+                    else
+                    {
+                        if (figureSymbol == "K")
                         {
                             throw new InvalidOperationException();
                         }
                     }
-                    else
-                    {
-                        string pawnSymbol = command.FigureLetter;
-                        switch (pawnSymbol)
-                        {
-                            case "A":
-                                currentFigure = this.firstPawn;
-                                break;
-                            case "B":
-                                currentFigure = this.secondPawn;
-                                break;
-                            case "C":
-                                currentFigure = this.thirdPawn;
-                                break;
-                            case "D":
-                                currentFigure = this.fourthPawn;
-                                break;
-                            default:
-                                throw new InvalidOperationException();
-                        }
-                    }
 
-                    this.ChangeFigurePosition(currentFigure, this.oldPositionMemory, newPosition);
+                    this.ChangeFigurePosition(this.Figures[figureSymbol], this.oldPositionMemory, newPosition);
 
                     if (this.validator.HasGameEnded(this.Figures))
                     {

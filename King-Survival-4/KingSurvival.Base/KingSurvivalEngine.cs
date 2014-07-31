@@ -21,18 +21,21 @@
         /// <param name="reader">Reader</param>
         /// <param name="writer">Writer</param>
         public KingSurvivalEngine(IReader reader, IWriter writer)
-            :this(reader, writer, new List<Figure>())
+            :this(reader, writer, new Dictionary<string, Figure>())
         {
         }
 
-        public KingSurvivalEngine(IReader reader, IWriter writer, IList<Figure> initialFigures)
+        public KingSurvivalEngine(IReader reader, IWriter writer, IDictionary<string, Figure> initialFigures)
         {
             this.Reader = reader;
             this.Writer = writer;
             this.Figures = initialFigures;
         }
 
-        protected IList<Figure> Figures { get; set; }
+        /// <summary>
+        /// Dictionary with the figures on the board with key - their symbol
+        /// </summary>
+        protected IDictionary<string, Figure> Figures { get; set; }
 
         protected IWriter Writer
         {
