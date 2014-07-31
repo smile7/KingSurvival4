@@ -24,11 +24,11 @@
 
             switch (directionStr)
             {
-                case UpLeft:
+                case Constants.MoveUpLeft:
                     return new Position(-1, -1);
-                case UpRight:
+                case Constants.MoveUpRight:
                     return new Position(-1, 1);
-                case DownLeft:
+                case Constants.MoveDownLeft:
                     return new Position(1, -1);
                 default:
                     return new Position(1, 1);

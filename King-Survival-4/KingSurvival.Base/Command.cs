@@ -3,8 +3,6 @@
     using System;
     using System.Linq;
 
-    using KingSurvival.Base.Enums;
-
     /// <summary>
     /// The command class which receives a string and divides its letters 
     ///  - the first letter is for the figure which is about to be played
@@ -73,11 +71,12 @@
         {
             if (input.Length == 3)
             {
-                if (Enum.IsDefined(typeof(FigureSymbols), (int)input[0]) &&
-                    Enum.IsDefined(typeof(DirectionVerticalSymbols), (int)input[1]) &&
-                    Enum.IsDefined(typeof(DirectionHorizontalSymbols), (int)input[2]))
+                if (Constants.ListOfSymbols.Contains(input[0]))
                 {
-                    return true;
+                    if (Constants.ListOfConstants.Contains(input.Substring(1)))
+                    {
+                        return true;
+                    }
                 }
             }
             return false;

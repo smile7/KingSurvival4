@@ -9,7 +9,6 @@
     using KingSurvival.Base.GameObjects;
     using KingSurvival.Console.InputOutputEngines;
     using KingSurvival.Validations;
-    using KingSurvival.Base.Enums;
 
     /// <summary>
     /// The main class Engine for the console application; implementing the FACADE pattern
@@ -51,11 +50,11 @@
             : base(new ConsoleReader(), new ConsoleWriter())
         {
             this.board = Board.Instance;
-            this.firstPawn = FigureGetter.GetFigure(new Position(0, 0), (char)FigureSymbols.FirstPawnSymbol, "Pawn");
-            this.secondPawn = FigureGetter.GetFigure(new Position(0, 2), (char)FigureSymbols.SecondPawnSymbol, "Pawn");
-            this.thirdPawn = FigureGetter.GetFigure(new Position(0, 4), (char)FigureSymbols.ThirdPawnSymbol, "Pawn");
-            this.fourthPawn = FigureGetter.GetFigure(new Position(0, 6), (char)FigureSymbols.FourthPawnSymbol, "Pawn");
-            this.king = FigureGetter.GetFigure(new Position(7, 3), (char)FigureSymbols.KingSymbol, "King");
+            this.firstPawn = FigureGetter.GetFigure(new Position(Constants.FirstPawnInitialRow, Constants.FirstPawnInitialCol), Constants.FirstPawnSymbol, "Pawn");
+            this.secondPawn = FigureGetter.GetFigure(new Position(Constants.FirstPawnInitialRow, Constants.SecondPawnInitialCol), Constants.SecondPawnSymbol, "Pawn");
+            this.thirdPawn = FigureGetter.GetFigure(new Position(Constants.ThirdPawnInitialRow, Constants.ThirdPawnInitialCol), Constants.ThirdPawnSymbol, "Pawn");
+            this.fourthPawn = FigureGetter.GetFigure(new Position(Constants.FourthPawnInitialRow, Constants.FourthPawnInitialCol), Constants.FourthPawnSymbol, "Pawn");
+            this.king = FigureGetter.GetFigure(new Position(Constants.KingInitialRow, Constants.KingInitialCol), Constants.KingSymbol, "King");
 
             this.validator = new EngineValidator();
             this.parser = new Parser();
@@ -108,11 +107,11 @@
         /// </summary>
         private void AddFiguresToList()
         {
-            this.Figures.Add((char)FigureSymbols.FirstPawnSymbol, this.firstPawn);
-            this.Figures.Add((char)FigureSymbols.SecondPawnSymbol, this.secondPawn);
-            this.Figures.Add((char)FigureSymbols.ThirdPawnSymbol, this.thirdPawn);
-            this.Figures.Add((char)FigureSymbols.FourthPawnSymbol, this.fourthPawn);
-            this.Figures.Add((char)FigureSymbols.KingSymbol, this.king);
+            this.Figures.Add(Constants.FirstPawnSymbol, this.firstPawn);
+            this.Figures.Add(Constants.SecondPawnSymbol, this.secondPawn);
+            this.Figures.Add(Constants.ThirdPawnSymbol, this.thirdPawn);
+            this.Figures.Add(Constants.FourthPawnSymbol, this.fourthPawn);
+            this.Figures.Add(Constants.KingSymbol, this.king);
         }
 
         /// <summary>
@@ -139,7 +138,7 @@
 
                     if (this.kingsTurn)
                     {
-                        if (figureSymbol != (char)FigureSymbols.KingSymbol)
+                        if (figureSymbol != Constants.KingSymbol)
                         {
                             throw new InvalidOperationException();
                         }
@@ -148,7 +147,7 @@
                     }
                     else
                     {
-                        if (figureSymbol == (char)FigureSymbols.KingSymbol)
+                        if (figureSymbol == Constants.KingSymbol)
                         {
                             throw new InvalidOperationException();
                         }
